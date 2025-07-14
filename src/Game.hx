@@ -7,6 +7,8 @@ enum TimeMode {
 
 class Game extends hxd.App {
 
+	var pastShader : prefab.TemporalShader.Temporal;
+	var presentShader : prefab.TemporalShader.Temporal;
 	public static var inst : Game;
 
 	public var player : ent.Player;
@@ -22,6 +24,9 @@ class Game extends hxd.App {
 		super();
 		inst = this;
 		modelCache = new h3d.prim.ModelCache();
+		pastShader = new prefab.TemporalShader.Temporal();
+		pastShader.PAST = true;
+		presentShader = new prefab.TemporalShader.Temporal();
 	}
 
 	override function init() {
@@ -60,6 +65,20 @@ class Game extends hxd.App {
 		}
 
 		function onEnd() {
+			if ( obj3d != null ) {
+				switch(modeMake) {
+				case Past:
+					for ( m in obj3d.local3d.getMaterials() )
+						if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
+							m.mainPass.addShader(pastShader);
+				case Present:
+					for ( m in obj3d.local3d.getMaterials() )
+						if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
+							m.mainPass.addShader(presentShader);
+				default:
+				}
+			}
+			
 			switch(p.name.toLowerCase()) {
 			case "past", "present":
 				modeMake = Common;
@@ -67,9 +86,9 @@ class Game extends hxd.App {
 			}	
 		}
 
+		var e : ent.Entity = null;
 		switch ( p.getCdbType() ) {
 		case "element":
-			var e : ent.Entity = null;
 			var props:Data.Element = cast p.props;
 			switch(props.type) {
 			case Room:

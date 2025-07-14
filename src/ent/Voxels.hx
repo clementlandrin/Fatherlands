@@ -113,6 +113,18 @@ class Voxels {
         removeDebug();
         debugObj = new h3d.scene.Object();
         @:privateAccess room.game.s3d.addChild(debugObj);
+
+        var batch = new h3d.scene.MeshBatch(h3d.prim.Cube.defaultUnitCube(), null, debugObj);
+        batch.begin();
+        batch.worldPosition = new h3d.Matrix();
+        var shader = new h3d.shader.ColorMult();
+        for ( m in batch.getMaterials() ) {
+            m.mainPass.setPassName("afterTonemapping");
+            m.shadows = false;
+            m.mainPass.setBlendMode(Alpha);
+            m.mainPass.addShader(shader);
+            m.mainPass.wireframe = true;
+        }
         for ( i in 0...size.x ) {
             for ( j in 0...size.y ) {
                 for ( k in 0...size.z ) {
@@ -120,17 +132,23 @@ class Voxels {
                     var value = values.get(i + j * size.x + k * size.x * size.y);
                     var voxelMode = Game.TimeMode.createByIndex(value);
                     if ( voxelMode != None ) {
-                        var color = switch(voxelMode) {
-                        case None: throw "assert"; 0x0;
-                        case Past: 0xFF0000;
-                        case Present: 0x00FF00;
-                        case Common: 0x0000FF;
-                        default: 0xFF00FF;  
+                        var alpha = 0.1;
+                        switch(voxelMode) {
+                        case None:
+                            throw "assert";
+                        case Past:
+                            shader.color.set(1.0, 0.0, 0.0, alpha);
+                        case Present:
+                            shader.color.set(0.0, 1.0 , 0.0,alpha);
+                        case Common:
+                            shader.color.set(0.0, 0.0, 1.0, alpha);
+                        default:
+                            shader.color.set(1.0, 0.0, 1.0, alpha);  
                         }
-                        var mesh = new h3d.scene.Box(color);
-                        mesh.scale(getVoxelSize());
-                        mesh.setPosition(pos.x, pos.y, pos.z);
-                        debugObj.addChild(mesh);
+
+                        batch.worldPosition.initScale(getVoxelSize(), getVoxelSize(), getVoxelSize());
+                        batch.worldPosition.translate(pos.x, pos.y, pos.z);
+                        batch.emitInstance();
                     }
                 }
             }

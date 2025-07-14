@@ -33,11 +33,6 @@
 							"args": [
 								0
 							]
-						},
-						{
-							"type": "temporalShader",
-							"name": "temporalShader",
-							"props": {}
 						}
 					]
 				},
@@ -65,12 +60,6 @@
 							"args": [
 								0
 							]
-						},
-						{
-							"type": "temporalShader",
-							"name": "temporalShader",
-							"props": {},
-							"PAST": true
 						}
 					]
 				},

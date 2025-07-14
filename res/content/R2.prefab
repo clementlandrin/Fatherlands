@@ -31,29 +31,7 @@
 							"kind": 0,
 							"args": [
 								0
-							],
-							"children": [
-								{
-									"type": "material",
-									"name": "material",
-									"props": {
-										"PBR": {
-											"mode": "PBR",
-											"blend": "None",
-											"shadows": true,
-											"culling": "Back",
-											"depthTest": "Less",
-											"colorMask": 15,
-											"enableStencil": false
-										}
-									}
-								}
 							]
-						},
-						{
-							"type": "temporalShader",
-							"name": "temporalShader",
-							"props": {}
 						}
 					]
 				},
@@ -79,30 +57,7 @@
 							"kind": 0,
 							"args": [
 								0
-							],
-							"children": [
-								{
-									"type": "material",
-									"name": "material",
-									"props": {
-										"PBR": {
-											"mode": "PBR",
-											"blend": "None",
-											"shadows": true,
-											"culling": "Back",
-											"depthTest": "Less",
-											"colorMask": 15,
-											"enableStencil": false
-										}
-									}
-								}
 							]
-						},
-						{
-							"type": "temporalShader",
-							"name": "temporalShader",
-							"props": {},
-							"PAST": true
 						}
 					]
 				},
