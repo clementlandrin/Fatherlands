@@ -1,0 +1,149 @@
+enum TimeMode {
+	None;
+	Present;
+	Past;
+	Common;
+}
+
+class Game extends hxd.App {
+
+	public static var inst : Game;
+
+	public var player : ent.Player;
+	public var curRoom : ent.Room;
+	public var entities : Array<ent.Entity>;
+	public var modelCache : h3d.prim.ModelCache;
+
+	var cameraController : h3d.scene.CameraController;
+
+	var modeMake : TimeMode = Common;
+
+	public function new() {
+		super();
+		inst = this;
+		modelCache = new h3d.prim.ModelCache();
+	}
+
+	override function init() {
+		new ui.Console();
+		
+		s3d.renderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+
+		entities = [];
+		player = new ent.Player();
+
+		var sh = new hrt.prefab.ContextShared(s3d);
+		sh.customMake = customMake;
+		var p = hxd.Res.world.load().clone(sh);
+		p.make();
+
+		var renderProps = p.find(hrt.prefab.RenderProps, true);
+		if ( renderProps != null ) {
+			renderProps.applyProps(s3d.renderer);
+		}
+		cameraController = new h3d.scene.CameraController(15.0, s3d);
+		cameraController.smooth = 0.0;
+		
+		for ( e in entities )
+			e.start();
+	}
+
+	function customMake(p : hrt.prefab.Prefab) {
+		var obj3d = p.to(hrt.prefab.Object3D);
+
+		switch(p.name.toLowerCase()) {
+		case "past":
+			modeMake = Past;
+		case "present":
+			modeMake = Present;
+		default:
+		}
+
+		function onEnd() {
+			switch(p.name.toLowerCase()) {
+			case "past", "present":
+				modeMake = Common;
+			default:
+			}	
+		}
+
+		switch ( p.getCdbType() ) {
+		case "element":
+			var e : ent.Entity = null;
+			var props:Data.Element = cast p.props;
+			switch(props.type) {
+			case Room:
+				if ( curRoom != null )
+					throw "room in room";
+				var r = new ent.Room();
+				curRoom = r;
+				e = r;
+			case Door:
+				if ( curRoom == null )
+					throw "door outside room";
+				var d = new ent.Door();
+				e = d;
+			case Navmesh:
+				if ( curRoom == null )
+					throw "navmesh outside room";
+				var n = new ent.Navmesh();
+				switch(p.type) {
+				case "polygon":
+					var polygon = cast(p, hrt.prefab.l3d.Polygon);
+					n.setPolygon(polygon);
+				case "box":
+					var box = cast(p, hrt.prefab.l3d.Box);
+					n.setBox(box);
+				default:
+					throw "unsupported navmesh";
+				}
+				n.setMode(modeMake);
+				e = n;
+			}
+			p.make();
+			onEnd();
+			e.setObject(obj3d.local3d);
+			if ( props.type == Room )
+				curRoom = null;
+			return;
+		}
+
+		p.make();
+		onEnd();
+	}
+
+	override function update(dt : Float) {
+		super.update(dt);
+
+		for ( e in entities ) {
+			e.update(dt);
+		}
+
+		if ( curRoom != null )
+			cameraController.set(new h3d.col.Point(curRoom.x, curRoom.y, curRoom.z));
+
+		if ( hxd.Key.isPressed(hxd.Key.F5) )
+			Main.reload();
+	}
+
+	public function moveTo(newRoom : ent.Room) {
+		for ( e in entities ) {
+			var r = Std.downcast(e, ent.Room);
+			if ( r == null )
+				continue;
+			r.leave();
+		}
+		if ( curRoom == null ) {
+			player.x = newRoom.x;
+			player.y = newRoom.y;
+			player.z = newRoom.z;
+		} else {
+			var door = newRoom.getDoorFrom(curRoom);
+			var dir = door.getEnteringDirection();
+			player.x = door.x + dir.x * 1.0;
+			player.y = door.y + dir.y * 1.0;
+			player.z = door.z;
+		}
+		newRoom.enter();
+	}
+}

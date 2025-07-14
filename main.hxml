@@ -1,0 +1,18 @@
+-lib heaps
+-lib hlsdl
+-lib hide
+-lib castle
+-lib shiro
+-hl main.hl
+-main Main
+--macro include("hrt.prefab")
+--macro include("hrt.shader")
+--macro include("hrt.shgraph")
+--macro include("shaders")
+--macro include("prefab")
+-D hl-ver=1.15.0
+-D hl-profile
+-D windowSize=1030x1030
+-cp src
+# -D debug
+-D dce=no

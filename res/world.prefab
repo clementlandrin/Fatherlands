@@ -1,0 +1,85 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "renderProps",
+			"name": "renderProps",
+			"props": {
+				"PBR": {
+					"mode": "Pbr",
+					"emissive": 1,
+					"exposure": 0,
+					"sky": "Background",
+					"tone": "Linear",
+					"occlusion": 1,
+					"a": 2.51,
+					"b": 0.03,
+					"c": 2.43,
+					"d": 0.59,
+					"e": 0.14
+				}
+			},
+			"children": [
+				{
+					"type": "light",
+					"name": "light",
+					"rotationY": 58.7,
+					"rotationZ": -30.7,
+					"kind": "Directional",
+					"power": 1.82,
+					"range": 10,
+					"zNear": 0.02,
+					"shadows": {
+						"mode": "Dynamic",
+						"size": 2048,
+						"radius": 0,
+						"quality": 1,
+						"bias": 0.1,
+						"samplingMode": {
+							"kind": "None"
+						}
+					}
+				},
+				{
+					"type": "rfx.sao",
+					"name": "sao",
+					"size": 0.5,
+					"blur": 4.7,
+					"noiseScale": 1000,
+					"samples": 50,
+					"radius": 0.68,
+					"intensity": 2.88,
+					"bias": 0.09
+				}
+			]
+		},
+		{
+			"type": "reference",
+			"name": "R1",
+			"source": "content/R1.prefab",
+			"x": 6.43,
+			"y": 2.84
+		},
+		{
+			"type": "reference",
+			"name": "R2",
+			"source": "content/R2.prefab",
+			"x": -13.94,
+			"y": 3.6
+		},
+		{
+			"type": "reference",
+			"name": "R3",
+			"source": "content/R3.prefab",
+			"x": -12.81,
+			"y": -11.41
+		},
+		{
+			"type": "reference",
+			"name": "R4",
+			"source": "content/R4.prefab",
+			"x": 8.16,
+			"y": -11.71
+		}
+	]
+}

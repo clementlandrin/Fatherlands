@@ -1,0 +1,123 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "object",
+			"name": "R3",
+			"props": {
+				"id": "R3",
+				"type": 0,
+				"$cdbtype": "element"
+			},
+			"children": [
+				{
+					"type": "object",
+					"name": "present",
+					"x": 1.344,
+					"y": 0.002,
+					"children": [
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"x": -1.426,
+							"y": 0.002,
+							"scaleX": 5,
+							"scaleY": 5,
+							"scaleZ": 5,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "temporalShader",
+							"name": "temporalShader",
+							"props": {}
+						}
+					]
+				},
+				{
+					"type": "object",
+					"name": "past",
+					"x": 1.344,
+					"y": 0.002,
+					"children": [
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"x": -1.426,
+							"y": 0.002,
+							"scaleX": 5,
+							"scaleY": 5,
+							"scaleZ": 5,
+							"color": -14352640,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "temporalShader",
+							"name": "temporalShader",
+							"props": {},
+							"PAST": true
+						}
+					]
+				},
+				{
+					"type": "object",
+					"name": "common"
+				},
+				{
+					"type": "object",
+					"name": "doors",
+					"x": -0.09499999999999997,
+					"y": 0.02749999999999997,
+					"children": [
+						{
+							"type": "reference",
+							"name": "door",
+							"source": "gameplay/door.prefab",
+							"x": 2.365,
+							"y": -0.2275,
+							"rotationZ": 87.5
+						},
+						{
+							"type": "reference",
+							"name": "door",
+							"source": "gameplay/door.prefab",
+							"x": -2.535,
+							"y": -0.0275,
+							"rotationZ": -91.1
+						},
+						{
+							"type": "reference",
+							"name": "door",
+							"source": "gameplay/door.prefab",
+							"x": -0.135,
+							"y": 2.6725,
+							"rotationZ": 179.8
+						},
+						{
+							"type": "reference",
+							"name": "door",
+							"source": "gameplay/door.prefab",
+							"x": 0.305,
+							"y": -2.4175
+						}
+					]
+				}
+			]
+		}
+	]
+}

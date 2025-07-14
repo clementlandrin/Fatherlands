@@ -1,0 +1,25 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "object",
+			"name": "object",
+			"scaleX": 0.3,
+			"scaleY": 0.3,
+			"scaleZ": 0.3,
+			"children": [
+				{
+					"type": "model",
+					"name": "Character",
+					"source": "chara/Character.fbx",
+					"rotationZ": 90
+				},
+				{
+					"type": "object",
+					"name": "sphereCenter",
+					"z": 2.37
+				}
+			]
+		}
+	]
+}

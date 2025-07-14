@@ -1,0 +1,86 @@
+{
+	"sheets": [
+		{
+			"name": "element",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id",
+					"opt": false,
+					"scope": null
+				},
+				{
+					"typeStr": "5:Room,Door,Navmesh",
+					"name": "type",
+					"opt": false
+				},
+				{
+					"typeStr": "17",
+					"name": "props",
+					"opt": true
+				}
+			],
+			"separators": [],
+			"props": {
+				"dataFiles": "*.prefab"
+			}
+		},
+		{
+			"name": "constant",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id",
+					"opt": false,
+					"scope": null
+				},
+				{
+					"typeStr": "4",
+					"name": "value",
+					"opt": true
+				},
+				{
+					"typeStr": "1",
+					"name": "desc",
+					"opt": true
+				}
+			],
+			"lines": [
+				{
+					"id": "PlayerSpeed",
+					"value": 2
+				},
+				{
+					"id": "VoxelSize",
+					"value": 0.1
+				},
+				{
+					"id": "MaxClimbHeight",
+					"value": 0.25
+				},
+				{
+					"id": "SphereMaxRadius",
+					"value": 2
+				},
+				{
+					"id": "SphereTransitionDuration",
+					"value": 1
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "element@props",
+			"props": {
+				"hide": true,
+				"isProps": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

@@ -1,0 +1,35 @@
+{
+	"type": "blendspace2d",
+	"points": [
+		{
+			"animPath": "mog/Anim/Anim_Idle.fbx"
+		},
+		{
+			"x": -1,
+			"animPath": "mog/Anim/Anim_StrafeLeft.fbx"
+		},
+		{
+			"x": 1,
+			"animPath": "mog/Anim/Anim_StrafeRight.fbx"
+		},
+		{
+			"y": -1,
+			"animPath": "mog/Anim/Anim_StrafeBack.fbx"
+		},
+		{
+			"y": 1,
+			"animPath": "mog/Anim/Anim_Walk.fbx"
+		},
+		{
+			"y": 2,
+			"animPath": "mog/Anim/Anim_Run.fbx"
+		}
+	],
+	"animFolder": "mog",
+	"minX": -2,
+	"maxX": 2,
+	"smoothX": 0.1,
+	"minY": -2,
+	"maxY": 2,
+	"smoothY": 0.1
+}

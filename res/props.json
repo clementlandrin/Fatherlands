@@ -1,0 +1,9 @@
+{
+	"plugins": [
+		"../tools/hide-plugin.js"
+	],
+	"haxe.classPath": [
+		"src",
+		"../src"
+	]
+}
