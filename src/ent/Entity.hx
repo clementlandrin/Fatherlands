@@ -49,7 +49,17 @@ class Entity {
 			obj.setTransform(newTransform);
 			game.s3d.addChild(obj);
 		}
-		
+	}
+
+	public function createUnitBounds() {
+		var boxBounds = new h3d.col.Bounds();
+		boxBounds.xMin = -0.5;
+		boxBounds.yMin = -0.5;
+		boxBounds.zMin = -0.5;
+		boxBounds.xSize = 1.0;
+		boxBounds.ySize = 1.0;
+		boxBounds.zSize = 1.0;
+		return boxBounds;
 	}
 
 	public function update(dt : Float) {

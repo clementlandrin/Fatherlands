@@ -124,6 +124,9 @@ class Game extends hxd.App {
 				}
 				n.setMode(modeMake);
 				e = n;
+			case Ladder:
+				var l = new ent.Ladder();
+				e = l;
 			}
 			p.make();
 			onEnd();
