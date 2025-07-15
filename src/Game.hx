@@ -47,10 +47,6 @@ class Game extends hxd.App {
 		var cam = s3d.camera;
 		cam.orthoBounds = new h3d.col.Bounds();
 
-		var renderProps = p.find(hrt.prefab.RenderProps, true);
-		if ( renderProps != null ) {
-			renderProps.applyProps(s3d.renderer);
-		}
 		cameraController = new h3d.scene.CameraController(Const.get(CameraDistance), s3d);
 		cameraController.enableZoom = false;
 		cameraController.smooth = 0.0;
@@ -68,28 +64,6 @@ class Game extends hxd.App {
 		case "present":
 			modeMake = Present;
 		default:
-		}
-
-		function onEnd() {
-			if ( obj3d != null ) {
-				switch(modeMake) {
-				case Past:
-					for ( m in obj3d.local3d.getMaterials() )
-						if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
-							m.mainPass.addShader(pastShader);
-				case Present:
-					for ( m in obj3d.local3d.getMaterials() )
-						if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
-							m.mainPass.addShader(presentShader);
-				default:
-				}
-			}
-			
-			switch(p.name.toLowerCase()) {
-			case "past", "present":
-				modeMake = Common;
-			default:
-			}	
 		}
 
 		var e : ent.Entity = null;
@@ -129,31 +103,76 @@ class Game extends hxd.App {
 				e = l;
 			}
 			p.make();
-			onEnd();
+			onPrefabMake(p);
 			e.setObject(obj3d.local3d);
+
+			// leaving room
 			if ( props.type == Room )
 				curRoom = null;
 			return;
+		default:
+			switch ( p.type ) {
+			case "camera":
+				var cam = cast(p, hrt.prefab.l3d.Camera);
+				if ( curRoom != null )
+					curRoom.setCamera(cam);
+			case "renderProps":
+				var rp = cast(p, hrt.prefab.RenderProps);
+				if ( curRoom != null ) {
+					switch(modeMake) {
+					case Present: curRoom.presentRenderProps = rp;
+					case Past: curRoom.pastRenderProps = rp;
+					default:
+					}
+				}
+			}
 		}
 
 		p.make();
-		onEnd();
+		onPrefabMake(p);
+	}
+
+	function onPrefabMake(p : hrt.prefab.Prefab) {
+		var obj3d = p.to(hrt.prefab.Object3D);
+		if ( obj3d != null )
+			temporalMaterials(obj3d.local3d, modeMake);
+		
+		// leaving past/present folder
+		switch(p.name.toLowerCase()) {
+		case "past", "present":
+			modeMake = Common;
+		default:
+		}
+	}
+
+	function temporalMaterials(obj : h3d.scene.Object, mode : TimeMode) {
+		switch(mode) {
+		case Past:
+			for ( m in obj.getMaterials() )
+				if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
+					m.mainPass.addShader(pastShader);
+		case Present:
+			for ( m in obj.getMaterials() )
+				if ( m.mainPass.getShader(prefab.TemporalShader.Temporal) == null )
+					m.mainPass.addShader(presentShader);
+		default:
+		}
 	}
 
 	override function update(dt : Float) {
 		super.update(dt);
 
-		for ( e in entities ) {
-			e.update(dt);
-		}
+		for ( e in entities )
+			if ( e.enabled )
+				e.update(dt);
 
-		if ( curRoom != null )
+		if ( curRoom != null && curRoom.camera == null ) {
 			cameraController.set(new h3d.col.Point(curRoom.x, curRoom.y, curRoom.z));
+			updateCamera(dt);
+		}
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
-
-		updateCamera(dt);
 	}
 
 	public function moveTo(newRoom : ent.Room) {

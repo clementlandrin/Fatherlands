@@ -6,7 +6,7 @@ class Entity {
 	var name : String;
 	var interactive : h3d.scene.Interactive;
 
-	public var enabled(default, set) : Bool;
+	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
 		enabled = v;
 		obj.visible = enabled;

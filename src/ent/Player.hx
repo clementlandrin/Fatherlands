@@ -6,7 +6,7 @@ class Player extends Entity {
 	var temporalRadius : Float = 0.0;
 	var sphereActive : Bool = false;
 	var skin : h3d.scene.Skin;
-	var climbing : ent.Ladder;
+	var curLadder : ent.Ladder;
 	var idle = false;
 	var sequence : Sequence;
 
@@ -66,7 +66,7 @@ class Player extends Entity {
 
 	function updateMovement(dt : Float) {
 		if ( sequence != null ) {
-			if ( !sequence.update(dt) )
+			if ( sequence.update(dt) )
 				sequence = null;
 			return;
 		}
@@ -74,6 +74,7 @@ class Player extends Entity {
 			updateLadderMovement(dt);
 			return;
 		}
+
 		var speed = Const.get(PlayerSpeed);
 		var displacement = new h2d.col.Point(0.0,0.0);
 		if ( hxd.Key.isDown(hxd.Key.LEFT) || hxd.Key.isDown(hxd.Key.Q) ) {
@@ -118,7 +119,6 @@ class Player extends Entity {
 			}
 		}
 		
-
 		if ( game.curRoom != null ) {
 			var voxels = game.curRoom.voxels;
 			if ( voxels.isInside(newPos) ) {
@@ -180,25 +180,6 @@ class Player extends Entity {
 		}
 	}
 
-	function updateLadderMovement(dt : Float) {
-		if ( hxd.Key.isDown(hxd.Key.Z) || hxd.Key.isDown(hxd.Key.UP) )
-			z += dt * Const.get(ClimbSpeed);
-		if ( hxd.Key.isDown(hxd.Key.S) || hxd.Key.isDown(hxd.Key.DOWN) )
-			z -= dt * Const.get(ClimbSpeed);
-	}
-
-	public function getTimeMode() : Game.TimeMode {
-		return sphereActive ? Past : Present; 
-	}
-
-	public function enterLadder(l : ent.Ladder) {
-		climbing = l;
-		sequence = new Sequence(function (dt : Float) {
-			var bottomPos = climbing.bottom.getAbsPos().getPosition();
-			return moveTo(bottomPos, dt);
-		});
-	}
-
 	function moveTo(target : h3d.col.Point, dt : Float) {
 		var curPos = new h3d.col.Point(x,y,z);
 		var diff = target.sub(curPos);
@@ -208,39 +189,57 @@ class Player extends Entity {
 			x = target.x;
 			y = target.y;
 			z = target.z;
-			return false;
+			return true;
 		}
 		curPos = curPos.add(dir.scaled(moveDist));
 		x = curPos.x;
 		y = curPos.y;
 		z = curPos.z;
-		return true;
+		return false;
 	}
 
-	public function leaveLadder() {
-		if ( climbing == null )
-			throw "assert";
-		var curLadder = climbing;
+	function updateLadderMovement(dt : Float) {
+		if ( hxd.Key.isDown(hxd.Key.Z) || hxd.Key.isDown(hxd.Key.UP) ) {
+			curLadder.tryLeaveTop();
+			z += dt * Const.get(ClimbSpeed);
+		}
+		if ( hxd.Key.isDown(hxd.Key.S) || hxd.Key.isDown(hxd.Key.DOWN) ) {
+			curLadder.tryLeaveBottom();
+			z -= dt * Const.get(ClimbSpeed);
+		}
+	}
+
+	public function getTimeMode() : Game.TimeMode {
+		return sphereActive ? Past : Present; 
+	}
+
+	public function enterLadder(l : ent.Ladder, to : h3d.col.Point) {
+		curLadder = l;
 		sequence = new Sequence(function (dt : Float) {
-			var topPos = curLadder.top.getAbsPos().getPosition();
-			var keepGoing = moveTo(topPos, dt);
-			if ( !keepGoing ) {
+			return moveTo(to, dt);
+		});
+	}
+
+	public function leaveLadder(to : h3d.col.Point) {
+		if ( curLadder == null )
+			throw "assert";
+		var tmpLadder = curLadder;
+		sequence = new Sequence(function (dt : Float) {
+			var topPos = tmpLadder.top.getAbsPos().getPosition();
+			var reached = moveTo(topPos, dt);
+			if ( reached ) {
 				sequence = new Sequence(function (dt : Float) {
-					var outPos = curLadder.outPos.getAbsPos().getPosition();
-					var keepGoing = moveTo(outPos, dt);
-					if ( !keepGoing )
-						curLadder = null;
-					return keepGoing;
+					return moveTo(to, dt);
 				});
 			}
 			return true;
 		});
-		climbing = null;
+		curLadder = null;
 	}
 
 	public function isClimbing(?l : ent.Ladder) {
 		if ( l == null )
-			return climbing != null;
-		return climbing == l;
+			return curLadder != null;
+		return curLadder == l;
 	}
 }

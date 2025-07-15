@@ -11,6 +11,22 @@
 			},
 			"children": [
 				{
+					"type": "camera",
+					"name": "camera",
+					"x": -5.482620595511788,
+					"y": 3.7130077304204123,
+					"z": 4.2318870586802095,
+					"scaleY": 0.9999999999999999,
+					"rotationY": 22.72293206959222,
+					"rotationZ": -41.04465714253031,
+					"fovY": 1,
+					"zFar": 147.92524928832233,
+					"zNear": 0.1,
+					"showFrustum": true,
+					"ortho": true,
+					"orthoWidth": 16.963904734899348
+				},
+				{
 					"type": "object",
 					"name": "present",
 					"x": 1.344,

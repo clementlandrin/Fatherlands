@@ -5,6 +5,10 @@ class Room extends Entity {
     public var doors : Array<Door> = [];
     public var navmeshes : Array<Navmesh> = [];
 	public var voxels : Voxels;
+	public var camera : hrt.prefab.l3d.Camera;
+
+	public var presentRenderProps : hrt.prefab.RenderProps;
+	public var pastRenderProps : hrt.prefab.RenderProps;
 
 	override function set_enabled(v : Bool) {
 		super.set_enabled(v);
@@ -28,6 +32,8 @@ class Room extends Entity {
 		voxels = new Voxels(this);
 		enabled = true;
 		game.curRoom = this;
+		if ( camera != null )
+			camera.applyTo(game.s3d.camera);
 	}
 
 	public function leave() {
@@ -35,6 +41,10 @@ class Room extends Entity {
 			voxels.dispose();
 		voxels = null;
 		enabled = false;
+	}
+
+	public function setCamera(camera : hrt.prefab.l3d.Camera) {
+		this.camera = camera;
 	}
 
 	public function getDoorFrom(prevRoom : Room) {
