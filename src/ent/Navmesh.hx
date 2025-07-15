@@ -49,13 +49,7 @@ class Navmesh extends Entity {
                 throw "";
             }
         } else if ( box != null ) {
-            var boxBounds = new h3d.col.Bounds();
-            boxBounds.xMin = -0.5;
-            boxBounds.yMin = -0.5;
-            boxBounds.zMin = -0.5;
-            boxBounds.xSize = 1.0;
-            boxBounds.ySize = 1.0;
-            boxBounds.zSize = 1.0;
+            var boxBounds = createUnitBounds();
             return boxBounds.contains(localPos);
         } else {
             throw "";

@@ -10,7 +10,7 @@
 					"scope": null
 				},
 				{
-					"typeStr": "5:Room,Door,Navmesh",
+					"typeStr": "5:Room,Door,Navmesh,Ladder",
 					"name": "type",
 					"opt": false
 				},
@@ -67,8 +67,12 @@
 					"value": 1
 				},
 				{
+					"id": "ClimbSpeed",
+					"value": 5
+				},
+				{
 					"id": "CameraWidth",
-					"value": 15
+					"value": 25
 				},
 				{
 					"id": "CameraDepth",

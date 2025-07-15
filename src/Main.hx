@@ -11,7 +11,9 @@ class Main extends hxd.App {
 	public static var PREFS : Prefs = new Prefs();
  
 	static function main() {
-
+		#if hlsdl
+		h3d.impl.GlDriver.enableComputeShaders();
+		#end
 		hxd.res.Resource.LIVE_UPDATE = true;
 		hxd.Res.initLocal();
 

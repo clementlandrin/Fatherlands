@@ -22,9 +22,9 @@ class Door extends Entity {
 		super.setObject(obj);
 		obj.culled = true;
         obj.inheritCulled = true;
-		interactive = new h3d.scene.Interactive(obj.getBounds(obj), obj);
-		interactive.showDebug = true;
-		interactive.onClick = onClick;
+		// interactive = new h3d.scene.Interactive(obj.getBounds(obj), obj);
+		// interactive.showDebug = true;
+		// interactive.onClick = onClick;
 	}
 
 	override function start() {

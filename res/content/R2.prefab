@@ -11,6 +11,14 @@
 			},
 			"children": [
 				{
+					"type": "reference",
+					"name": "ladder",
+					"source": "gameplay/ladder.prefab",
+					"x": -1.8,
+					"y": -4.2,
+					"z": 0.39
+				},
+				{
 					"type": "object",
 					"name": "present",
 					"x": 1.344,
@@ -137,6 +145,39 @@
 							"source": "gameplay/door.prefab",
 							"x": 0.31,
 							"y": -8.14
+						}
+					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "R1_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -1.72,
+					"y": -5.36,
+					"z": 3.89,
+					"kind": 0,
+					"args": [
+						0
+					],
+					"children": [
+						{
+							"type": "material",
+							"name": "material",
+							"props": {
+								"PBR": {
+									"mode": "PBR",
+									"blend": "None",
+									"shadows": true,
+									"culling": "Back",
+									"depthTest": "Less",
+									"colorMask": 15,
+									"enableStencil": false
+								}
+							}
 						}
 					]
 				}
