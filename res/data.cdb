@@ -71,16 +71,24 @@
 					"value": 5
 				},
 				{
-					"id": "CameraWidth",
+					"id": "DefaultCameraWidth",
 					"value": 25
 				},
 				{
-					"id": "CameraDepth",
+					"id": "DefaultCameraDepth",
 					"value": 100
 				},
 				{
-					"id": "CameraDistance",
-					"value": 15
+					"id": "DefaultCameraX",
+					"value": 10
+				},
+				{
+					"id": "DefaultCameraY",
+					"value": 10
+				},
+				{
+					"id": "DefaultCameraZ",
+					"value": 10
 				}
 			],
 			"separators": [
@@ -90,7 +98,7 @@
 				},
 				{
 					"title": "Camera",
-					"id": "CameraWidth"
+					"id": "DefaultCameraWidth"
 				}
 			],
 			"props": {}
