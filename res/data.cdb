@@ -47,12 +47,12 @@
 			],
 			"lines": [
 				{
-					"id": "PlayerSpeed",
-					"value": 2
+					"id": "VoxelSize",
+					"value": 0.1
 				},
 				{
-					"id": "VoxelSize",
-					"value": 0.2
+					"id": "PlayerSpeed",
+					"value": 2
 				},
 				{
 					"id": "MaxClimbHeight",
@@ -65,9 +65,30 @@
 				{
 					"id": "SphereTransitionDuration",
 					"value": 1
+				},
+				{
+					"id": "CameraWidth",
+					"value": 15
+				},
+				{
+					"id": "CameraDepth",
+					"value": 100
+				},
+				{
+					"id": "CameraDistance",
+					"value": 15
 				}
 			],
-			"separators": [],
+			"separators": [
+				{
+					"title": "Player",
+					"id": "PlayerSpeed"
+				},
+				{
+					"title": "Camera",
+					"id": "CameraWidth"
+				}
+			],
 			"props": {}
 		},
 		{

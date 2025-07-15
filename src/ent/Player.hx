@@ -18,7 +18,7 @@ class Player extends Entity {
 		for ( m in obj.getMaterials() )
 			m.color.setColor(0xFF0000);
 
-		var temporalPrim = new h3d.prim.Sphere(1.0, 32, 30);
+		var temporalPrim = new h3d.prim.Sphere(1.0, 64, 60);
 		temporalVisual = new h3d.scene.Mesh(temporalPrim, null, game.s3d);
 		for ( m in temporalVisual.getMaterials() ) {
 			m.color.set(0.0, 1.0, 0.0, 0.2);

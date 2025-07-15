@@ -1,3 +1,5 @@
+import h3d.Camera;
+
 enum TimeMode {
 	None;
 	Present;
@@ -42,13 +44,17 @@ class Game extends hxd.App {
 		var p = hxd.Res.world.load().clone(sh);
 		p.make();
 
+		var cam = s3d.camera;
+		cam.orthoBounds = new h3d.col.Bounds();
+
 		var renderProps = p.find(hrt.prefab.RenderProps, true);
 		if ( renderProps != null ) {
 			renderProps.applyProps(s3d.renderer);
 		}
-		cameraController = new h3d.scene.CameraController(15.0, s3d);
+		cameraController = new h3d.scene.CameraController(Const.get(CameraDistance), s3d);
+		cameraController.enableZoom = false;
 		cameraController.smooth = 0.0;
-		
+
 		for ( e in entities )
 			e.start();
 	}
@@ -143,6 +149,8 @@ class Game extends hxd.App {
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
+
+		updateCamera(dt);
 	}
 
 	public function moveTo(newRoom : ent.Room) {
@@ -164,5 +172,21 @@ class Game extends hxd.App {
 			player.z = door.z;
 		}
 		newRoom.enter();
+	}
+
+	function updateCamera(dt : Float) {
+		var cam = s3d.camera;
+		var X = Const.get(CameraWidth) * 0.5;
+		var Y = X / cam.screenRatio;
+		var Z = Const.get(CameraDepth) * 0.5;
+		cam.orthoBounds.xMax = X;
+		cam.orthoBounds.yMax = Y;
+		cam.orthoBounds.xMin = -X;
+		cam.orthoBounds.yMin = -Y;
+		cam.orthoBounds.zMax = Z;
+		cam.orthoBounds.zMin = -Z;
+	}
+
+	public function onCdbReload() {
 	}
 }

@@ -69,6 +69,13 @@
 		},
 		{
 			"type": "reference",
+			"name": "R2",
+			"source": "content/R2.prefab",
+			"x": -13.94,
+			"y": 3.6
+		},
+		{
+			"type": "reference",
 			"name": "R3",
 			"source": "content/R3.prefab",
 			"x": -12.81,

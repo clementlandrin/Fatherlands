@@ -115,7 +115,6 @@ class Voxels {
         @:privateAccess room.game.s3d.addChild(debugObj);
 
         var batch = new h3d.scene.MeshBatch(h3d.prim.Cube.defaultUnitCube(), null, debugObj);
-        batch.begin();
         batch.worldPosition = new h3d.Matrix();
         var shader = new h3d.shader.ColorMult();
         for ( m in batch.getMaterials() ) {
@@ -125,6 +124,7 @@ class Voxels {
             m.mainPass.addShader(shader);
             m.mainPass.wireframe = true;
         }
+        batch.begin();
         for ( i in 0...size.x ) {
             for ( j in 0...size.y ) {
                 for ( k in 0...size.z ) {
@@ -132,7 +132,7 @@ class Voxels {
                     var value = values.get(i + j * size.x + k * size.x * size.y);
                     var voxelMode = Game.TimeMode.createByIndex(value);
                     if ( voxelMode != None ) {
-                        var alpha = 0.1;
+                        var alpha = 1.0;
                         switch(voxelMode) {
                         case None:
                             throw "assert";

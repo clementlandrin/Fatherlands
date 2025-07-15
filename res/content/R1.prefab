@@ -60,16 +60,6 @@
 							]
 						},
 						{
-							"type": "box",
-							"name": "box",
-							"x": -2.08,
-							"y": -0.95,
-							"z": 0.83,
-							"scaleX": 0.42,
-							"scaleY": 0.42,
-							"scaleZ": 0.42
-						},
-						{
 							"type": "polygon",
 							"name": "polygon",
 							"props": {
