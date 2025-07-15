@@ -220,21 +220,22 @@ class Player extends Entity {
 		});
 	}
 
-	public function leaveLadder(to : h3d.col.Point) {
+	public function leaveLadder(ladderEdge : h3d.col.Point, out : h3d.col.Point) {
 		if ( curLadder == null )
 			throw "assert";
 		var tmpLadder = curLadder;
 		sequence = new Sequence(function (dt : Float) {
-			var topPos = tmpLadder.top.getAbsPos().getPosition();
-			var reached = moveTo(topPos, dt);
+			var reached = moveTo(ladderEdge, dt);
 			if ( reached ) {
 				sequence = new Sequence(function (dt : Float) {
-					return moveTo(to, dt);
+					var reached = moveTo(out, dt);
+					if ( reached )
+						curLadder = null;
+					return reached;
 				});
 			}
-			return true;
+			return false;
 		});
-		curLadder = null;
 	}
 
 	public function isClimbing(?l : ent.Ladder) {

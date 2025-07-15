@@ -43,12 +43,12 @@ class Ladder extends Entity {
 	public function tryLeaveTop() {
 		if ( !playerInBounds(top) )
 			return;
-		game.player.leaveLadder(topOut.getAbsPos().getPosition());
+		game.player.leaveLadder(top.getAbsPos().getPosition(), topOut.getAbsPos().getPosition());
 	}
 
 	public function tryLeaveBottom() {
 		if ( !playerInBounds(bottom) )
 			return;
-		game.player.leaveLadder(bottomOut.getAbsPos().getPosition());
+		game.player.leaveLadder(bottom.getAbsPos().getPosition(), bottomOut.getAbsPos().getPosition());
 	}
 }

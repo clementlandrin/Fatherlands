@@ -24,7 +24,7 @@
 									"type": "polygon",
 									"name": "polygon",
 									"editorOnly": true,
-									"y": 0.33,
+									"y": 0.52,
 									"scaleX": 0.5,
 									"scaleY": 0.5,
 									"scaleZ": 0.5,
@@ -73,13 +73,13 @@
 						{
 							"type": "object",
 							"name": "out",
-							"y": -1.04,
+							"y": -1,
 							"children": [
 								{
 									"type": "polygon",
 									"name": "polygon",
 									"editorOnly": true,
-									"y": 0.33,
+									"y": 0.55,
 									"scaleX": 0.5,
 									"scaleY": 0.5,
 									"scaleZ": 0.5,

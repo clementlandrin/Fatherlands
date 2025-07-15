@@ -15,8 +15,7 @@
 					"name": "ladder",
 					"source": "gameplay/ladder.prefab",
 					"x": -1.8,
-					"y": -4.2,
-					"z": 0.39
+					"y": -4.2
 				},
 				{
 					"type": "object",
@@ -157,8 +156,8 @@
 						"$cdbtype": "element"
 					},
 					"x": -1.72,
-					"y": -5.36,
-					"z": 3.89,
+					"y": -5.18,
+					"z": 4.23,
 					"kind": 0,
 					"args": [
 						0
