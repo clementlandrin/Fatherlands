@@ -102,9 +102,7 @@ class Player extends Entity {
 		var newPos = new h2d.col.Point(x + move.x, y + move.y);
 
 		if ( move.length() > 0.0 ) {
-			var quat = new h3d.Quat();
-			quat.initDirection(move.normalized(), new h3d.Vector(0.0, 0.0, 1.0));
-			obj.setRotationQuat(quat);
+			setFront(move.normalized());
 
 			if ( idle ) {
 				idle = false;
@@ -184,8 +182,13 @@ class Player extends Entity {
 		var curPos = new h3d.col.Point(x,y,z);
 		var diff = target.sub(curPos);
 		var dir = diff.normalized();
+		var distToTarget = diff.length();
 		var moveDist = dt * Const.get(PlayerSpeed);
-		if ( moveDist > diff.length() ) {
+
+		if ( distToTarget > 1e-3 )
+			setFront(target.sub(new h3d.col.Point(x,y,target.z)));
+
+		if ( moveDist > distToTarget ) {
 			x = target.x;
 			y = target.y;
 			z = target.z;
@@ -196,6 +199,12 @@ class Player extends Entity {
 		y = curPos.y;
 		z = curPos.z;
 		return false;
+	}
+
+	public function setFront(dir : h3d.col.Point) {
+		var quat = new h3d.Quat();
+		quat.initDirection(dir.normalized(), new h3d.Vector(0.0, 0.0, 1.0));
+		obj.setRotationQuat(quat);
 	}
 
 	function updateLadderMovement(dt : Float) {
@@ -223,7 +232,6 @@ class Player extends Entity {
 	public function leaveLadder(ladderEdge : h3d.col.Point, out : h3d.col.Point) {
 		if ( curLadder == null )
 			throw "assert";
-		var tmpLadder = curLadder;
 		sequence = new Sequence(function (dt : Float) {
 			var reached = moveTo(ladderEdge, dt);
 			if ( reached ) {
