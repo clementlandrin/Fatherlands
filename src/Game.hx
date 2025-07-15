@@ -166,10 +166,10 @@ class Game extends hxd.App {
 			if ( e.enabled )
 				e.update(dt);
 
-		if ( curRoom != null && curRoom.camera == null ) {
+		// if ( curRoom != null && curRoom.camera == null ) {
 			cameraController.set(new h3d.col.Point(curRoom.x, curRoom.y, curRoom.z));
 			updateCamera(dt);
-		}
+		// }
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
