@@ -28,7 +28,6 @@ class Player extends Entity {
 			m.mainPass.setPassName("afterTonemapping");
 			m.mainPass.depthWrite = false;
 			m.shadows = false;
-			m.mainPass.addShader(game.pastWindowShader);
 		}
 		temporalVisual.followPositionOnly = true;
 		temporalVisual.follow = chara.find(o -> o.name == "sphereCenter" ? o : null);
@@ -251,11 +250,5 @@ class Player extends Entity {
 		if ( l == null )
 			return curLadder != null;
 		return curLadder == l;
-	}
-
-	override function setMode(mode : Game.TimeMode) {
-		super.setMode(mode);
-
-		temporalVisual.visible = mode == Present;
 	}
 }
