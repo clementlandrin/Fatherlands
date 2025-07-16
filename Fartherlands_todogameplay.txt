@@ -1,18 +1,17 @@
 Fartherlands
 
-Camera ortho
-
-Echelles
-salles en 3d
-
-Setup renderer par room
+done - Camera ortho
+done - Echelles
+done - Setup renderer par room
 Setup renderer par mode avec deuxième caméra
+
+salles en 3d
+(Artefact à débloquer ?)
+
 RenderProps & background extérieurs aléatoires
 
-UI -> Graph de knowledge
 Interaction -> Boîtes de dialogues
-
-(Artefact à débloquer ?)
+UI -> Graph de knowledge
 
 Script interactions (générique ou cas par cas ?)
 Niveau d'eau qui baisse

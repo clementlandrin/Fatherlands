@@ -22,5 +22,25 @@ class Console {
 			else
 				Game.inst.curRoom.voxels.removeDebug();
 		});
+
+		console.add("prof", function(arg:String) {
+			// https://github.com/HaxeFoundation/hashlink/wiki/Profiler
+			switch (arg) {
+			case "start":
+				hl.Gc.enable(false);
+				hl.Profile.event(-7,"10000"); // setup
+				hl.Profile.event(-3); // clear data
+				hl.Profile.event(-5); // resume all
+			case "stop":
+				hl.Profile.event(-4); // pause all
+			case "dump":
+				hl.Profile.event(-6); // save dump
+				if( Sys.command(".vscode\\post_profile.bat") != 0 )
+					throw "Could not post process profile dump : missing profiler.hl compilation?";
+				hl.Profile.event(-4); // pause all
+				hl.Profile.event(-3); // clear data
+				hl.Gc.enable(true);
+			}
+		});
 	}
 }
