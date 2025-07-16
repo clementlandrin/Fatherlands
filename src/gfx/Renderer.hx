@@ -2,7 +2,9 @@ package gfx;
 
 class Renderer extends h3d.scene.pbr.Renderer {
 
+	var mode : Game.TimeMode;
 	var game : Game;
+
 	public function new(?env) {
 		super(env);
 		game = Game.inst;

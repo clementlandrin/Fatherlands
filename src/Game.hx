@@ -9,8 +9,6 @@ enum TimeMode {
 
 class Game extends hxd.App {
 
-	var pastShader : prefab.TemporalShader.Temporal;
-	var presentShader : prefab.TemporalShader.Temporal;
 	public static var inst : Game;
 
 	public var player : ent.Player;
@@ -18,11 +16,14 @@ class Game extends hxd.App {
 	public var entities : Array<ent.Entity>;
 	public var modelCache : h3d.prim.ModelCache;
 
-	var cameraController : h3d.scene.CameraController;
+	public var pastShader : prefab.TemporalShader.Temporal;
+	public var presentShader : prefab.TemporalShader.Temporal;
 
 	var lighting : h3d.scene.Object;
-
 	var modeMake : TimeMode = Common;
+
+	var presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+	var pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
 
 	public function new() {
 		super();
@@ -36,7 +37,7 @@ class Game extends hxd.App {
 	override function init() {
 		new ui.Console();
 		
-		s3d.renderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+		s3d.renderer = pastRenderer;
 
 		entities = [];
 		player = new ent.Player();
@@ -51,6 +52,33 @@ class Game extends hxd.App {
 
 		for ( e in entities )
 			e.start();
+	}
+
+	var pastTexture : h3d.mat.Texture;
+	override function render(e:h3d.Engine) {
+		if ( pastTexture != null && (pastTexture.width != e.width || pastTexture.height != e.height ) )
+			pastTexture.dispose();
+		if ( pastTexture == null || pastTexture.isDisposed() )
+			pastTexture = new h3d.mat.Texture(e.width, e.height, [Target], RGBA);
+
+		s3d.setOutputTarget(ctx.engine, pastTexture);
+		s3d.renderer = pastRenderer;
+		for ( e in entities ) {
+			var r = Std.downcast(e, ent.Room);
+			if ( r == null )
+				continue;
+			r.setMode(Past);	
+		}
+		s3d.render(e);
+		s3d.renderer = presentRenderer;
+		for ( e in entities ) {
+			var r = Std.downcast(e, ent.Room);
+			if ( r == null )
+				continue;
+			r.setMode(Present);
+		}
+		s3d.render(e);
+		s2d.render(e);
 	}
 
 	public function applyRenderer(p : hrt.prefab.RenderProps) {
@@ -146,7 +174,11 @@ class Game extends hxd.App {
 		
 		// leaving past/present folder
 		switch(p.name.toLowerCase()) {
-		case "past", "present":
+		case "past":
+			curRoom.pastObject = obj3d.local3d;
+			modeMake = Common;
+		case "present":
+			curRoom.presentObject = obj3d.local3d;
 			modeMake = Common;
 		default:
 		}

@@ -10,6 +10,9 @@ class Room extends Entity {
 	public var presentRenderProps : hrt.prefab.RenderProps;
 	public var pastRenderProps : hrt.prefab.RenderProps;
 
+	public var pastObject : h3d.scene.Object;
+	public var presentObject : h3d.scene.Object;
+
 	override function set_enabled(v : Bool) {
 		super.set_enabled(v);
 		for ( d in doors )
@@ -23,7 +26,6 @@ class Room extends Entity {
 		super.start();
 		if ( name == "start" )
 			game.moveTo(this);
-
 	}
 
 	public function enter() {
@@ -63,5 +65,12 @@ class Room extends Entity {
 			}
 		}
 		return enteringDoor;
+	}
+
+	public function setMode(mode : Game.TimeMode) {
+		if ( presentObject != null )
+			presentObject.visible = mode == Present || mode == Common;
+		if ( pastObject != null )
+			pastObject.visible = mode == Past || mode == Common;
 	}
 }

@@ -5,7 +5,7 @@ done - Echelles
 done - Setup renderer par room
 Setup renderer par mode avec deuxième caméra
 
-salles en 3d
+connexions salles en 3d
 (Artefact à débloquer ?)
 
 RenderProps & background extérieurs aléatoires
