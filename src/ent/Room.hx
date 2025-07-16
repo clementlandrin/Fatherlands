@@ -10,8 +10,8 @@ class Room extends Entity {
 	public var presentRenderProps : hrt.prefab.RenderProps;
 	public var pastRenderProps : hrt.prefab.RenderProps;
 
-	public var pastObject : h3d.scene.Object;
-	public var presentObject : h3d.scene.Object;
+	public var pastPrefab : hrt.prefab.Object3D;
+	public var presentPrefab : hrt.prefab.Object3D;
 
 	override function set_enabled(v : Bool) {
 		super.set_enabled(v);
@@ -67,10 +67,16 @@ class Room extends Entity {
 		return enteringDoor;
 	}
 
-	public function setMode(mode : Game.TimeMode) {
-		if ( presentObject != null )
-			presentObject.visible = mode == Present || mode == Common;
-		if ( pastObject != null )
-			pastObject.visible = mode == Past || mode == Common;
+	override function setMode(mode : Game.TimeMode) {
+		super.setMode(mode);
+		if ( presentPrefab != null )
+			for ( p in presentPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Present || mode == Common;
+		if ( pastPrefab != null ) {
+			for ( p in pastPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Past || mode == Common;
+		}
 	}
 }

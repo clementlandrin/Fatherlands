@@ -10,7 +10,6 @@ class Temporal extends hxsl.Shader {
 		@global var temporalRadius : Float;
 		@global var playerPos : Vec3;
 
-
 		var transformedPosition : Vec3;
 
 		function fragment() {

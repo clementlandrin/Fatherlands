@@ -11,57 +11,34 @@
 			},
 			"children": [
 				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -0.082,
+					"y": 0.004,
+					"scaleX": 5,
+					"scaleY": 5,
+					"scaleZ": 5,
+					"kind": 0,
+					"args": [
+						0
+					]
+				},
+				{
 					"type": "object",
 					"name": "present",
 					"x": 1.344,
-					"y": 0.002,
-					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": -1.426,
-							"y": 0.002,
-							"scaleX": 5,
-							"scaleY": 5,
-							"scaleZ": 5,
-							"kind": 0,
-							"args": [
-								0
-							]
-						}
-					]
+					"y": 0.002
 				},
 				{
 					"type": "object",
 					"name": "past",
 					"x": 1.344,
-					"y": 0.002,
-					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": -1.426,
-							"y": 0.002,
-							"scaleX": 5,
-							"scaleY": 5,
-							"scaleZ": 5,
-							"color": -14352640,
-							"kind": 0,
-							"args": [
-								0
-							]
-						}
-					]
+					"y": 0.002
 				},
 				{
 					"type": "object",

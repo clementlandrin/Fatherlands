@@ -26,29 +26,40 @@
 					"orthoWidth": 16.963904734899383
 				},
 				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -0.086,
+					"y": 0.002,
+					"scaleX": 9.72,
+					"scaleY": 9.72,
+					"scaleZ": 9.72,
+					"kind": 0,
+					"args": [
+						0
+					]
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"props": {
+						"id": "R1_box",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": 1.24,
+					"y": -1.06,
+					"z": 0.39
+				},
+				{
 					"type": "object",
 					"name": "present",
 					"x": 1.344,
-					"y": 0.002,
-					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": -1.43,
-							"scaleX": 9.72,
-							"scaleY": 9.72,
-							"scaleZ": 9.72,
-							"kind": 0,
-							"args": [
-								0
-							]
-						}
-					]
+					"y": 0.002
 				},
 				{
 					"type": "object",
@@ -56,24 +67,6 @@
 					"x": 1.344,
 					"y": 0.002,
 					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": -1.43,
-							"scaleX": 9.72,
-							"scaleY": 9.72,
-							"scaleZ": 9.72,
-							"color": -14352640,
-							"kind": 0,
-							"args": [
-								0
-							]
-						},
 						{
 							"type": "polygon",
 							"name": "polygon",
@@ -141,24 +134,13 @@
 									}
 								}
 							]
-						}
-					]
-				},
-				{
-					"type": "object",
-					"name": "common",
-					"children": [
+						},
 						{
 							"type": "box",
 							"name": "box",
-							"props": {
-								"id": "R1_box",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": 1.24,
-							"y": -1.06,
-							"z": 0.39
+							"x": -2.53,
+							"y": 2.01,
+							"scaleZ": 12.45
 						}
 					]
 				},

@@ -19,6 +19,8 @@ class Game extends hxd.App {
 	public var pastShader : prefab.TemporalShader.Temporal;
 	public var presentShader : prefab.TemporalShader.Temporal;
 
+	public var pastWindowShader : prefab.TemporalWindowShader.TemporalWindow;
+
 	var lighting : h3d.scene.Object;
 	var modeMake : TimeMode = Common;
 
@@ -32,13 +34,19 @@ class Game extends hxd.App {
 		pastShader = new prefab.TemporalShader.Temporal();
 		pastShader.PAST = true;
 		presentShader = new prefab.TemporalShader.Temporal();
+
+		pastWindowShader = new prefab.TemporalWindowShader.TemporalWindow();
 	}
 
 	override function init() {
 		new ui.Console();
 		
 		presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+		presentRenderer.timeMode = Present;
 		pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+		pastRenderer.timeMode = Past;
+
+		pastWindowShader.tex = h3d.mat.Texture.fromColor(0xFF00FF);
 
 		s3d.renderer = pastRenderer;
 
@@ -59,28 +67,23 @@ class Game extends hxd.App {
 
 	var pastTexture : h3d.mat.Texture;
 	override function render(e:h3d.Engine) {
-		if ( pastTexture != null && (pastTexture.width != e.width || pastTexture.height != e.height ) )
+		s3d.renderer = pastRenderer;
+		for ( e in entities ) {
+			e.setMode(Past);	
+		}
+		s3d.render(e);
+		var pastLdr = @:privateAccess pastRenderer.textures.ldr;
+		if ( pastTexture != null && (pastTexture.width != pastLdr.width || pastTexture.height != pastLdr.height) )
 			pastTexture.dispose();
 		if ( pastTexture == null || pastTexture.isDisposed() )
-			pastTexture = new h3d.mat.Texture(e.width, e.height, [Target], RGBA);
-
-		// s3d.setOutputTarget(e, pastTexture);
-		// s3d.renderer = pastRenderer;
-		// for ( e in entities ) {
-		// 	var r = Std.downcast(e, ent.Room);
-		// 	if ( r == null )
-		// 		continue;
-		// 	r.setMode(Past);	
-		// }
+			pastTexture = new h3d.mat.Texture(pastLdr.width, pastLdr.height, [Target], pastLdr.format);
+		h3d.pass.Copy.run(pastLdr, pastTexture);
+		pastWindowShader.tex = pastTexture;
+		s3d.renderer = presentRenderer;
+		for ( e in entities ) {
+			e.setMode(Present);
+		}
 		s3d.render(e);
-		// s3d.renderer = presentRenderer;
-		// for ( e in entities ) {
-		// 	var r = Std.downcast(e, ent.Room);
-		// 	if ( r == null )
-		// 		continue;
-		// 	r.setMode(Present);
-		// }
-		// s3d.render(e);
 		s2d.render(e);
 	}
 
@@ -133,7 +136,7 @@ class Game extends hxd.App {
 				default:
 					throw "unsupported navmesh";
 				}
-				n.setMode(modeMake);
+				n.navmeshMode = modeMake;
 				e = n;
 			case Ladder:
 				var l = new ent.Ladder();
@@ -178,10 +181,10 @@ class Game extends hxd.App {
 		// leaving past/present folder
 		switch(p.name.toLowerCase()) {
 		case "past":
-			curRoom.pastObject = obj3d.local3d;
+			curRoom.pastPrefab = obj3d;
 			modeMake = Common;
 		case "present":
-			curRoom.presentObject = obj3d.local3d;
+			curRoom.presentPrefab = obj3d;
 			modeMake = Common;
 		default:
 		}

@@ -3,10 +3,10 @@ package ent;
 class Navmesh extends Entity {
 
     public var bounds : h3d.col.Bounds;
+    public var navmeshMode : Game.TimeMode;
     
     var polygon : hrt.prefab.l3d.Polygon;
     var box : hrt.prefab.l3d.Box;
-    var mode : Game.TimeMode;
 
     public function new() {
         super();
@@ -26,12 +26,8 @@ class Navmesh extends Entity {
         this.box = box;
     }
 
-    public function setMode(mode : Game.TimeMode) {
-        this.mode = mode;
-    }
-
     public function containsTime(p : h3d.col.Point) : Game.TimeMode {
-        return contains(p) ? mode : None;
+        return contains(p) ? navmeshMode : None;
     }
 
     public function contains(p : h3d.col.Point) {

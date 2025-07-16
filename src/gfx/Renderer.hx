@@ -2,7 +2,7 @@ package gfx;
 
 class Renderer extends h3d.scene.pbr.Renderer {
 
-	var mode : Game.TimeMode;
+	public var timeMode : Game.TimeMode;
 	var game : Game;
 
 	public function new(?env) {

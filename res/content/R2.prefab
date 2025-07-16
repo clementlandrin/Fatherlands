@@ -18,10 +18,42 @@
 					"y": -4.2
 				},
 				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "R1_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": 0.8,
+					"y": 0.88,
+					"z": -0.21,
+					"kind": 3,
+					"args": [
+						24,
+						24
+					],
+					"children": [
+						{
+							"type": "material",
+							"name": "material",
+							"props": {
+								"PBR": {
+									"mode": "PBR",
+									"blend": "None",
+									"shadows": true,
+									"culling": "Back",
+									"depthTest": "Less",
+									"colorMask": 15,
+									"enableStencil": false
+								}
+							}
+						}
+					]
+				},
+				{
 					"type": "object",
 					"name": "present",
-					"x": 1.344,
-					"y": 0.002,
 					"children": [
 						{
 							"type": "reference",
@@ -36,7 +68,6 @@
 								"type": 2,
 								"$cdbtype": "element"
 							},
-							"x": -1.43,
 							"scaleX": 8.86,
 							"scaleY": 17.04,
 							"scaleZ": 8.86,
@@ -50,8 +81,6 @@
 				{
 					"type": "object",
 					"name": "past",
-					"x": 1.344,
-					"y": 0.002,
 					"children": [
 						{
 							"type": "polygon",
@@ -61,54 +90,12 @@
 								"type": 2,
 								"$cdbtype": "element"
 							},
-							"x": -1.43,
 							"scaleX": 8.86,
 							"scaleY": 17.04,
 							"scaleZ": 8.86,
-							"color": -14352640,
 							"kind": 0,
 							"args": [
 								0
-							]
-						}
-					]
-				},
-				{
-					"type": "object",
-					"name": "common",
-					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "R1_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": 0.8,
-							"y": 0.88,
-							"z": -0.21,
-							"kind": 3,
-							"args": [
-								24,
-								24
-							],
-							"children": [
-								{
-									"type": "material",
-									"name": "material",
-									"props": {
-										"PBR": {
-											"mode": "PBR",
-											"blend": "None",
-											"shadows": true,
-											"culling": "Back",
-											"depthTest": "Less",
-											"colorMask": 15,
-											"enableStencil": false
-										}
-									}
-								}
 							]
 						}
 					]

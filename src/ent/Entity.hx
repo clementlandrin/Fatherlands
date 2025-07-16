@@ -9,7 +9,6 @@ class Entity {
 	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
 		enabled = v;
-		obj.visible = enabled;
 		return enabled;
 	}
 
@@ -63,6 +62,10 @@ class Entity {
 	}
 
 	public function update(dt : Float) {
+
+	}
+
+	public function setMode(mode : Game.TimeMode) {
 
 	}
 
