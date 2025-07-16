@@ -22,8 +22,8 @@ class Game extends hxd.App {
 	var lighting : h3d.scene.Object;
 	var modeMake : TimeMode = Common;
 
-	var presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
-	var pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+	var presentRenderer : gfx.Renderer;
+	var pastRenderer : gfx.Renderer;
 
 	public function new() {
 		super();
@@ -37,6 +37,9 @@ class Game extends hxd.App {
 	override function init() {
 		new ui.Console();
 		
+		presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+		pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
+
 		s3d.renderer = pastRenderer;
 
 		entities = [];
@@ -61,23 +64,23 @@ class Game extends hxd.App {
 		if ( pastTexture == null || pastTexture.isDisposed() )
 			pastTexture = new h3d.mat.Texture(e.width, e.height, [Target], RGBA);
 
-		s3d.setOutputTarget(ctx.engine, pastTexture);
-		s3d.renderer = pastRenderer;
-		for ( e in entities ) {
-			var r = Std.downcast(e, ent.Room);
-			if ( r == null )
-				continue;
-			r.setMode(Past);	
-		}
+		// s3d.setOutputTarget(e, pastTexture);
+		// s3d.renderer = pastRenderer;
+		// for ( e in entities ) {
+		// 	var r = Std.downcast(e, ent.Room);
+		// 	if ( r == null )
+		// 		continue;
+		// 	r.setMode(Past);	
+		// }
 		s3d.render(e);
-		s3d.renderer = presentRenderer;
-		for ( e in entities ) {
-			var r = Std.downcast(e, ent.Room);
-			if ( r == null )
-				continue;
-			r.setMode(Present);
-		}
-		s3d.render(e);
+		// s3d.renderer = presentRenderer;
+		// for ( e in entities ) {
+		// 	var r = Std.downcast(e, ent.Room);
+		// 	if ( r == null )
+		// 		continue;
+		// 	r.setMode(Present);
+		// }
+		// s3d.render(e);
 		s2d.render(e);
 	}
 
