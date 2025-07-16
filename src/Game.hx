@@ -20,6 +20,8 @@ class Game extends hxd.App {
 
 	var cameraController : h3d.scene.CameraController;
 
+	var lighting : h3d.scene.Object;
+
 	var modeMake : TimeMode = Common;
 
 	public function new() {
@@ -50,6 +52,14 @@ class Game extends hxd.App {
 		for ( e in entities )
 			e.start();
 	}
+
+	public function applyRenderer(p : hrt.prefab.RenderProps) {
+		if ( lighting != null )
+			lighting.remove();
+		lighting = new h3d.scene.Object(s3d);
+		p.make(lighting); // p.clone()?
+		p.applyProps(s3d.renderer);
+	} 
 
 	function customMake(p : hrt.prefab.Prefab) {
 		var obj3d = p.to(hrt.prefab.Object3D);
@@ -121,6 +131,7 @@ class Game extends hxd.App {
 					default:
 					}
 				}
+				return;
 			}
 		}
 

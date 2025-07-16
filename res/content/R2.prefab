@@ -24,6 +24,11 @@
 					"y": 0.002,
 					"children": [
 						{
+							"type": "reference",
+							"name": "redLighting",
+							"source": "lighting/redLighting.prefab"
+						},
+						{
 							"type": "polygon",
 							"name": "polygon",
 							"props": {

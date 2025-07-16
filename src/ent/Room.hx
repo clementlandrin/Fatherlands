@@ -34,6 +34,10 @@ class Room extends Entity {
 		game.curRoom = this;
 		if ( camera != null )
 			camera.applyTo(game.s3d.camera);
+		if ( presentRenderProps != null )
+			game.applyRenderer(presentRenderProps);
+		else
+			game.applyRenderer(hxd.Res.lighting._default.load().clone().find(hrt.prefab.RenderProps));
 	}
 
 	public function leave() {
