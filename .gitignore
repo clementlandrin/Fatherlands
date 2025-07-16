@@ -4,3 +4,4 @@ dump/
 /res/.tmp
 /main.hl
 /*.hl
+/*.dump
