@@ -51,6 +51,10 @@
 					"value": 0.1
 				},
 				{
+					"id": "DoorMaxAngle",
+					"value": 45
+				},
+				{
 					"id": "PlayerSpeed",
 					"value": 2
 				},

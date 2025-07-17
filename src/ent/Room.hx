@@ -25,7 +25,7 @@ class Room extends Entity {
 	override function start() {
 		super.start();
 		if ( name == "start" )
-			game.moveTo(this);
+			game.moveTo(doors[0]);
 	}
 
 	public function enter() {
@@ -53,17 +53,16 @@ class Room extends Entity {
 		this.camera = camera;
 	}
 
-	public function getDoorFrom(prevRoom : Room) {
-		var dir = new h2d.col.Point(x - prevRoom.x, y - prevRoom.y).normalized();
-		var maxDot = hxd.Math.NEGATIVE_INFINITY;
-		var enteringDoor = null;
-		for ( d in doors ) {
-			var dot = d.getEnteringDirection().dot(dir);
-			if ( dot > maxDot ) {
-				maxDot = dot;
-				enteringDoor = d;
-			}
+	override function setMode(mode : Game.TimeMode) {
+		super.setMode(mode);
+		if ( presentPrefab != null )
+			for ( p in presentPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Present || mode == Common;
+		if ( pastPrefab != null ) {
+			for ( p in pastPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Past || mode == Common;
 		}
-		return enteringDoor;
 	}
 }

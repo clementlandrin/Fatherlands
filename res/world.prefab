@@ -56,13 +56,26 @@
 		{
 			"type": "reference",
 			"name": "R1",
+<<<<<<< HEAD
 			"source": "content/R1.prefab"
+=======
+			"source": "content/R1.prefab",
+			"x": 6.43,
+			"y": 2.84,
+			"editMode": "Edit"
+>>>>>>> a52d15fbfa646d95762e7a896e3c8ce2cc58a1ea
 		},
 		{
 			"type": "reference",
 			"name": "R2",
 			"source": "content/R2.prefab",
+<<<<<<< HEAD
 			"x": -15
+=======
+			"x": -13.94,
+			"y": 3.6,
+			"editMode": "Edit"
+>>>>>>> a52d15fbfa646d95762e7a896e3c8ce2cc58a1ea
 		},
 		{
 			"type": "reference",

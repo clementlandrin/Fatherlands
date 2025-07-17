@@ -9,6 +9,8 @@ class Entity {
 	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
 		enabled = v;
+		if ( obj != null )
+			obj.culled = !v;
 		return enabled;
 	}
 
@@ -32,8 +34,17 @@ class Entity {
 		game.entities.push(this);
 	}
 
+	public function getPos() {
+		return new h3d.col.Point(x,y,z);
+	}
+
+	public function getPos2D() {
+		return getPos().to2D();
+	}
+
 	public function setObject(obj : h3d.scene.Object) {
 		this.obj = obj;
+		obj.inheritCulled = true;
 		this.name = obj.name;
 		var pos = obj.getAbsPos().getPosition();
 		@:bypassAccessor x = pos.x;
@@ -62,6 +73,10 @@ class Entity {
 	}
 
 	public function update(dt : Float) {
+
+	}
+
+	public function setMode(mode : Game.TimeMode) {
 
 	}
 
