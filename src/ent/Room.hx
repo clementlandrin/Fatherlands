@@ -66,4 +66,17 @@ class Room extends Entity {
 		}
 		return enteringDoor;
 	}
+
+	override function setMode(mode : Game.TimeMode) {
+		super.setMode(mode);
+		if ( presentPrefab != null )
+			for ( p in presentPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Present || mode == Common;
+		if ( pastPrefab != null ) {
+			for ( p in pastPrefab.findAll(hrt.prefab.Object3D, true) )
+				if ( p.local3d != null )
+					p.local3d.visible = mode == Past || mode == Common;
+		}
+	}
 }

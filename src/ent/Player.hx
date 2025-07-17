@@ -28,6 +28,12 @@ class Player extends Entity {
 			m.mainPass.setPassName("afterTonemapping");
 			m.mainPass.depthWrite = false;
 			m.shadows = false;
+			@:privateAccess m.mainPass.addSelfShader(game.pastWindowShader);
+			var p = m.allocPass("overlay");
+			p.setBlendMode(Alpha);
+			var cm = new h3d.shader.ColorMult();
+			cm.color.set(0.0, 1.0, 0.0, 0.5);
+			p.addShader(cm);
 		}
 		temporalVisual.followPositionOnly = true;
 		temporalVisual.follow = chara.find(o -> o.name == "sphereCenter" ? o : null);
@@ -250,5 +256,11 @@ class Player extends Entity {
 		if ( l == null )
 			return curLadder != null;
 		return curLadder == l;
+	}
+
+	override function setMode(mode : Game.TimeMode) {
+		super.setMode(mode);
+
+		temporalVisual.visible = mode == Present;
 	}
 }

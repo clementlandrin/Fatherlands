@@ -65,6 +65,10 @@ class Entity {
 
 	}
 
+	public function setMode(mode : Game.TimeMode) {
+
+	}
+
 	public function dispose() {
 		obj.remove();
 	}

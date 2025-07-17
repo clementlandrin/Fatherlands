@@ -19,6 +19,8 @@ class Game extends hxd.App {
 	public var pastShader : prefab.TemporalShader.Temporal;
 	public var presentShader : prefab.TemporalShader.Temporal;
 
+	public var pastWindowShader : prefab.TemporalWindowShader.TemporalWindow;
+
 	var lighting : h3d.scene.Object;
 	var modeMake : TimeMode = Common;
 
@@ -32,6 +34,8 @@ class Game extends hxd.App {
 		pastShader = new prefab.TemporalShader.Temporal();
 		pastShader.PAST = true;
 		presentShader = new prefab.TemporalShader.Temporal();
+
+		pastWindowShader = new prefab.TemporalWindowShader.TemporalWindow();
 	}
 
 	override function init() {
@@ -41,6 +45,8 @@ class Game extends hxd.App {
 		presentRenderer.timeMode = Present;
 		pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
 		pastRenderer.timeMode = Past;
+
+		pastWindowShader.tex = h3d.mat.Texture.fromColor(0xFF00FF);
 
 		s3d.renderer = pastRenderer;
 
@@ -57,6 +63,36 @@ class Game extends hxd.App {
 
 		for ( e in entities )
 			e.start();
+	}
+
+	var pastTexCopy : h3d.mat.Texture;
+	var pastDepthCopy : h3d.mat.Texture;
+	override function render(e:h3d.Engine) {
+		s3d.renderer = pastRenderer;
+		for ( e in entities ) {
+			e.setMode(Past);	
+		}
+		s3d.render(e);
+		var pastTex = @:privateAccess pastRenderer.textures.ldr;
+		if ( pastTexCopy != null && (pastTexCopy.width != pastTex.width || pastTexCopy.height != pastTex.height) )
+			pastTexCopy.dispose();
+		if ( pastTexCopy == null || pastTexCopy.isDisposed() )
+			pastTexCopy = new h3d.mat.Texture(pastTex.width, pastTex.height, [Target], pastTex.format);
+		h3d.pass.Copy.run(pastTex, pastTexCopy);
+		var pastDepth = @:privateAccess pastRenderer.textures.depth;
+		if ( pastDepthCopy != null && (pastDepthCopy.width != pastDepth.width || pastDepthCopy.height != pastDepth.height) )
+			pastDepthCopy.dispose();
+		if ( pastDepthCopy == null || pastDepthCopy.isDisposed() )
+			pastDepthCopy = new h3d.mat.Texture(pastDepth.width, pastDepth.height, [Target], pastDepth.format);
+		h3d.pass.Copy.run(pastDepth, pastDepthCopy);
+		pastWindowShader.tex = pastTexCopy;
+		pastWindowShader.depth = pastDepthCopy;
+		s3d.renderer = presentRenderer;
+		for ( e in entities ) {
+			e.setMode(Present);
+		}
+		s3d.render(e);
+		s2d.render(e);
 	}
 
 	public function applyRenderer(p : hrt.prefab.RenderProps) {
@@ -115,6 +151,8 @@ class Game extends hxd.App {
 				e = l;
 			}
 			p.make();
+			for ( m in obj3d.local3d.getMaterials() )
+				m.refreshProps();
 			onPrefabMake(p);
 			e.setObject(obj3d.local3d);
 
