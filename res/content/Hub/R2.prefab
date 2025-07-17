@@ -12,6 +12,11 @@
 			"children": [
 				{
 					"type": "reference",
+					"name": "camera",
+					"source": "gameplay/camera.prefab"
+				},
+				{
+					"type": "reference",
 					"name": "ladder",
 					"source": "gameplay/ladder.prefab",
 					"x": -1.8,
@@ -71,6 +76,45 @@
 							"scaleX": 15,
 							"scaleY": 15,
 							"scaleZ": 15,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"y": -7.5,
+							"z": 2.5,
+							"scaleX": 15,
+							"scaleY": 5,
+							"scaleZ": 15,
+							"rotationX": -90,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"x": -7.5,
+							"z": 2.5,
+							"scaleX": 15,
+							"scaleY": 5,
+							"scaleZ": 15,
+							"rotationX": -90,
+							"rotationZ": -90,
 							"kind": 0,
 							"args": [
 								0

@@ -11,6 +11,11 @@
 			},
 			"children": [
 				{
+					"type": "reference",
+					"name": "camera",
+					"source": "gameplay/camera.prefab"
+				},
+				{
 					"type": "polygon",
 					"name": "polygon",
 					"props": {
@@ -21,6 +26,45 @@
 					"scaleX": 7.5,
 					"scaleY": 15,
 					"scaleZ": 9.72,
+					"kind": 0,
+					"args": [
+						0
+					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -3.75,
+					"z": 3,
+					"scaleX": 6,
+					"scaleY": 15,
+					"scaleZ": 9.72,
+					"rotationY": 90,
+					"kind": 0,
+					"args": [
+						0
+					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"y": -7.5,
+					"z": 3,
+					"scaleX": 6,
+					"scaleY": 7.5,
+					"scaleZ": 9.72,
+					"rotationX": -90,
+					"rotationY": 90,
 					"kind": 0,
 					"args": [
 						0

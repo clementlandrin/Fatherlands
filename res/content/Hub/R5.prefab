@@ -11,6 +11,11 @@
 			},
 			"children": [
 				{
+					"type": "reference",
+					"name": "camera",
+					"source": "gameplay/camera.prefab"
+				},
+				{
 					"type": "polygon",
 					"name": "polygon",
 					"props": {
@@ -18,8 +23,6 @@
 						"type": 2,
 						"$cdbtype": "element"
 					},
-					"x": -0.082,
-					"y": 0.004,
 					"scaleX": 7.5,
 					"scaleY": 7.5,
 					"scaleZ": 7.5,
@@ -48,7 +51,7 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": 3.48,
+							"x": 3.55,
 							"y": -0.23,
 							"rotationZ": 87.5
 						},
@@ -56,7 +59,7 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": -3.54,
+							"x": -3.51,
 							"y": -0.03,
 							"rotationZ": -91.1
 						},
@@ -65,7 +68,7 @@
 							"name": "door",
 							"source": "gameplay/door.prefab",
 							"x": -0.13,
-							"y": 3.48,
+							"y": 3.5,
 							"rotationZ": 179.8
 						},
 						{
@@ -73,8 +76,37 @@
 							"name": "door",
 							"source": "gameplay/door.prefab",
 							"x": 0.31,
-							"y": -3.59
+							"y": -3.52
 						}
+					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"x": -3.75,
+					"z": 2.5,
+					"scaleX": 7.5,
+					"scaleY": 5,
+					"scaleZ": 5,
+					"rotationX": -90,
+					"rotationZ": -90,
+					"kind": 0,
+					"args": [
+						0
+					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"y": -3.75,
+					"z": 2.5,
+					"scaleX": 7.5,
+					"scaleY": 5,
+					"scaleZ": 5,
+					"rotationX": -90,
+					"kind": 0,
+					"args": [
+						0
 					]
 				}
 			]

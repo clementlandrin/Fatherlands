@@ -9,14 +9,16 @@
 					"mode": "Pbr",
 					"emissive": 1,
 					"exposure": 0,
-					"sky": "Background",
+					"sky": "CustomColor",
 					"tone": "Linear",
 					"occlusion": 1,
 					"a": 2.51,
 					"b": 0.03,
 					"c": 2.43,
 					"d": 0.59,
-					"e": 0.14
+					"e": 0.14,
+					"forceDirectDiscard": false,
+					"skyColor": 0
 				}
 			},
 			"children": [
@@ -56,39 +58,46 @@
 		{
 			"type": "reference",
 			"name": "R1",
-			"source": "content/R1.prefab"
+			"source": "content/Hub/R1.prefab"
 		},
 		{
 			"type": "reference",
 			"name": "R2",
-			"source": "content/R2.prefab",
+			"source": "content/Hub/R2.prefab",
 			"x": -15
 		},
 		{
 			"type": "reference",
 			"name": "R3",
-			"source": "content/R3.prefab",
+			"source": "content/Hub/R3.prefab",
 			"x": -15,
 			"y": -15
 		},
 		{
 			"type": "reference",
 			"name": "R4",
-			"source": "content/R4.prefab",
+			"source": "content/Hub/R4.prefab",
 			"x": -15,
 			"y": 15
 		},
 		{
 			"type": "reference",
 			"name": "R5",
-			"source": "content/R5.prefab",
+			"source": "content/Hub/R5.prefab",
 			"y": -15
 		},
 		{
 			"type": "reference",
 			"name": "R6",
-			"source": "content/R6.prefab",
+			"source": "content/Hub/R6.prefab",
 			"y": 15
+		},
+		{
+			"type": "reference",
+			"name": "G1",
+			"source": "content/Gardens/G1.prefab",
+			"x": -15,
+			"y": 30
 		}
 	]
 }
