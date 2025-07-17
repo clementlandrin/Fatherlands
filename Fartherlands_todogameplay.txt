@@ -3,9 +3,9 @@ Fartherlands
 done - Camera ortho
 done - Echelles
 done - Setup renderer par room
-Setup renderer par mode avec deuxième caméra
+wip - connexions salles en 3d
+wip - Setup renderer par mode avec deux scènes
 
-connexions salles en 3d
 (Artefact à débloquer ?)
 
 RenderProps & background extérieurs aléatoires

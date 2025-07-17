@@ -91,7 +91,11 @@ class Game extends hxd.App {
 		for ( e in entities ) {
 			e.setMode(Present);
 		}
+
+		// prevent syncRec twice.
+		s3d.fixedPosition = true;
 		s3d.render(e);
+		s3d.fixedPosition = false;
 		s2d.render(e);
 	}
 
@@ -232,7 +236,8 @@ class Game extends hxd.App {
 			Main.reload();
 	}
 
-	public function moveTo(newRoom : ent.Room) {
+	public function moveTo(door : ent.Door) {
+		var newRoom = door.room;
 		for ( e in entities ) {
 			var r = Std.downcast(e, ent.Room);
 			if ( r == null )
@@ -244,11 +249,10 @@ class Game extends hxd.App {
 			player.y = newRoom.y;
 			player.z = newRoom.z;
 		} else {
-			var door = newRoom.getDoorFrom(curRoom);
-			var dir = door.getEnteringDirection();
-			player.x = door.x + dir.x * 1.0;
-			player.y = door.y + dir.y * 1.0;
-			player.z = door.z;
+			var offset = door.getEnteringDirection().scaled(1.0);
+			player.x = door.x + offset.x;
+			player.y = door.y + offset.y;
+			player.z = door.z + offset.z;
 		}
 		newRoom.enter();
 	}

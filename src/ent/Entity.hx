@@ -32,6 +32,14 @@ class Entity {
 		game.entities.push(this);
 	}
 
+	public function getPos() {
+		return new h3d.col.Point(x,y,z);
+	}
+
+	public function getPos2D() {
+		return getPos().to2D();
+	}
+
 	public function setObject(obj : h3d.scene.Object) {
 		this.obj = obj;
 		this.name = obj.name;
