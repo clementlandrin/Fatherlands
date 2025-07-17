@@ -9,6 +9,8 @@ class Entity {
 	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
 		enabled = v;
+		if ( obj != null )
+			obj.culled = !v;
 		return enabled;
 	}
 
@@ -42,6 +44,7 @@ class Entity {
 
 	public function setObject(obj : h3d.scene.Object) {
 		this.obj = obj;
+		obj.inheritCulled = true;
 		this.name = obj.name;
 		var pos = obj.getAbsPos().getPosition();
 		@:bypassAccessor x = pos.x;

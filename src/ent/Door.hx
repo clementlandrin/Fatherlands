@@ -12,6 +12,12 @@ class Door extends Entity {
 		game.curRoom.doors.push(this);
 	}
 
+	override function set_enabled(v : Bool) {
+		var res = super.set_enabled(v);
+		obj.culled = true;
+		return res;
+	}
+
 	public function getLeavingDirection() {
 		return direction.clone();
 	}
@@ -23,7 +29,6 @@ class Door extends Entity {
 	override function setObject(obj) {
 		super.setObject(obj);
 		obj.culled = true;
-        obj.inheritCulled = true;
 	}
 
 	override function start() {
@@ -59,7 +64,7 @@ class Door extends Entity {
 			}
 		}
 
-		debugConnection();
+		// debugConnection();
 	}
 
 	function debugConnection() {
