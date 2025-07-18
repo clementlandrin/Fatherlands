@@ -18,11 +18,17 @@ class Console {
 		});
 
 		console.add("voxels", function() {
-			Main.PREFS.DEBUG_VOXEL = !Main.PREFS.DEBUG_VOXEL;
-			if ( Main.PREFS.DEBUG_VOXEL )
+			Main.PREFS.voxelDebug = !Main.PREFS.voxelDebug;
+			if ( Main.PREFS.voxelDebug )
 				game.curRoom.voxels.debug();
 			else
 				game.curRoom.voxels.removeDebug();
+			Main.savePrefs();
+		});
+
+		console.add("doors", function() {
+			Main.PREFS.doorDebug = !Main.PREFS.doorDebug;
+			Main.savePrefs();
 		});
 
 		console.add("prof", function(arg:String) {

@@ -28,7 +28,7 @@ class Voxels {
         var voxelCount = size.x * size.y * size.z;
         values = haxe.io.Bytes.alloc(voxelCount);
         build(room);
-        if ( Main.PREFS.DEBUG_VOXEL )
+        if ( Main.PREFS.voxelDebug )
             debug();
     }
 

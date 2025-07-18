@@ -5,6 +5,7 @@ class Door extends Entity {
 	public var to : Door;
 	public var room : Room;
 	var direction : h3d.col.Point;
+	var g : h3d.scene.Graphics;
 
 	public function new() {
 		super();
@@ -63,32 +64,35 @@ class Door extends Entity {
 				to = door;
 			}
 		}
-
-		// debugConnection();
 	}
 
 	function debugConnection() {
-		var pos = getPos();
-		var g = new h3d.scene.Graphics(game.s3d);
-		g.lineStyle(10.0, 0x0000FF);
-		g.drawLine(pos, pos.add(direction));
-		if ( to != null ) {
-			g.lineStyle(10.0, 0x00FF00);
-			g.drawLine(to.getPos(), pos);
+		if ( Main.PREFS.doorDebug && g == null ) {
+			var pos = getPos();
+			g = new h3d.scene.Graphics(game.s3d);
+			g.lineStyle(10.0, 0x0000FF);
+			g.drawLine(pos, pos.add(direction));
+			if ( to != null ) {
+				g.lineStyle(10.0, 0x00FF00);
+				g.drawLine(to.getPos(), pos);
 
-			var up = new h3d.Vector(0.0, 0.0, 1.0);
-			var dir = to.getPos().sub(pos).normalized();
-			var right = up.cross(dir).normalized();
-			var leftOffset = right.scaled(-1.0).add(dir.scaled(-1.0)).normalized();
-			g.drawLine(to.getPos(), to.getPos().add(leftOffset));
-			var rightOffset = right.add(dir.scaled(-1.0)).normalized();
-			g.drawLine(to.getPos(), to.getPos().add(rightOffset));
-		}
-		else {
-			g.lineStyle(10.0, 0xFF0000);
-			var crossSize = 0.5;
-			g.drawLine(pos.add(new h3d.Vector(-crossSize, -crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, crossSize, 0.0)));
-			g.drawLine(pos.add(new h3d.Vector(-crossSize, crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, -crossSize, 0.0)));
+				var up = new h3d.Vector(0.0, 0.0, 1.0);
+				var dir = to.getPos().sub(pos).normalized();
+				var right = up.cross(dir).normalized();
+				var leftOffset = right.scaled(-1.0).add(dir.scaled(-1.0)).normalized();
+				g.drawLine(to.getPos(), to.getPos().add(leftOffset));
+				var rightOffset = right.add(dir.scaled(-1.0)).normalized();
+				g.drawLine(to.getPos(), to.getPos().add(rightOffset));
+			}
+			else {
+				g.lineStyle(10.0, 0xFF0000);
+				var crossSize = 0.5;
+				g.drawLine(pos.add(new h3d.Vector(-crossSize, -crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, crossSize, 0.0)));
+				g.drawLine(pos.add(new h3d.Vector(-crossSize, crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, -crossSize, 0.0)));
+			}
+		} else if ( !Main.PREFS.doorDebug && g != null ) {
+			g.remove();
+			g = null;
 		}
 	}
 
@@ -105,5 +109,6 @@ class Door extends Entity {
 			if ( obj.getBounds().contains(playerPos) )
 				enters();
 		}
+		debugConnection();
 	}
 }
