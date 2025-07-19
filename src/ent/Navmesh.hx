@@ -34,7 +34,7 @@ class Navmesh extends Entity {
         boxUnitBounds = createUnitBounds();
     }
 
-    static var tmp2d : h2d.col.Point;
+    static var tmp2d : h2d.col.Point = new h2d.col.Point();
     public function contains(p : h3d.col.Point) {
         var center = new h3d.col.Point(x,y,z);
 
