@@ -50,5 +50,34 @@ class Console {
 				hl.Gc.enable(true);
 			}
 		});
+
+		console.add("memprof", function(?cmd: String) {
+			function start() {
+				var tmp = hl.Profile.globalBits;
+				tmp.set(Alloc);
+				hl.Profile.globalBits = tmp;
+				hl.Profile.reset();
+			}
+			function dump() {
+				hl.Profile.dump("memprofSize.txt", true, false);
+				hl.Profile.dump("memprofCount.txt", false, true);
+			}
+			if (cmd != null) {
+				switch (cmd) {
+				case "start":
+					start();
+				case "dump", "stop":
+					dump();
+				default:
+					var time = Std.parseFloat(cmd);
+					if (!Math.isNaN(time)) {
+						start();
+						haxe.Timer.delay(function() {
+							dump();
+						}, Math.round(time * 1000.0));
+					}
+				}
+			}
+		});
 	}
 }

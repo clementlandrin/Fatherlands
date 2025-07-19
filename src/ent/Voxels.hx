@@ -52,7 +52,11 @@ class Voxels {
     }
 
     public function getByCoord(coord : h3d.col.IPoint) {
-        return values.get(getVoxelId(coord));
+        return getById(getVoxelId(coord.x, coord.y, coord.z));
+    }
+
+    public function getById(id : Int) {
+        return values.get(id);
     }
 
     public function collideValue(v : Int, mode : Game.TimeMode) {
@@ -78,35 +82,21 @@ class Voxels {
         return true;
     }
 
-    public function getVoxelId(coord : h3d.col.IPoint) {
-        return coord.x + coord.y * size.x + coord.z * size.x * size.y;
+    public inline function getVoxelId(x : Int, y : Int, z : Int) {
+        return x + y * size.x + z * size.x * size.y;
     }
 
     public function getPos(ipos : h3d.col.IPoint) {
         return new h3d.col.Point(minPos.x + (ipos.x+0.5) * getVoxelSize(), minPos.y + (ipos.y+0.5) * getVoxelSize(), minPos.z + (ipos.z+0.5) * getVoxelSize());
     }
 
+    public function set(voxelId : Int, value : Int) {
+        values.set(voxelId, value);
+    }
+
     function build(room : Room) {
-        for ( i in 0...size.x ) {
-            for ( j in 0...size.y ) {
-                for ( k in 0...size.z ) {
-                    var pos = getPos(new h3d.col.IPoint(i,j,k));
-                    for ( n in room.navmeshes ) {
-                        var voxelId = getVoxelId(new h3d.col.IPoint(i,j,k));
-                        var voxelMode = n.containsTime(pos);
-                        if ( voxelMode != None ) {
-                            var curValue = values.get(voxelId);
-                            if ( Game.TimeMode.createByIndex(curValue) != Common ) {
-                                var newValue = curValue | voxelMode.getIndex();
-                                values.set(voxelId, newValue);
-                            }
-                            
-                        }
-                        
-                    }
-                }
-            }
-        }
+        for ( n in room.navmeshes )
+            n.fillVoxel(this);
     }
 
     public function debug() {
