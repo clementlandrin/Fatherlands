@@ -77,7 +77,7 @@ class Voxels {
         var relPos = pos.sub(minPos.to2D());
         if ( relPos.x < 0.0 || relPos.y < 0.0 )
             return false;
-        if ( relPos.x > size.x * getVoxelSize() || relPos.y > size.y * getVoxelSize() )
+        if ( relPos.x > (size.x-1) * getVoxelSize() || relPos.y > (size.y-1) * getVoxelSize() )
             return false;
         return true;
     }
