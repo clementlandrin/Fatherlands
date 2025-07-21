@@ -2,7 +2,6 @@
 -lib hlsdl
 -lib hide
 -lib castle
--lib shiro
 -hl main.hl
 -main Main
 --macro include("hrt.prefab")
