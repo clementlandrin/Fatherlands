@@ -10,6 +10,7 @@
 --macro include("hrt.shgraph")
 --macro include("shaders")
 --macro include("prefab")
+-D domkit_heaps
 -D hl-ver=1.15.0
 -D hl-profile
 -D windowSize=1030x1030
