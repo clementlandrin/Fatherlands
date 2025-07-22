@@ -90,6 +90,8 @@ class Door extends Entity {
 				g.drawLine(pos.add(new h3d.Vector(-crossSize, -crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, crossSize, 0.0)));
 				g.drawLine(pos.add(new h3d.Vector(-crossSize, crossSize, 0.0)), pos.add(new h3d.Vector(crossSize, -crossSize, 0.0)));
 			}
+			g.material.mainPass.setPassName("afterTonemapping");
+			g.material.mainPass.depthTest = Always;
 		} else if ( !Main.PREFS.doorDebug && g != null ) {
 			g.remove();
 			g = null;

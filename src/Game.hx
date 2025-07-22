@@ -20,6 +20,8 @@ class Game extends hxd.App {
 	public var presentShader : prefab.TemporalShader.Temporal;
 
 	public var pastWindowShader : prefab.TemporalWindowShader.TemporalWindow;
+	
+	public var baseUI : ui.BaseUI;
 
 	var lighting : h3d.scene.Object;
 	var modeMake : TimeMode = Common;
@@ -39,6 +41,7 @@ class Game extends hxd.App {
 	}
 
 	override function init() {
+		baseUI = new ui.BaseUI();
 		new ui.Console();
 		
 		presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
@@ -153,7 +156,11 @@ class Game extends hxd.App {
 			case Ladder:
 				var l = new ent.Ladder();
 				e = l;
+			case Interactible:
+				var i = new ent.Interactible();
+				e = i;
 			}
+			e.inf = props.props;
 			p.make();
 			for ( m in obj3d.local3d.getMaterials() )
 				m.refreshProps();

@@ -204,6 +204,20 @@
 					]
 				}
 			]
+		},
+		{
+			"type": "box",
+			"name": "box",
+			"props": {
+				"id": "H1_box",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "Hello, this is a dialog."
+				}
+			},
+			"x": 0.7076463791111376,
+			"y": -3.5155650595938033
 		}
 	]
 }

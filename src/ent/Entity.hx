@@ -5,7 +5,7 @@ class Entity {
 	var game : Game;
 	var name : String;
 	var interactive : h3d.scene.Interactive;
-
+	
 	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
 		enabled = v;
@@ -13,7 +13,7 @@ class Entity {
 			obj.culled = !v;
 		return enabled;
 	}
-
+	
 	public var x(default, set) : Float;
 	public function set_x(v) {
 		return obj.x = x = v;
@@ -26,9 +26,10 @@ class Entity {
 	public function set_z(v) {
 		return obj.z = z = v;
 	}
-
+	
 	public var obj : h3d.scene.Object;
-
+	public var inf : Data.Element_props;
+	
 	public function new() {
 		game = Game.inst;
 		game.entities.push(this);

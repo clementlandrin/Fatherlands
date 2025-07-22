@@ -10,7 +10,7 @@
 					"scope": null
 				},
 				{
-					"typeStr": "5:Room,Door,Navmesh,Ladder",
+					"typeStr": "5:Room,Door,Navmesh,Ladder,Interactible",
 					"name": "type",
 					"opt": false
 				},
@@ -115,7 +115,13 @@
 			},
 			"separators": [],
 			"lines": [],
-			"columns": []
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "dialog",
+					"opt": true
+				}
+			]
 		}
 	],
 	"customTypes": [],

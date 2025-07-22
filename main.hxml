@@ -2,6 +2,7 @@
 -lib hlsdl
 -lib hide
 -lib castle
+-lib domkit
 -hl main.hl
 -main Main
 --macro include("hrt.prefab")
