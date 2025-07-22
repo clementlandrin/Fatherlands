@@ -60,6 +60,10 @@ class Voxels {
     }
 
     public function collideValue(v : Int, mode : Game.TimeMode) {
+        var isValid = (v & (1 << 7)) != 0;
+        if ( !isValid )
+            return false;
+        var v = v & ((1 << 7) - 1);
         var voxelMode = Game.TimeMode.createByIndex(v);
         switch ( voxelMode ) {
         case None:
@@ -97,6 +101,21 @@ class Voxels {
     function build(room : Room) {
         for ( n in room.navmeshes )
             n.fillVoxel(this);
+        for ( i in 0...size.x ) {
+            for ( j in 0...size.y ) {
+                var isValid = false;
+                for ( k in 0...size.z ) {
+                    var curId = getVoxelId(i,j,k);
+                    var curValue = getById(curId);
+                    if ( curValue != 0 )
+                        isValid = true;
+                    if ( isValid ) {
+                        var newValue = curValue | (1 << 7);
+                        set(curId, newValue);
+                    }
+                }
+            }
+        }
     }
 
     public function debug() {
