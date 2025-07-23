@@ -66,6 +66,40 @@
 				},
 				{
 					"type": "reference",
+					"name": "H4",
+					"source": "content/Room/Hub/H4.prefab",
+					"x": -15,
+					"z": 25
+				},
+				{
+					"type": "reference",
+					"name": "H5",
+					"source": "content/Room/Hub/H5.prefab",
+					"z": 25
+				},
+				{
+					"type": "reference",
+					"name": "H6",
+					"source": "content/Room/Hub/H6.prefab",
+					"x": -15,
+					"z": 100
+				},
+				{
+					"type": "reference",
+					"name": "H7",
+					"source": "content/Room/Hub/H7.prefab",
+					"x": -135,
+					"z": 100
+				},
+				{
+					"type": "reference",
+					"name": "H8",
+					"source": "content/Room/Hub/H8.prefab",
+					"x": -75,
+					"z": 100
+				},
+				{
+					"type": "reference",
 					"name": "H3",
 					"source": "content/Room/Hub/H3.prefab",
 					"x": -35
@@ -150,14 +184,6 @@
 					"source": "content/Room/Gardens/G9.prefab",
 					"x": -75,
 					"y": 45,
-					"z": 10
-				},
-				{
-					"type": "reference",
-					"name": "G5",
-					"source": "content/Room/Gardens/G5.prefab",
-					"x": -75,
-					"y": 30,
 					"z": 10
 				},
 				{
@@ -260,6 +286,34 @@
 					"x": -60,
 					"y": -15,
 					"z": 10
+				},
+				{
+					"type": "reference",
+					"name": "F12",
+					"source": "content/Room/Factory/F12.prefab",
+					"x": 10,
+					"y": -25
+				},
+				{
+					"type": "reference",
+					"name": "F13",
+					"source": "content/Room/Factory/F13.prefab",
+					"x": -5,
+					"y": -25
+				},
+				{
+					"type": "reference",
+					"name": "F14",
+					"source": "content/Room/Factory/F14.prefab",
+					"x": -25,
+					"y": -25
+				},
+				{
+					"type": "reference",
+					"name": "F15",
+					"source": "content/Room/Factory/F15.prefab",
+					"x": -45,
+					"y": -25
 				},
 				{
 					"type": "reference",
@@ -466,6 +520,13 @@
 				},
 				{
 					"type": "reference",
+					"name": "B10",
+					"source": "content/Room/Bath/B10.prefab",
+					"x": 15,
+					"y": -15
+				},
+				{
+					"type": "reference",
 					"name": "B7",
 					"source": "content/Room/Bath/B7.prefab",
 					"x": 19.09,
@@ -532,72 +593,11 @@
 		},
 		{
 			"type": "reference",
-			"name": "B10",
-			"source": "content/Room/Bath/B10.prefab",
-			"x": 15,
-			"y": -15
-		},
-		{
-			"type": "reference",
-			"name": "F12",
-			"source": "content/Room/Factory/F12.prefab",
-			"x": 10,
-			"y": -25
-		},
-		{
-			"type": "reference",
-			"name": "F13",
-			"source": "content/Room/Factory/F13.prefab",
-			"x": -5,
-			"y": -25
-		},
-		{
-			"type": "reference",
-			"name": "F14",
-			"source": "content/Room/Factory/F14.prefab",
-			"x": -25,
-			"y": -25
-		},
-		{
-			"type": "reference",
-			"name": "F15",
-			"source": "content/Room/Factory/F15.prefab",
-			"x": -45,
-			"y": -25
-		},
-		{
-			"type": "reference",
-			"name": "H4",
-			"source": "content/Room/Hub/H4.prefab",
-			"x": -15,
-			"z": 25
-		},
-		{
-			"type": "reference",
-			"name": "H5",
-			"source": "content/Room/Hub/H5.prefab",
-			"z": 25
-		},
-		{
-			"type": "reference",
-			"name": "H6",
-			"source": "content/Room/Hub/H6.prefab",
-			"x": -15,
-			"z": 100
-		},
-		{
-			"type": "reference",
-			"name": "H7",
-			"source": "content/Room/Hub/H7.prefab",
-			"x": -135,
-			"z": 100
-		},
-		{
-			"type": "reference",
-			"name": "H8",
-			"source": "content/Room/Hub/H8.prefab",
+			"name": "G19",
+			"source": "content/Room/Gardens/G19.prefab",
 			"x": -75,
-			"z": 100
+			"y": 30,
+			"z": 10
 		}
 	]
 }
