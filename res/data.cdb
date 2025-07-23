@@ -40,6 +40,11 @@
 					"opt": true
 				},
 				{
+					"typeStr": "11",
+					"name": "color",
+					"opt": true
+				},
+				{
 					"typeStr": "1",
 					"name": "desc",
 					"opt": true
@@ -75,6 +80,10 @@
 					"value": 5
 				},
 				{
+					"id": "InteractibleRadius",
+					"value": 1
+				},
+				{
 					"id": "DefaultCameraWidth",
 					"value": 25
 				},
@@ -93,6 +102,14 @@
 				{
 					"id": "DefaultCameraZ",
 					"value": 10
+				},
+				{
+					"id": "OutlineSize",
+					"value": 1
+				},
+				{
+					"id": "OutlineColor",
+					"color": 6983599
 				}
 			],
 			"separators": [
@@ -103,6 +120,10 @@
 				{
 					"title": "Camera",
 					"id": "DefaultCameraWidth"
+				},
+				{
+					"title": "Gfx",
+					"id": "OutlineSize"
 				}
 			],
 			"props": {}

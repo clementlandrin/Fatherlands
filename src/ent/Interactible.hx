@@ -3,14 +3,26 @@ package ent;
 class Interactible extends Entity {
 
 	var dialog : ui.Dialog;
-	override function setObject(obj : h3d.scene.Object) {
-		super.setObject(obj);
-		interactive = new h3d.scene.Interactive(obj.getBounds(null, obj));
-		obj.addChild(interactive);
-		interactive.onClick = onClick;
+
+	public function new() {
+		super();
+		interact = true;
 	}
 
-	function onClick(e : hxd.Event) {
-		new ui.Dialog(this, game.baseUI.root);
+	override function onTrigger() {
+		if ( game.baseUI.currentDialog == null )
+			new ui.Dialog(this, game.baseUI.root);
+	}
+
+	override function update(dt : Float) {
+		super.update(dt);
+		var inRange = game.player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
+		if ( inRange ) {
+			onOver();
+			if ( hxd.Key.isPressed(hxd.Key.F) )
+				onTrigger();
+		} else {
+			onOut();
+		}
 	}
 }

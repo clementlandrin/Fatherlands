@@ -5,5 +5,8 @@
 	"haxe.classPath": [
 		"src",
 		"../src"
-	]
+	],
+	"fs.convert" : {
+		"fbx" :{ "convert" : "hmd", "tangents" : true }
+	}
 }

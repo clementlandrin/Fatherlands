@@ -17,10 +17,12 @@ class Const {
 		return Std.int(get(i));
 	}
 
-	// public static inline function getColor( i : Data.ConstantKind ) {
-	// 	return getConst(i).color;
-	// }
+	public static inline function getColor( i : Data.ConstantKind ) {
+		return getConst(i).color;
+	}
 
 #end
+
+	public static final STENCIL_OUTLINE = 1 << 0;
 
 }

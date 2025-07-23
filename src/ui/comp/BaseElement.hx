@@ -9,4 +9,6 @@ class BaseElement extends h2d.Flow implements h2d.domkit.Object {
 		super(parent);
 		initComponent();
 	}
+
+	public dynamic function onClick() { }
 }

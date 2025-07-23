@@ -15,6 +15,8 @@ class BaseUI {
 
 	public var s2d : h2d.Scene;
 
+	public var currentDialog : Dialog;
+
 	public function new() {
 		Game.inst.baseUI = this;
 
@@ -36,4 +38,12 @@ class BaseUI {
 		style.clear();
 		style.load(hxd.Res.ui.style.style);
 	}	
+
+	public function update(dt : Float) {
+		style.sync(dt);
+		if ( hxd.Key.isPressed(hxd.Key.ESCAPE) ) {
+			currentDialog.remove();
+			currentDialog = null;
+		}
+	}
 }

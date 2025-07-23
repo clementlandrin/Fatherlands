@@ -3,14 +3,14 @@ Fartherlands
 done - Camera ortho
 done - Echelles
 done - Setup renderer par room
-wip - connexions salles en 3d
+done - connexions salles en 3d
+done - UI de dialogues, utile pour proto
 wip - Setup renderer par mode avec deux scènes
+wip - Interaction -> Boîtes de dialogues
 
 (Artefact à débloquer ?)
 
 RenderProps & background extérieurs aléatoires
-
-Interaction -> Boîtes de dialogues
 UI -> Graph de knowledge
 
 Script interactions (générique ou cas par cas ?)

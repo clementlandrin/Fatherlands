@@ -1,8 +1,10 @@
 dialog {
   margin-bottom: 200;
+  background: #000000 0.5;
+  align: bottom middle;
+  padding: 10;
 }
 dialog #speechText {
-  width: 500;
-  padding: 50;
-  min-height: 100;
+  align: middle middle;
+  min-height: 20;
 }

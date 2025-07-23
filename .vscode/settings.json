@@ -1,0 +1,8 @@
+{
+    "less.compile": {
+        "main": ["${workspaceRoot}/res/UI/Style/style.less"],
+        "sourceMap": true,
+    },
+    "less.validate": false,
+    "css.validate": false,
+}
