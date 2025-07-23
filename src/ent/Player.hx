@@ -234,6 +234,8 @@ class Player extends Entity {
 	}
 
 	public function enterLadder(l : ent.Ladder, to : h3d.col.Point) {
+		if ( l == null )
+			throw "entering null ladder";
 		curLadder = l;
 		sequence = new Sequence(function (dt : Float) {
 			return moveTo(to, dt);

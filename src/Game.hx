@@ -110,6 +110,7 @@ class Game extends hxd.App {
 		p.applyProps(s3d.renderer);
 	} 
 
+	var curDoor : ent.Door;
 	function customMake(p : hrt.prefab.Prefab) {
 		var obj3d = p.to(hrt.prefab.Object3D);
 
@@ -136,6 +137,9 @@ class Game extends hxd.App {
 				if ( curRoom == null )
 					throw "door outside room";
 				var d = new ent.Door();
+				curDoor = d;
+				if ( p.children.length > 0 )
+					trace("door with ladder?");
 				e = d;
 			case Navmesh:
 				if ( curRoom == null )
@@ -155,6 +159,8 @@ class Game extends hxd.App {
 				e = n;
 			case Ladder:
 				var l = new ent.Ladder();
+				if ( curDoor != null )
+					curDoor.ladder = l;
 				e = l;
 			case Interactible:
 				var i = new ent.Interactible();
@@ -168,8 +174,10 @@ class Game extends hxd.App {
 			e.setObject(obj3d.local3d);
 
 			// leaving room
-			if ( props.type == Room )
+			if ( Std.isOfType(e, ent.Room) )
 				curRoom = null;
+			if ( Std.isOfType(e, ent.Door) )
+				curDoor = null;
 			return;
 		default:
 			switch ( p.type ) {
@@ -262,6 +270,11 @@ class Game extends hxd.App {
 			player.x = door.x + offset.x;
 			player.y = door.y + offset.y;
 			player.z = door.z + offset.z;
+			if ( player.isClimbing() ) {
+				if ( door.ladder == null )
+					throw 'missing matching ladder from ${curRoom.name} to ${newRoom.name}';
+				player.enterLadder(door.ladder, player.getPos());
+			}
 		}
 		newRoom.enter();
 	}
@@ -283,7 +296,7 @@ class Game extends hxd.App {
 	public function canControl() {
 		return @:privateAccess baseUI.windows.length == 0;
 	}
-	
+
 	public function onCdbReload() {
 	}
 }

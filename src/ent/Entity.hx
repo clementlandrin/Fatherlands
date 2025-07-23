@@ -3,7 +3,7 @@ package ent;
 class Entity {
 
 	var game : Game;
-	var name : String;
+	public var name(default, null) : String;
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
