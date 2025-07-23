@@ -141,6 +141,11 @@
 					"typeStr": "1",
 					"name": "dialog",
 					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "camFollowZ",
+					"opt": true
 				}
 			]
 		}
