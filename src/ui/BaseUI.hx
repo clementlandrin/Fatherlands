@@ -1,6 +1,11 @@
 package ui;
 
 class BaseUIRoot extends ui.comp.BaseElement {
+	public function new(parent) {
+		super(parent);
+		fillWidth = fillHeight = true;
+		initComponent();
+	}
 }
 
 class BaseUI {
@@ -8,7 +13,7 @@ class BaseUI {
 	public var root : BaseUIRoot;
 	public var style(default, null) : h2d.domkit.Style;
 
-	var s2d : h2d.Scene;
+	public var s2d : h2d.Scene;
 
 	public function new() {
 		Game.inst.baseUI = this;
