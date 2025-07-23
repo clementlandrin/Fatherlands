@@ -241,6 +241,8 @@ class Game extends hxd.App {
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
+
+		baseUI.style.sync(dt);
 	}
 
 	public function moveTo(door : ent.Door) {

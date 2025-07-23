@@ -11,11 +11,7 @@ class Dialog extends ui.comp.BaseElement {
 		super(parent);
 		this.entity = entity;
 		initComponent();
-		startDialog();
-	}
-
-	public function startDialog() {
+		dom.applyStyle(baseUI.style);
 		speechText.text = "titi";
 	}
-
 }

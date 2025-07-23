@@ -8,6 +8,5 @@ class BaseElement extends h2d.Flow implements h2d.domkit.Object {
 	public function new(?parent) {
 		super(parent);
 		initComponent();
-		dom.applyStyle(baseUI.style);
 	}
 }
