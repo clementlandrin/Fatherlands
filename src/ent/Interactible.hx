@@ -10,8 +10,7 @@ class Interactible extends Entity {
 	}
 
 	override function onTrigger() {
-		if ( game.baseUI.currentDialog == null )
-			new ui.Dialog(this, game.baseUI.root);
+		new ui.Dialog(this, game.baseUI.root);
 	}
 
 	override function update(dt : Float) {
@@ -20,7 +19,7 @@ class Interactible extends Entity {
 		if ( inRange ) {
 			onOver();
 			if ( hxd.Key.isPressed(hxd.Key.F) )
-				onTrigger();
+				trigger();
 		} else {
 			onOut();
 		}

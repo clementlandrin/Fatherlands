@@ -64,7 +64,7 @@ class Entity {
 		obj.addChild(interactive);
 		interactive.onClick = function(e : hxd.Event) {
 			if ( e.button == 0 )
-				onTrigger();
+				trigger();
 		}
 		interactive.onOver = function(e : hxd.Event) {
 			onOver();
@@ -80,6 +80,11 @@ class Entity {
 
 	function onOut() {
 		setOutline(false);
+	}
+
+	final function trigger() {
+		if ( game.canControl() )
+			onTrigger();
 	}
 
 	function onTrigger() {

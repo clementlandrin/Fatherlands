@@ -1,6 +1,6 @@
 package ui;
 
-class Dialog extends ui.comp.BaseElement {
+class Dialog extends Window {
 	static var SRC =
 	<dialog>
 		<text id="speechText"/>
@@ -17,12 +17,5 @@ class Dialog extends ui.comp.BaseElement {
 		// button.onClick = function() {
 		// 	this.remove();
 		// };
-
-		baseUI.currentDialog = this;
-	}
-
-	override function onRemove() {
-		super.onRemove();
-		baseUI.currentDialog = null;
 	}
 }

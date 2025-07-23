@@ -50,14 +50,14 @@ class Player extends Entity {
 	override function update(dt : Float) {
 		super.update(dt);
 
-		if ( canMove() ) {
+		if ( canControl() ) {
 			updateSphere(dt);
 			updateMovement(dt);
 		}
 	}
 
-	function canMove() {
-		return game.baseUI.currentDialog == null;
+	function canControl() {
+		return game.canControl();
 	}
 
 	function updateSphere(dt : Float) {

@@ -15,7 +15,7 @@ class BaseUI {
 
 	public var s2d : h2d.Scene;
 
-	public var currentDialog : Dialog;
+	var windows : Array<Window> = [];
 
 	public function new() {
 		Game.inst.baseUI = this;
@@ -42,8 +42,9 @@ class BaseUI {
 	public function update(dt : Float) {
 		style.sync(dt);
 		if ( hxd.Key.isPressed(hxd.Key.ESCAPE) ) {
-			currentDialog.remove();
-			currentDialog = null;
+			var w = windows.pop();
+			if ( w != null )
+				w.remove();
 		}
 	}
 }

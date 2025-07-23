@@ -280,6 +280,10 @@ class Game extends hxd.App {
 		cam.orthoBounds.zMin = -Z;
 	}
 
+	public function canControl() {
+		return @:privateAccess baseUI.windows.length == 0;
+	}
+	
 	public function onCdbReload() {
 	}
 }
