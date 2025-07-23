@@ -23,8 +23,8 @@
 						"type": 2,
 						"$cdbtype": "element"
 					},
-					"scaleX": 15,
-					"scaleY": 7.5,
+					"scaleX": 100,
+					"scaleY": 5,
 					"scaleZ": 5,
 					"kind": 0,
 					"args": [
@@ -51,62 +51,18 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": 7.22,
-							"y": -0.23,
+							"x": 50.03,
+							"y": -0.79,
 							"rotationZ": 87.5
 						},
 						{
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": -7.35,
-							"y": -0.03,
+							"x": -49.58,
+							"y": 0.2,
 							"rotationZ": -91.1
-						},
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": -0.13,
-							"y": 3.54,
-							"rotationZ": 179.8
-						},
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": 0.31,
-							"y": -3.54
 						}
-					]
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"y": -3.75,
-					"z": 2.5,
-					"scaleX": 15,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
-					"kind": 0,
-					"args": [
-						0
-					]
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"x": -7.5,
-					"z": 2.5,
-					"scaleX": 7.5,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
-					"rotationZ": -90,
-					"kind": 0,
-					"args": [
-						0
 					]
 				}
 			]

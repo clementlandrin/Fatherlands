@@ -529,6 +529,75 @@
 					"z": -50
 				}
 			]
+		},
+		{
+			"type": "reference",
+			"name": "B10",
+			"source": "content/Room/Bath/B10.prefab",
+			"x": 15,
+			"y": -15
+		},
+		{
+			"type": "reference",
+			"name": "F12",
+			"source": "content/Room/Factory/F12.prefab",
+			"x": 10,
+			"y": -25
+		},
+		{
+			"type": "reference",
+			"name": "F13",
+			"source": "content/Room/Factory/F13.prefab",
+			"x": -5,
+			"y": -25
+		},
+		{
+			"type": "reference",
+			"name": "F14",
+			"source": "content/Room/Factory/F14.prefab",
+			"x": -25,
+			"y": -25
+		},
+		{
+			"type": "reference",
+			"name": "F15",
+			"source": "content/Room/Factory/F15.prefab",
+			"x": -45,
+			"y": -25
+		},
+		{
+			"type": "reference",
+			"name": "H4",
+			"source": "content/Room/Hub/H4.prefab",
+			"x": -15,
+			"z": 25
+		},
+		{
+			"type": "reference",
+			"name": "H5",
+			"source": "content/Room/Hub/H5.prefab",
+			"z": 25
+		},
+		{
+			"type": "reference",
+			"name": "H6",
+			"source": "content/Room/Hub/H6.prefab",
+			"x": -15,
+			"z": 100
+		},
+		{
+			"type": "reference",
+			"name": "H7",
+			"source": "content/Room/Hub/H7.prefab",
+			"x": -135,
+			"z": 100
+		},
+		{
+			"type": "reference",
+			"name": "H8",
+			"source": "content/Room/Hub/H8.prefab",
+			"x": -75,
+			"z": 100
 		}
 	]
 }
