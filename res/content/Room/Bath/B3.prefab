@@ -3,9 +3,9 @@
 	"children": [
 		{
 			"type": "object",
-			"name": "R4",
+			"name": "R2",
 			"props": {
-				"id": "R4",
+				"id": "R2",
 				"type": 0,
 				"$cdbtype": "element"
 			},
@@ -16,30 +16,92 @@
 					"source": "gameplay/camera.prefab"
 				},
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"props": {
-						"id": "Start_polygon",
-						"type": 2,
-						"$cdbtype": "element"
-					},
-					"scaleX": 15,
-					"scaleY": 7.5,
-					"scaleZ": 5,
-					"kind": 0,
-					"args": [
-						0
+					"type": "object",
+					"name": "present",
+					"children": [
+						{
+							"type": "reference",
+							"name": "redLighting",
+							"source": "lighting/redLighting.prefab"
+						},
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"scaleX": 15,
+							"scaleY": 15,
+							"scaleZ": 15,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"y": -7.5,
+							"z": 10,
+							"scaleX": 15,
+							"scaleY": 20,
+							"scaleZ": 15,
+							"rotationX": -90,
+							"kind": 0,
+							"args": [
+								0
+							]
+						},
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"x": -7.5,
+							"z": 10,
+							"scaleX": 15,
+							"scaleY": 20,
+							"scaleZ": 15,
+							"rotationX": -90,
+							"rotationZ": -90,
+							"kind": 0,
+							"args": [
+								0
+							]
+						}
 					]
 				},
 				{
 					"type": "object",
 					"name": "past",
-					"x": 1.344,
-					"y": 0.002
-				},
-				{
-					"type": "object",
-					"name": "common"
+					"children": [
+						{
+							"type": "polygon",
+							"name": "polygon",
+							"props": {
+								"id": "Start_polygon",
+								"type": 2,
+								"$cdbtype": "element"
+							},
+							"scaleX": 15,
+							"scaleY": 15,
+							"scaleZ": 15,
+							"kind": 0,
+							"args": [
+								0
+							]
+						}
+					]
 				},
 				{
 					"type": "object",
@@ -51,7 +113,7 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": 7.22,
+							"x": 7.33,
 							"y": -0.23,
 							"rotationZ": 87.5
 						},
@@ -59,7 +121,7 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": -7.35,
+							"x": -7.18,
 							"y": -0.03,
 							"rotationZ": -91.1
 						},
@@ -68,7 +130,7 @@
 							"name": "door",
 							"source": "gameplay/door.prefab",
 							"x": -0.13,
-							"y": 3.54,
+							"y": 7.23,
 							"rotationZ": 179.8
 						},
 						{
@@ -76,37 +138,43 @@
 							"name": "door",
 							"source": "gameplay/door.prefab",
 							"x": 0.31,
-							"y": -3.54
+							"y": -7.28
 						}
 					]
 				},
 				{
 					"type": "polygon",
 					"name": "polygon",
-					"y": -3.75,
-					"z": 2.5,
-					"scaleX": 15,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
+					"props": {
+						"id": "R1_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -1.72,
+					"y": -5.8,
+					"z": 3.67,
+					"scaleX": 2.69,
+					"scaleY": 3.33,
 					"kind": 0,
 					"args": [
 						0
-					]
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"x": -7.5,
-					"z": 2.5,
-					"scaleX": 7.5,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
-					"rotationZ": -90,
-					"kind": 0,
-					"args": [
-						0
+					],
+					"children": [
+						{
+							"type": "material",
+							"name": "material",
+							"props": {
+								"PBR": {
+									"mode": "PBR",
+									"blend": "None",
+									"shadows": true,
+									"culling": "Back",
+									"depthTest": "Less",
+									"colorMask": 15,
+									"enableStencil": false
+								}
+							}
+						}
 					]
 				}
 			]

@@ -50,7 +50,7 @@
 					"noiseScale": 1000,
 					"samples": 50,
 					"radius": 0.68,
-					"intensity": 2.88,
+					"intensity": 2.12,
 					"bias": 0.09
 				},
 				{
@@ -58,6 +58,11 @@
 					"name": "kuwaharaFilter",
 					"radius": 3,
 					"endDist": 0
+				},
+				{
+					"type": "environment",
+					"name": "environment",
+					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
 				}
 			]
 		},
@@ -95,7 +100,23 @@
 					"name": "H7",
 					"source": "content/Room/Hub/H7.prefab",
 					"x": -135,
-					"z": 100
+					"z": 100,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.20392156862745098,
+									0.20392156862745098,
+									0.20392156862745098,
+									1
+								]
+							}
+						}
+					]
 				},
 				{
 					"type": "reference",
@@ -138,6 +159,14 @@
 				},
 				{
 					"type": "reference",
+					"name": "G19",
+					"source": "content/Room/Gardens/G19.prefab",
+					"x": -75,
+					"y": 30,
+					"z": 10
+				},
+				{
+					"type": "reference",
 					"name": "G13",
 					"source": "content/Room/Gardens/G13.prefab",
 					"x": -60,
@@ -174,7 +203,23 @@
 					"source": "content/Room/Gardens/G17.prefab",
 					"x": -155,
 					"y": 30,
-					"z": 15
+					"z": 15,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.9529411764705882,
+									0.12941176470588234,
+									0.12941176470588234,
+									1
+								]
+							}
+						}
+					]
 				},
 				{
 					"type": "reference",
@@ -351,7 +396,23 @@
 					"source": "content/Room/Factory/F7.prefab",
 					"x": -8,
 					"y": -35,
-					"z": 15
+					"z": 15,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.6509803921568628,
+									0.12941176470588234,
+									0.9529411764705882,
+									1
+								]
+							}
+						}
+					]
 				},
 				{
 					"type": "reference",
@@ -507,7 +568,23 @@
 					"name": "B4",
 					"source": "content/Room/Bath/B4.prefab",
 					"x": 22.5,
-					"z": -20
+					"z": -20,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.9529411764705882,
+									0.9450980392156862,
+									0.12941176470588234,
+									1
+								]
+							}
+						}
+					]
 				},
 				{
 					"type": "reference",
@@ -593,17 +670,322 @@
 					"name": "C4",
 					"source": "content/Room/Chasm/C4.prefab",
 					"x": -75,
-					"z": -50
+					"z": -50,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.2627450980392157,
+									0.6235294117647059,
+									0.3333333333333333,
+									1
+								]
+							}
+						}
+					]
 				}
 			]
 		},
 		{
-			"type": "reference",
-			"name": "G19",
-			"source": "content/Room/Gardens/G19.prefab",
-			"x": -75,
-			"y": 30,
-			"z": 10
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -15.29,
+			"y": 44.96,
+			"z": 10.08,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.2627450980392157,
+							0.6235294117647059,
+							0.3333333333333333,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -0.36,
+			"y": -14.71,
+			"z": 10.08,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.2627450980392157,
+							0.6235294117647059,
+							0.3333333333333333,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -25.56,
+			"y": -30.45,
+			"z": 10.07,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.9450980392156862,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": 36.81,
+			"y": -3.29,
+			"z": 14.86,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.9450980392156862,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": 21.55,
+			"y": 0.19,
+			"z": -0.04,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.30196078431372547,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": 0.43,
+			"y": 0.19,
+			"z": -0.04,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.30196078431372547,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -13.95,
+			"y": 0.19,
+			"z": -0.04,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.30196078431372547,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": 6.88,
+			"y": 45.22,
+			"z": 10.41,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.9529411764705882,
+							0.9450980392156862,
+							0.12941176470588234,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -14.38,
+			"y": -14.43,
+			"z": -0.01,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.6509803921568628,
+							0.12941176470588234,
+							0.9529411764705882,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -135.89,
+			"y": 30.07,
+			"z": 10.05,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.6509803921568628,
+							0.12941176470588234,
+							0.9529411764705882,
+							1
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "model",
+			"name": "box",
+			"source": "content/LD/Placeholder/box.fbx",
+			"x": -75.53,
+			"y": -18.83,
+			"z": 10.08,
+			"scaleX": 0.58,
+			"scaleY": 0.58,
+			"scaleZ": 0.58,
+			"children": [
+				{
+					"type": "shader",
+					"name": "ColorMult",
+					"source": "h3d.shader.ColorMult",
+					"props": {
+						"amount": 1,
+						"color": [
+							0.2627450980392157,
+							0.6235294117647059,
+							0.3333333333333333,
+							1
+						]
+					}
+				}
+			]
 		}
 	]
 }

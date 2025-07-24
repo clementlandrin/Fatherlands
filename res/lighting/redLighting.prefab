@@ -27,7 +27,7 @@
 					"rotationZ": -30.7,
 					"kind": "Directional",
 					"color": 16711680,
-					"power": 1.82,
+					"power": 0,
 					"range": 10,
 					"zNear": 0.02,
 					"shadows": {
