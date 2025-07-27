@@ -1,5 +1,3 @@
-import h3d.Camera;
-
 enum TimeMode {
 	None;
 	Present;
@@ -28,6 +26,8 @@ class Game extends hxd.App {
 
 	var presentRenderer : gfx.Renderer;
 	var pastRenderer : gfx.Renderer;
+
+	var cameraController : CameraController;
 
 	public function new() {
 		super();
@@ -61,8 +61,7 @@ class Game extends hxd.App {
 		var p = hxd.Res.world.load().clone(sh);
 		p.make();
 
-		var cam = s3d.camera;
-		cam.orthoBounds = new h3d.col.Bounds();
+		cameraController = new CameraController();
 
 		for ( e in entities )
 			e.start();
@@ -232,13 +231,6 @@ class Game extends hxd.App {
 			if ( e.enabled )
 				e.update(dt);
 
-		if ( curRoom != null && curRoom.camera == null ) {
-			defaultCamera();
-		}
-		var Y = s3d.camera.orthoBounds.xMax / s3d.camera.screenRatio;
-		s3d.camera.orthoBounds.yMax = Y;
-		s3d.camera.orthoBounds.yMin = -Y;
-
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
 
@@ -273,20 +265,7 @@ class Game extends hxd.App {
 			}
 		}
 		newRoom.enter();
-	}
-
-	function defaultCamera() {
-		var cam = s3d.camera;
-		cam.target = new h3d.col.Point(curRoom.x, curRoom.y, curRoom.z);
-		cam.pos.x = Const.get(DefaultCameraX);
-		cam.pos.y = Const.get(DefaultCameraY);
-		cam.pos.z = Const.get(DefaultCameraZ);
-		var X = Const.get(DefaultCameraWidth) * 0.5;
-		var Z = Const.get(DefaultCameraDepth) * 0.5;
-		cam.orthoBounds.xMax = X;
-		cam.orthoBounds.xMin = -X;
-		cam.orthoBounds.zMax = Z;
-		cam.orthoBounds.zMin = -Z;
+		cameraController.enteredRoom(newRoom);
 	}
 
 	public function canControl() {
