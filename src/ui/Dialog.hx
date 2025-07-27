@@ -10,6 +10,7 @@ class Dialog extends Window {
 	var entity : ent.Entity;
 	public function new(entity : ent.Entity, ?parent) {
 		super(parent);
+		preventControl = true;
 		this.entity = entity;
 		initComponent();
 		speechText.text = entity.inf.dialog;

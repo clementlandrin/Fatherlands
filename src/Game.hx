@@ -29,6 +29,7 @@ class Game extends hxd.App {
 	var pastRenderer : gfx.Renderer;
 
 	var cameraController : CameraController;
+	var mainUI : ui.MainUI;
 
 	public function new() {
 		super();
@@ -44,6 +45,8 @@ class Game extends hxd.App {
 	override function init() {
 		baseUI = new ui.BaseUI();
 		new ui.Console();
+
+		mainUI = new ui.MainUI(baseUI.root);
 		
 		presentRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
 		presentRenderer.timeMode = Present;
@@ -282,10 +285,15 @@ class Game extends hxd.App {
 		}
 		newRoom.enter();
 		cameraController.enteredRoom(newRoom);
+		mainUI.enterRoom(newRoom);
 	}
 
 	public function canControl() {
-		return @:privateAccess baseUI.windows.length == 0;
+		for ( w in @:privateAccess baseUI.windows ) {
+			if ( w.preventControl )
+				return false;
+		}
+		return true;
 	}
 
 	public function onCdbReload() {

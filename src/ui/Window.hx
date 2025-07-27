@@ -2,6 +2,8 @@ package ui;
 
 class Window extends ui.comp.BaseElement {
 
+	public var preventControl : Bool = false;
+
 	public function new(?parent) {
 		super(parent);
 		initComponent();
