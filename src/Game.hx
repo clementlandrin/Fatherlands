@@ -275,7 +275,7 @@ class Game extends hxd.App {
 				if ( ladders.length == 0 )
 					throw 'missing matching ladder from ${curRoom.name} to ${newRoom.name}';
 				if ( ladders.length > 1 )
-					throw 'two many ladders from ${curRoom.name} to ${newRoom.name}';
+					throw 'too many ladders from ${curRoom.name} to ${newRoom.name}';
 				var ladder = ladders[0];
 				player.enterLadder(ladder, player.getPos());
 			}
