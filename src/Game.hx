@@ -21,10 +21,11 @@ class Game extends hxd.App {
 	
 	public var baseUI : ui.BaseUI;
 
-	var lighting : h3d.scene.Object;
 	var modeMake : TimeMode = Common;
-
+	
+	var presentLighting : h3d.scene.Object;
 	var presentRenderer : gfx.Renderer;
+	var pastLighting : h3d.scene.Object;
 	var pastRenderer : gfx.Renderer;
 
 	var cameraController : CameraController;
@@ -71,6 +72,8 @@ class Game extends hxd.App {
 	var pastDepthCopy : h3d.mat.Texture;
 	override function render(e:h3d.Engine) {
 		s3d.renderer = pastRenderer;
+		presentLighting.visible = false;
+		pastLighting.visible = true;
 		for ( e in entities ) {
 			e.setMode(Past);	
 		}
@@ -90,6 +93,8 @@ class Game extends hxd.App {
 		pastWindowShader.tex = pastTexCopy;
 		pastWindowShader.depth = pastDepthCopy;
 		s3d.renderer = presentRenderer;
+		presentLighting.visible = true;
+		pastLighting.visible = false;
 		for ( e in entities ) {
 			e.setMode(Present);
 		}
@@ -101,12 +106,23 @@ class Game extends hxd.App {
 		s2d.render(e);
 	}
 
-	public function applyRenderer(p : hrt.prefab.RenderProps) {
-		if ( lighting != null )
-			lighting.remove();
-		lighting = new h3d.scene.Object(s3d);
-		p.make(lighting); // p.clone()?
-		p.applyProps(s3d.renderer);
+	public function applyRenderer(p : hrt.prefab.RenderProps, mode : TimeMode) {
+		switch(mode) {
+		case Present:
+			if ( presentLighting != null )
+				presentLighting.remove();
+			presentLighting = new h3d.scene.Object(s3d);
+			p.make(presentLighting); // p.clone()?
+			p.applyProps(presentRenderer);
+		case Past:
+			if ( pastLighting != null )
+				pastLighting.remove();
+			pastLighting = new h3d.scene.Object(s3d);
+			p.make(pastLighting); // p.clone()?
+			p.applyProps(pastRenderer);
+		default:
+			throw "invalid mode";
+		}
 	} 
 
 	function customMake(p : hrt.prefab.Prefab) {

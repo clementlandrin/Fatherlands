@@ -139,7 +139,7 @@ class Voxels {
                 for ( k in 0...size.z ) {
                     var pos = getPos(new h3d.col.IPoint(i,j,k));
                     var value = values.get(i + j * size.x + k * size.x * size.y);
-                    var voxelMode = Game.TimeMode.createByIndex(value);
+                    var voxelMode = Game.TimeMode.createByIndex(value & 7);
                     if ( voxelMode != None ) {
                         var alpha = 1.0;
                         switch(voxelMode) {

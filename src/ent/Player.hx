@@ -23,7 +23,7 @@ class Player extends Entity {
 		var temporalPrim = new h3d.prim.Sphere(1.0, 64, 60);
 		temporalVisual = new h3d.scene.Mesh(temporalPrim, null, game.s3d);
 		for ( m in temporalVisual.getMaterials() ) {
-			m.color.set(0.0, 1.0, 0.0, 0.2);
+			m.color.set(1.0, 1.0, 1.0, 0.2);
 			m.mainPass.setBlendMode(Alpha);
 			m.mainPass.setPassName("afterTonemapping");
 			m.mainPass.depthWrite = false;
@@ -32,7 +32,8 @@ class Player extends Entity {
 			var p = m.allocPass("overlay");
 			p.setBlendMode(Alpha);
 			var cm = new h3d.shader.ColorMult();
-			cm.color.set(0.0, 1.0, 0.0, 0.5);
+			cm.color.setColor(Const.getColor(SphereColor));
+			cm.color.set(cm.color.x, cm.color.y, cm.color.z, Const.get(SphereColor));
 			p.addShader(cm);
 		}
 		temporalVisual.followPositionOnly = true;

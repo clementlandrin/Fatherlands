@@ -76,6 +76,11 @@
 					"value": 1
 				},
 				{
+					"id": "SphereColor",
+					"value": 0,
+					"color": 16777215
+				},
+				{
 					"id": "ClimbSpeed",
 					"value": 5
 				},
