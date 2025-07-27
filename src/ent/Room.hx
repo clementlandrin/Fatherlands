@@ -3,6 +3,7 @@ package ent;
 class Room extends Entity {
 
     public var doors : Array<Door> = [];
+    public var ladders : Array<Ladder> = [];
     public var navmeshes : Array<Navmesh> = [];
 	public var voxels : Voxels;
 	public var camera : hrt.prefab.l3d.Camera;
@@ -17,6 +18,8 @@ class Room extends Entity {
 		super.set_enabled(v);
 		for ( d in doors )
 			d.enabled = enabled;
+		for ( l in ladders )
+			l.enabled = enabled;
 		for ( n in navmeshes )
 			n.enabled = enabled;
 		return enabled;

@@ -4,9 +4,7 @@
 		{
 			"type": "object",
 			"name": "object",
-			"x": -0.01,
-			"y": -0.17,
-			"z": 0.94,
+			"z": 7.11,
 			"rotationX": -90,
 			"children": [
 				{
@@ -17,27 +15,14 @@
 						"$cdbtype": "element",
 						"type": 1
 					},
-					"x": 0.01,
-					"y": -2.6,
-					"z": -0.44,
-					"scaleZ": 3,
-					"children": [
-						{
-							"type": "reference",
-							"name": "ladderUp",
-							"source": "gameplay/ladderUp.prefab",
-							"scaleZ": 0.3333,
-							"editMode": "Edit"
-						}
-					]
+					"scaleX": 3,
+					"scaleZ": 3
 				},
 				{
 					"type": "polygon",
 					"name": "polygon",
 					"editorOnly": true,
-					"x": 0.01,
-					"y": -2.98,
-					"z": -0.94,
+					"y": -0.78,
 					"kind": 2,
 					"points": [
 						{
@@ -71,6 +56,12 @@
 					]
 				}
 			]
+		},
+		{
+			"type": "reference",
+			"name": "ladderUp",
+			"source": "gameplay/ladderUp.prefab",
+			"editMode": "Edit"
 		}
 	]
 }

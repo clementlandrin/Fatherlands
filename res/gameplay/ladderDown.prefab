@@ -12,13 +12,12 @@
 			"children": [
 				{
 					"type": "box",
-					"name": "bottom",
+					"name": "top",
 					"children": [
 						{
 							"type": "object",
 							"name": "out",
-							"y": 1,
-							"rotationZ": 180,
+							"y": -1.35,
 							"children": [
 								{
 									"type": "polygon",

@@ -1,0 +1,145 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "renderProps",
+			"name": "renderProps",
+			"props": {
+				"PBR": {
+					"mode": "Pbr",
+					"emissive": 1,
+					"exposure": 0,
+					"sky": "CustomColor",
+					"tone": "Linear",
+					"occlusion": 1,
+					"a": 2.51,
+					"b": 0.03,
+					"c": 2.43,
+					"d": 0.59,
+					"e": 0.14,
+					"forceDirectDiscard": false,
+					"skyColor": 0
+				}
+			},
+			"children": [
+				{
+					"type": "light",
+					"name": "light",
+					"rotationY": 58.7,
+					"rotationZ": -30.7,
+					"kind": "Directional",
+					"power": 1.82,
+					"range": 10,
+					"zNear": 0.02,
+					"shadows": {
+						"mode": "Dynamic",
+						"size": 2048,
+						"radius": 0,
+						"quality": 1,
+						"bias": 0.1,
+						"samplingMode": {
+							"kind": "None"
+						}
+					}
+				},
+				{
+					"type": "rfx.sao",
+					"name": "sao",
+					"size": 0.5,
+					"blur": 4.7,
+					"noiseScale": 1000,
+					"samples": 50,
+					"radius": 0.68,
+					"intensity": 2.12,
+					"bias": 0.09
+				},
+				{
+					"type": "rfx.kuwaharaFilter",
+					"name": "kuwaharaFilter",
+					"radius": 3,
+					"endDist": 0
+				},
+				{
+					"type": "environment",
+					"name": "environment",
+					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "Hub",
+			"children": [
+				{
+					"type": "reference",
+					"name": "H1",
+					"source": "content/Room/Hub/H1.prefab",
+					"editMode": "Edit"
+				},
+				{
+					"type": "reference",
+					"name": "H4",
+					"source": "content/Room/Hub/H4.prefab",
+					"x": -15,
+					"z": 25
+				},
+				{
+					"type": "reference",
+					"name": "H5",
+					"source": "content/Room/Hub/H5.prefab",
+					"z": 25,
+					"editMode": "Edit"
+				},
+				{
+					"type": "reference",
+					"name": "H6",
+					"source": "content/Room/Hub/H6.prefab",
+					"x": -15,
+					"z": 100
+				},
+				{
+					"type": "reference",
+					"name": "H7",
+					"source": "content/Room/Hub/H7.prefab",
+					"x": -135,
+					"z": 100,
+					"children": [
+						{
+							"type": "shader",
+							"name": "ColorMult",
+							"source": "h3d.shader.ColorMult",
+							"props": {
+								"amount": 1,
+								"color": [
+									0.20392156862745098,
+									0.20392156862745098,
+									0.20392156862745098,
+									1
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "reference",
+					"name": "H8",
+					"source": "content/Room/Hub/H8.prefab",
+					"x": -75,
+					"z": 100
+				},
+				{
+					"type": "reference",
+					"name": "H3",
+					"source": "content/Room/Hub/H3.prefab",
+					"x": -35
+				},
+				{
+					"type": "reference",
+					"name": "H2",
+					"source": "content/Room/Hub/H2.prefab",
+					"x": -15
+				}
+			]
+		}
+	]
+}

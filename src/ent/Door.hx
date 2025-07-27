@@ -6,12 +6,6 @@ class Door extends Entity {
 	public var room : Room;
 	var direction : h3d.col.Point;
 	var g : h3d.scene.Graphics;
-	public var ladder(default, set) : ent.Ladder;
-	public function set_ladder(l) {
-		if ( ladder != null )
-			throw "two ladders in same door is not supported";
-		return ladder = l;
-	}
 
 	public function new() {
 		super();

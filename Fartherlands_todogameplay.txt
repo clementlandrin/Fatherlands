@@ -5,8 +5,10 @@ done - Echelles
 done - Setup renderer par room
 done - connexions salles en 3d
 done - UI de dialogues, utile pour proto
+wip - échelles verticales
 wip - Setup renderer par mode avec deux scènes
 wip - Interaction -> Boîtes de dialogues
+wip - Caméra qui monte avec le joueur ?
 
 (Artefact à débloquer ?)
 
@@ -23,5 +25,3 @@ Stèle de TP (vers la dernière avec laquelle on a interagit ?)
 
 Son
 Fx
-
-Caméra qui monte avec le joueur ?
