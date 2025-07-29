@@ -15,14 +15,6 @@
 					"name": "ladder",
 					"source": "gameplay/ladder.prefab",
 					"x": -6.26,
-					"y": -2.15,
-					"z": 4.04
-				},
-				{
-					"type": "reference",
-					"name": "ladder",
-					"source": "gameplay/ladder.prefab",
-					"x": -6.26,
 					"y": 0.57
 				},
 				{
@@ -164,16 +156,6 @@
 							"source": "gameplay/door.prefab",
 							"x": 0.31,
 							"y": -7.28
-						},
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": -6.08,
-							"y": -5.52,
-							"z": 8.04,
-							"rotationX": -90,
-							"rotationZ": 180
 						}
 					]
 				},
@@ -190,41 +172,6 @@
 					"z": 3.67,
 					"scaleX": 2.69,
 					"scaleY": 8.95,
-					"kind": 0,
-					"args": [
-						0
-					],
-					"children": [
-						{
-							"type": "material",
-							"name": "material",
-							"props": {
-								"PBR": {
-									"mode": "PBR",
-									"blend": "None",
-									"shadows": true,
-									"culling": "Back",
-									"depthTest": "Less",
-									"colorMask": 15,
-									"enableStencil": false
-								}
-							}
-						}
-					]
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"props": {
-						"id": "R1_polygon",
-						"type": 2,
-						"$cdbtype": "element"
-					},
-					"x": -6.18,
-					"y": -4.89,
-					"z": 7.71,
-					"scaleX": 2.69,
-					"scaleY": 5.39,
 					"kind": 0,
 					"args": [
 						0

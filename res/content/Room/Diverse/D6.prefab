@@ -88,16 +88,16 @@
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
-							"x": -3.54,
-							"y": -0.03,
-							"rotationZ": -91.1
+							"x": 0.31,
+							"y": -3.59
 						},
 						{
 							"type": "reference",
 							"name": "door",
 							"source": "gameplay/door.prefab",
 							"x": 0.31,
-							"y": -3.59
+							"y": 3.4,
+							"rotationZ": 180
 						}
 					]
 				}
