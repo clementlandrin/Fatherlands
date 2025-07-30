@@ -30,12 +30,11 @@ class Door extends Entity {
 	override function setObject(obj) {
 		super.setObject(obj);
 		obj.culled = true;
+		direction = new h3d.col.Point(0.0,-1.0, 0.0).transformed3x3(obj.getAbsPos()).normalized();
 	}
 
 	override function start() {
 		super.start();
-
-		direction = new h3d.col.Point(0.0,-1.0, 0.0).transformed3x3(obj.getAbsPos()).normalized();
 
 		searchConnection();
 	}
