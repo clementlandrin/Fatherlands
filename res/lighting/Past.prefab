@@ -1,0 +1,93 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "renderProps",
+			"name": "renderProps",
+			"props": {
+				"PBR": {
+					"mode": "Pbr",
+					"emissive": 1,
+					"exposure": 0,
+					"sky": "CustomColor",
+					"tone": "Linear",
+					"occlusion": 1,
+					"a": 2.51,
+					"b": 0.03,
+					"c": 2.43,
+					"d": 0.59,
+					"e": 0.14,
+					"skyColor": 0
+				}
+			},
+			"children": [
+				{
+					"type": "environment",
+					"name": "environment",
+					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
+				},
+				{
+					"type": "rfx.sao",
+					"name": "sao",
+					"size": 0.5,
+					"blur": 4.7,
+					"noiseScale": 1000,
+					"samples": 50,
+					"radius": 0.7,
+					"intensity": 3,
+					"bias": 0.1
+				},
+				{
+					"type": "rfx.kuwaharaFilter",
+					"name": "kuwaharaFilter",
+					"radius": 3,
+					"endDist": 0
+				},
+				{
+					"type": "light",
+					"name": "light",
+					"rotationY": 58.7,
+					"rotationZ": -30.7,
+					"kind": "Directional",
+					"color": 9675764,
+					"power": 0.3,
+					"range": 10,
+					"zNear": 0.02,
+					"shadows": {
+						"mode": "Dynamic",
+						"size": 2048,
+						"radius": 0,
+						"quality": 1,
+						"bias": 0.1,
+						"samplingMode": {
+							"kind": "PCF",
+							"quality": 3,
+							"scale": 1,
+							"bias": 0.1
+						}
+					}
+				},
+				{
+					"type": "rfx.genFog",
+					"name": "genFog",
+					"startDistance": null,
+					"endDistance": 100,
+					"distanceOpacity": 1,
+					"distanceFixed": null,
+					"startHeight": 100,
+					"endHeight": null,
+					"startOpacity": null,
+					"endOpacity": 1,
+					"startColor": 13954815,
+					"endColor": 8153815,
+					"renderMode": "AfterTonemapping",
+					"posX": null,
+					"posY": null,
+					"posZ": null,
+					"usePosition": null,
+					"lightColorAmount": null
+				}
+			]
+		}
+	]
+}

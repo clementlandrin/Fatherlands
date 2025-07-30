@@ -143,41 +143,6 @@
 					"y": -7.28
 				}
 			]
-		},
-		{
-			"type": "polygon",
-			"name": "polygon",
-			"props": {
-				"id": "R1_polygon",
-				"type": 2,
-				"$cdbtype": "element"
-			},
-			"x": -1.72,
-			"y": -5.8,
-			"z": 3.67,
-			"scaleX": 2.69,
-			"scaleY": 3.33,
-			"kind": 0,
-			"args": [
-				0
-			],
-			"children": [
-				{
-					"type": "material",
-					"name": "material",
-					"props": {
-						"PBR": {
-							"mode": "PBR",
-							"blend": "None",
-							"shadows": true,
-							"culling": "Back",
-							"depthTest": "Less",
-							"colorMask": 15,
-							"enableStencil": false
-						}
-					}
-				}
-			]
 		}
 	]
 }

@@ -371,7 +371,7 @@
 					"name": "F2",
 					"source": "content/Room/Factory/F2.prefab",
 					"x": -50,
-					"y": -11.15,
+					"y": -10.86,
 					"z": 10
 				},
 				{
@@ -787,6 +787,7 @@
 		{
 			"type": "object",
 			"name": "placeholder",
+			"enabled": false,
 			"x": -19.57181818181818,
 			"y": 3.5554545454545456,
 			"z": 6.863636363636365,
