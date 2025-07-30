@@ -163,29 +163,26 @@ class Game extends hxd.App {
 		default:
 		}
 
-		function makeRoom() {
+		if ( source != null && source.indexOf("content/Room") == 0 ) {
 			if ( curRoom != null )
-				throw "room in room";
+				throw 'room in room. ${source} should not be in room?';
 			var r = new ent.Room();
 			curRoom = r;
 			e = r;
 		}
-
-		if ( source != null && source.indexOf("content/Room") == 0 )
-			makeRoom();
 
 		switch ( p.getCdbType() ) {
 		case "element":
 			var props:Data.Element = cast p.props;
 			switch(props.type) {
 			case Room:
-				makeRoom();
-				throw "assert";
+				curRoom.inf = props.props;
 			case Door:
 				if ( curRoom == null )
 					throw "door outside room";
 				var d = new ent.Door();
 				e = d;
+				e.inf = props.props;
 			case Navmesh:
 				if ( curRoom == null )
 					throw "navmesh outside room";
@@ -202,14 +199,16 @@ class Game extends hxd.App {
 				}
 				n.navmeshMode = modeMake;
 				e = n;
+				e.inf = props.props;
 			case Ladder:
 				var l = new ent.Ladder();
 				e = l;
+				e.inf = props.props;
 			case Interactible:
 				var i = new ent.Interactible();
 				e = i;
+				e.inf = props.props;
 			}
-			e.inf = props.props;
 		default:
 			switch ( p.type ) {
 			case "camera":

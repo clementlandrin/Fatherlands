@@ -78,6 +78,13 @@
 			"name": "PT2",
 			"source": "content/Room/Prog_Test/GoDown.prefab",
 			"z": 25.84
+		},
+		{
+			"type": "reference",
+			"name": "CamFollowPlayer",
+			"source": "content/Room/Prog_Test/CamFollowPlayer.prefab",
+			"x": -13.43,
+			"editMode": "Edit"
 		}
 	]
 }

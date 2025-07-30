@@ -11,6 +11,15 @@
 			"hxml": "main.hxml",
 			"cwd": "${workspaceRoot}",
 			"preLaunchTask": "main"
+		},
+		{
+			"name": "HashLink (Playground)",
+			"request": "launch",
+			"args": ["--level", "world_prog.prefab"],
+			"type": "hl",
+			"hxml": "main.hxml",
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": "main"
 		}
 	]
 }
