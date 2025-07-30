@@ -2,169 +2,158 @@
 	"type": "prefab",
 	"children": [
 		{
+			"type": "reference",
+			"name": "doorUp",
+			"source": "gameplay/doorUp.prefab",
+			"z": 0.08
+		},
+		{
+			"type": "reference",
+			"name": "ladder",
+			"source": "gameplay/ladder.prefab",
+			"x": -6.26,
+			"y": 0.57
+		},
+		{
+			"type": "reference",
+			"name": "camera",
+			"source": "gameplay/camera.prefab"
+		},
+		{
 			"type": "object",
-			"name": "G1",
-			"props": {
-				"id": "G1",
-				"type": 0,
-				"$cdbtype": "element"
-			},
+			"name": "present",
 			"children": [
 				{
 					"type": "reference",
-					"name": "doorUp",
-					"source": "gameplay/doorUp.prefab",
-					"z": 0.08
+					"name": "redLighting",
+					"source": "lighting/redLighting.prefab"
 				},
 				{
-					"type": "reference",
-					"name": "ladder",
-					"source": "gameplay/ladder.prefab",
-					"x": -6.26,
-					"y": 0.57
-				},
-				{
-					"type": "reference",
-					"name": "camera",
-					"source": "gameplay/camera.prefab"
-				},
-				{
-					"type": "object",
-					"name": "present",
-					"children": [
-						{
-							"type": "reference",
-							"name": "redLighting",
-							"source": "lighting/redLighting.prefab"
-						},
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"scaleX": 15,
-							"scaleY": 15,
-							"scaleZ": 15,
-							"kind": 0,
-							"args": [
-								0
-							]
-						},
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"y": -7.5,
-							"z": 5,
-							"scaleX": 15,
-							"scaleY": 10,
-							"scaleZ": 15,
-							"rotationX": -90,
-							"kind": 0,
-							"args": [
-								0
-							]
-						},
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"x": -7.5,
-							"z": 5,
-							"scaleX": 15,
-							"scaleY": 10,
-							"scaleZ": 15,
-							"rotationX": -90,
-							"rotationZ": -90,
-							"kind": 0,
-							"args": [
-								0
-							]
-						}
-					]
-				},
-				{
-					"type": "object",
-					"name": "past",
-					"children": [
-						{
-							"type": "polygon",
-							"name": "polygon",
-							"props": {
-								"id": "Start_polygon",
-								"type": 2,
-								"$cdbtype": "element"
-							},
-							"scaleX": 15,
-							"scaleY": 15,
-							"scaleZ": 15,
-							"kind": 0,
-							"args": [
-								0
-							]
-						}
-					]
-				},
-				{
-					"type": "object",
-					"name": "doors",
-					"x": -0.09499999999999997,
-					"y": 0.02749999999999997,
-					"children": [
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": 0.31,
-							"y": -7.28
-						}
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"scaleX": 15,
+					"scaleY": 15,
+					"scaleZ": 15,
+					"kind": 0,
+					"args": [
+						0
 					]
 				},
 				{
 					"type": "polygon",
 					"name": "polygon",
 					"props": {
-						"id": "R1_polygon",
+						"id": "Start_polygon",
 						"type": 2,
 						"$cdbtype": "element"
 					},
-					"x": -6.18,
-					"y": -3.2,
-					"z": 3.67,
-					"scaleX": 2.69,
-					"scaleY": 8.95,
+					"y": -7.5,
+					"z": 5,
+					"scaleX": 15,
+					"scaleY": 10,
+					"scaleZ": 15,
+					"rotationX": -90,
 					"kind": 0,
 					"args": [
 						0
-					],
-					"children": [
-						{
-							"type": "material",
-							"name": "material",
-							"props": {
-								"PBR": {
-									"mode": "PBR",
-									"blend": "None",
-									"shadows": true,
-									"culling": "Back",
-									"depthTest": "Less",
-									"colorMask": 15,
-									"enableStencil": false
-								}
-							}
-						}
 					]
+				},
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": -7.5,
+					"z": 5,
+					"scaleX": 15,
+					"scaleY": 10,
+					"scaleZ": 15,
+					"rotationX": -90,
+					"rotationZ": -90,
+					"kind": 0,
+					"args": [
+						0
+					]
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "past",
+			"children": [
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "Start_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"scaleX": 15,
+					"scaleY": 15,
+					"scaleZ": 15,
+					"kind": 0,
+					"args": [
+						0
+					]
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "doors",
+			"x": -0.095,
+			"y": 0.0275,
+			"children": [
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"x": 0.31,
+					"y": -7.28
+				}
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "R1_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"x": -6.18,
+			"y": -3.2,
+			"z": 3.67,
+			"scaleX": 2.69,
+			"scaleY": 8.95,
+			"kind": 0,
+			"args": [
+				0
+			],
+			"children": [
+				{
+					"type": "material",
+					"name": "material",
+					"props": {
+						"PBR": {
+							"mode": "PBR",
+							"blend": "None",
+							"shadows": true,
+							"culling": "Back",
+							"depthTest": "Less",
+							"colorMask": 15,
+							"enableStencil": false
+						}
+					}
 				}
 			]
 		}

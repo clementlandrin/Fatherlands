@@ -24,12 +24,6 @@ class Room extends Entity {
 			n.enabled = enabled;
 		return enabled;
 	}
-	
-	override function start() {
-		super.start();
-		if ( name == "start" )
-			game.moveTo(doors[0]);
-	}
 
 	public function enter() {
 		if ( voxels != null )

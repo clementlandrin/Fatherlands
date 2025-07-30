@@ -72,11 +72,22 @@ class Game extends hxd.App {
 			p = hxd.res.Loader.currentInstance.load(startLevel).toPrefab().load().clone(sh);
 		}
 		p.make();
+		for ( m in s3d.getMaterials() )
+			m.refreshProps();
 
 		cameraController = new CameraController();
 
 		for ( e in entities )
 			e.start();
+
+		for ( e in entities ) {
+			var r = Std.downcast(e, ent.Room);
+			if ( r != null ) {
+				moveTo(r.doors[0]);
+				break;
+			}
+		}
+
 
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
@@ -138,9 +149,11 @@ class Game extends hxd.App {
 			throw "invalid mode";
 		}
 	} 
-
+	
 	function customMake(p : hrt.prefab.Prefab) {
 		var obj3d = p.to(hrt.prefab.Object3D);
+		var source = p.source;
+		var e : ent.Entity = null;
 
 		switch(p.name.toLowerCase()) {
 		case "past":
@@ -150,17 +163,24 @@ class Game extends hxd.App {
 		default:
 		}
 
-		var e : ent.Entity = null;
+		function makeRoom() {
+			if ( curRoom != null )
+				throw "room in room";
+			var r = new ent.Room();
+			curRoom = r;
+			e = r;
+		}
+
+		if ( source != null && source.indexOf("content/Room") == 0 )
+			makeRoom();
+
 		switch ( p.getCdbType() ) {
 		case "element":
 			var props:Data.Element = cast p.props;
 			switch(props.type) {
 			case Room:
-				if ( curRoom != null )
-					throw "room in room";
-				var r = new ent.Room();
-				curRoom = r;
-				e = r;
+				makeRoom();
+				throw "assert";
 			case Door:
 				if ( curRoom == null )
 					throw "door outside room";
@@ -190,16 +210,6 @@ class Game extends hxd.App {
 				e = i;
 			}
 			e.inf = props.props;
-			p.make();
-			for ( m in obj3d.local3d.getMaterials() )
-				m.refreshProps();
-			onPrefabMake(p);
-			e.setObject(obj3d.local3d);
-
-			// leaving room
-			if ( Std.isOfType(e, ent.Room) )
-				curRoom = null;
-			return;
 		default:
 			switch ( p.type ) {
 			case "camera":
@@ -221,6 +231,12 @@ class Game extends hxd.App {
 
 		p.make();
 		onPrefabMake(p);
+		if ( e != null ) {
+			e.setObject(obj3d.local3d);
+			// leaving room
+			if ( Std.isOfType(e, ent.Room) )
+				curRoom = null;
+		}
 	}
 
 	function onPrefabMake(p : hrt.prefab.Prefab) {

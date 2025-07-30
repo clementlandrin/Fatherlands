@@ -2,96 +2,85 @@
 	"type": "prefab",
 	"children": [
 		{
-			"type": "object",
-			"name": "R4",
+			"type": "polygon",
+			"name": "polygon",
+			"x": -3.75,
+			"z": 2.5,
+			"scaleX": 7.5,
+			"scaleY": 5,
+			"scaleZ": 5,
+			"rotationX": -90,
+			"rotationZ": -90,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"y": -3.75,
+			"z": 2.5,
+			"scaleX": 7.5,
+			"scaleY": 5,
+			"scaleZ": 5,
+			"rotationX": -90,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "reference",
+			"name": "camera",
+			"source": "gameplay/camera.prefab"
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
 			"props": {
-				"id": "R4",
-				"type": 0,
+				"id": "Start_polygon",
+				"type": 2,
 				"$cdbtype": "element"
 			},
+			"scaleX": 7.5,
+			"scaleY": 7.5,
+			"scaleZ": 7.5,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "object",
+			"name": "past",
+			"x": 1.344,
+			"y": 0.002
+		},
+		{
+			"type": "object",
+			"name": "common"
+		},
+		{
+			"type": "object",
+			"name": "doors",
+			"x": -0.095,
+			"y": 0.0275,
 			"children": [
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"x": -3.75,
-					"z": 2.5,
-					"scaleX": 7.5,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
-					"rotationZ": -90,
-					"kind": 0,
-					"args": [
-						0
-					]
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"y": -3.75,
-					"z": 2.5,
-					"scaleX": 7.5,
-					"scaleY": 5,
-					"scaleZ": 5,
-					"rotationX": -90,
-					"kind": 0,
-					"args": [
-						0
-					]
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"x": -3.54,
+					"y": -0.03,
+					"rotationZ": -91.1
 				},
 				{
 					"type": "reference",
-					"name": "camera",
-					"source": "gameplay/camera.prefab"
-				},
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"props": {
-						"id": "Start_polygon",
-						"type": 2,
-						"$cdbtype": "element"
-					},
-					"scaleX": 7.5,
-					"scaleY": 7.5,
-					"scaleZ": 7.5,
-					"kind": 0,
-					"args": [
-						0
-					]
-				},
-				{
-					"type": "object",
-					"name": "past",
-					"x": 1.344,
-					"y": 0.002
-				},
-				{
-					"type": "object",
-					"name": "common"
-				},
-				{
-					"type": "object",
-					"name": "doors",
-					"x": -0.09499999999999997,
-					"y": 0.02749999999999997,
-					"children": [
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": -3.54,
-							"y": -0.03,
-							"rotationZ": -91.1
-						},
-						{
-							"type": "reference",
-							"name": "door",
-							"source": "gameplay/door.prefab",
-							"x": 0.31,
-							"y": -3.59
-						}
-					]
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"x": 0.31,
+					"y": -3.59
 				}
 			]
 		}
