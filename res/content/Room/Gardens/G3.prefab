@@ -12,6 +12,11 @@
 			"children": [
 				{
 					"type": "reference",
+					"name": "ladderDown",
+					"source": "gameplay/ladderDown.prefab"
+				},
+				{
+					"type": "reference",
 					"name": "camera",
 					"source": "gameplay/camera.prefab"
 				},

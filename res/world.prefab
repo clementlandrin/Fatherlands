@@ -162,8 +162,7 @@
 					"name": "G1",
 					"source": "content/Room/Gardens/G1.prefab",
 					"x": -15,
-					"y": 30,
-					"editMode": "Edit"
+					"y": 30
 				},
 				{
 					"type": "reference",
@@ -171,6 +170,22 @@
 					"source": "content/Room/Gardens/G2.prefab",
 					"x": -55,
 					"y": 4.65
+				},
+				{
+					"type": "reference",
+					"name": "G20",
+					"source": "content/Room/Gardens/G20.prefab",
+					"x": -50,
+					"y": 30,
+					"z": 20
+				},
+				{
+					"type": "reference",
+					"name": "G21",
+					"source": "content/Room/Gardens/G21.prefab",
+					"x": -55,
+					"y": 10,
+					"z": 20
 				},
 				{
 					"type": "reference",
@@ -314,7 +329,7 @@
 					"source": "content/Room/Gardens/G8.prefab",
 					"x": -55,
 					"y": 45,
-					"z": 10
+					"z": 20
 				},
 				{
 					"type": "reference",
@@ -322,8 +337,7 @@
 					"source": "content/Room/Gardens/G3.prefab",
 					"x": -15,
 					"y": 30,
-					"z": 10,
-					"editMode": "Edit"
+					"z": 10
 				},
 				{
 					"type": "shader",
@@ -367,6 +381,14 @@
 					"x": -60,
 					"y": -15,
 					"z": 10
+				},
+				{
+					"type": "reference",
+					"name": "F16",
+					"source": "content/Room/Factory/F16.prefab",
+					"x": -60,
+					"y": -10,
+					"z": 20
 				},
 				{
 					"type": "reference",

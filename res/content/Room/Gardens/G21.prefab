@@ -12,21 +12,49 @@
 			"children": [
 				{
 					"type": "reference",
-					"name": "doorUp",
-					"source": "gameplay/doorUp.prefab",
-					"z": 0.08
+					"name": "camera",
+					"source": "gameplay/camera.prefab"
 				},
 				{
 					"type": "reference",
 					"name": "ladder",
 					"source": "gameplay/ladder.prefab",
-					"x": -6.26,
-					"y": 0.57
+					"x": -1.8,
+					"y": -4.2
 				},
 				{
-					"type": "reference",
-					"name": "camera",
-					"source": "gameplay/camera.prefab"
+					"type": "polygon",
+					"name": "polygon",
+					"props": {
+						"id": "R1_polygon",
+						"type": 2,
+						"$cdbtype": "element"
+					},
+					"x": 0.8,
+					"y": 0.88,
+					"z": -0.21,
+					"kind": 3,
+					"args": [
+						24,
+						24
+					],
+					"children": [
+						{
+							"type": "material",
+							"name": "material",
+							"props": {
+								"PBR": {
+									"mode": "PBR",
+									"blend": "None",
+									"shadows": true,
+									"culling": "Back",
+									"depthTest": "Less",
+									"colorMask": 15,
+									"enableStencil": false
+								}
+							}
+						}
+					]
 				},
 				{
 					"type": "object",
@@ -139,11 +167,11 @@
 						"type": 2,
 						"$cdbtype": "element"
 					},
-					"x": -6.18,
-					"y": -3.2,
+					"x": -1.72,
+					"y": -5.8,
 					"z": 3.67,
 					"scaleX": 2.69,
-					"scaleY": 8.95,
+					"scaleY": 3.33,
 					"kind": 0,
 					"args": [
 						0
