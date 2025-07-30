@@ -69,14 +69,14 @@
 		{
 			"type": "reference",
 			"name": "PT1",
-			"source": "content/Room/Prog_Test/PT1.prefab",
+			"source": "content/Room/Prog_Test/GoUp.prefab",
 			"z": -0.1,
 			"editMode": "Edit"
 		},
 		{
 			"type": "reference",
 			"name": "PT2",
-			"source": "content/Room/Prog_Test/PT2.prefab",
+			"source": "content/Room/Prog_Test/GoDown.prefab",
 			"z": 25.84
 		}
 	]
