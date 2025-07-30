@@ -85,6 +85,70 @@
 						1,
 						1
 					]
+				},
+				{
+					"type": "object",
+					"name": "model",
+					"z": 4.14,
+					"scaleZ": 2.09,
+					"children": [
+						{
+							"type": "box",
+							"name": "box",
+							"z": -1.9875,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": -1.5475,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": -0.9775,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": -0.3375,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": 0.3425,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": 0.9525,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": 1.5325,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						},
+						{
+							"type": "box",
+							"name": "box",
+							"z": 2.0225,
+							"scaleY": 0.46,
+							"scaleZ": 0.25
+						}
+					]
 				}
 			]
 		}
