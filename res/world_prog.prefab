@@ -67,79 +67,17 @@
 			]
 		},
 		{
-			"type": "object",
-			"name": "Hub",
-			"children": [
-				{
-					"type": "reference",
-					"name": "H1",
-					"source": "content/Room/Hub/H1.prefab",
-					"editMode": "Edit"
-				},
-				{
-					"type": "reference",
-					"name": "H4",
-					"source": "content/Room/Hub/H4.prefab",
-					"x": -15,
-					"z": 25
-				},
-				{
-					"type": "reference",
-					"name": "H5",
-					"source": "content/Room/Hub/H5.prefab",
-					"z": 25,
-					"editMode": "Edit"
-				},
-				{
-					"type": "reference",
-					"name": "H6",
-					"source": "content/Room/Hub/H6.prefab",
-					"x": -15,
-					"z": 100
-				},
-				{
-					"type": "reference",
-					"name": "H7",
-					"source": "content/Room/Hub/H7.prefab",
-					"x": -135,
-					"z": 100,
-					"children": [
-						{
-							"type": "shader",
-							"name": "ColorMult",
-							"source": "h3d.shader.ColorMult",
-							"props": {
-								"amount": 1,
-								"color": [
-									0.20392156862745098,
-									0.20392156862745098,
-									0.20392156862745098,
-									1
-								]
-							}
-						}
-					]
-				},
-				{
-					"type": "reference",
-					"name": "H8",
-					"source": "content/Room/Hub/H8.prefab",
-					"x": -75,
-					"z": 100
-				},
-				{
-					"type": "reference",
-					"name": "H3",
-					"source": "content/Room/Hub/H3.prefab",
-					"x": -35
-				},
-				{
-					"type": "reference",
-					"name": "H2",
-					"source": "content/Room/Hub/H2.prefab",
-					"x": -15
-				}
-			]
+			"type": "reference",
+			"name": "PT1",
+			"source": "content/Room/Prog_Test/PT1.prefab",
+			"z": -0.1,
+			"editMode": "Edit"
+		},
+		{
+			"type": "reference",
+			"name": "PT2",
+			"source": "content/Room/Prog_Test/PT2.prefab",
+			"z": 25.84
 		}
 	]
 }

@@ -3,6 +3,7 @@
 -lib hide
 -lib castle
 -lib domkit
+-lib hxbit
 --macro lib.Macros.init()
 --macro include("hrt.prefab")
 --macro include("hrt.shader")

@@ -10,7 +10,40 @@
 				"type": 1
 			},
 			"z": 0.5,
-			"scaleZ": 3
+			"scaleZ": 3,
+			"children": [
+				{
+					"type": "material",
+					"name": "material",
+					"props": {
+						"PBR": {
+							"mode": "PBR",
+							"blend": "Alpha",
+							"shadows": false,
+							"culling": "None",
+							"depthTest": "Less",
+							"colorMask": 15,
+							"enableStencil": false
+						}
+					},
+					"color": [
+						1,
+						0,
+						1,
+						1
+					],
+					"children": [
+						{
+							"type": "shader",
+							"name": "AlphaMult",
+							"source": "h3d.shader.AlphaMult",
+							"props": {
+								"alpha": 0.5
+							}
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "box",

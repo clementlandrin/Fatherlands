@@ -2,6 +2,8 @@ package ent;
 
 class Player extends Entity {
 
+	@:s public var unlockedSkill : Bool = false;
+	
 	var temporalVisual : h3d.scene.Object;
 	var temporalRadius : Float = 0.0;
 	var sphereActive : Bool = false;

@@ -69,6 +69,9 @@ class Game extends hxd.App {
 
 		for ( e in entities )
 			e.start();
+
+		presentLighting = new h3d.scene.Object(s3d);
+		pastLighting = new h3d.scene.Object(s3d);
 	}
 
 	var pastTexCopy : h3d.mat.Texture;
@@ -254,6 +257,9 @@ class Game extends hxd.App {
 			Main.reload();
 
 		baseUI.update(dt);
+
+		if ( hxd.Key.isDown(hxd.Key.CTRL) && hxd.Key.isPressed(hxd.Key.S) )
+			save();
 	}
 
 	public function moveTo(door : ent.Door) {
@@ -297,5 +303,20 @@ class Game extends hxd.App {
 	}
 
 	public function onCdbReload() {
+	}
+
+	public function save(path = "save.sav") {
+		var res = hxbit.Serializer.save(player);
+		sys.io.File.saveBytes(path, res);
+	}
+
+	public function load(path = "save.sav") {
+		var bytes = sys.io.File.getBytes(path);
+		hxbit.Serializer.load(bytes, ent.Player, function(o) {
+			var e = Std.downcast(o, ent.Entity);
+			if ( e != null ) {
+				trace(e);
+			}
+		});
 	}
 }

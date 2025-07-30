@@ -1,6 +1,6 @@
 package ent;
 
-class Entity {
+class Entity implements hxbit.Serializable {
 
 	var game : Game;
 	public var name(default, null) : String;
