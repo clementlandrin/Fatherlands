@@ -167,6 +167,7 @@ class Game extends hxd.App {
 			if ( curRoom != null )
 				throw 'room in room. ${source} should not be in room?';
 			var r = new ent.Room();
+			@:privateAccess r.name = source.split("content/Room/")[1];
 			curRoom = r;
 			e = r;
 		}
@@ -207,6 +208,10 @@ class Game extends hxd.App {
 			case Interactible:
 				var i = new ent.Interactible();
 				e = i;
+				e.inf = props.props;
+			case Teleport:
+				var t = new ent.Teleport();
+				e = t;
 				e.inf = props.props;
 			}
 		default:

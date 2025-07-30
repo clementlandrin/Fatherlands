@@ -5,6 +5,8 @@ class Main extends hxd.App {
 		doorDebug : false,
 	});
 
+	static var level : String;
+
 	static function main() {
 		#if hlsdl
 		h3d.impl.GlDriver.enableComputeShaders();
@@ -12,7 +14,7 @@ class Main extends hxd.App {
 		hxd.res.Resource.LIVE_UPDATE = true;
 		hxd.Res.initLocal();
 
-		var level = null;
+		level = null;
 		var args = Sys.args();
 		while ( args.length > 0 ) {
 			var arg = args.shift();
@@ -41,6 +43,6 @@ class Main extends hxd.App {
 
 	public static function reload() {
 		Game.inst.dispose();
-		new Game();
+		new Game(level);
 	}
 }

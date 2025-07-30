@@ -10,7 +10,7 @@
 					"scope": null
 				},
 				{
-					"typeStr": "5:Room,Door,Navmesh,Ladder,Interactible",
+					"typeStr": "5:Room,Door,Navmesh,Ladder,Interactible,Teleport",
 					"name": "type",
 					"opt": false
 				},
@@ -150,6 +150,11 @@
 				{
 					"typeStr": "2",
 					"name": "camFollowZ",
+					"opt": true
+				},
+				{
+					"typeStr": "11",
+					"name": "color",
 					"opt": true
 				}
 			]

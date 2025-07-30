@@ -12,16 +12,4 @@ class Interactible extends Entity {
 	override function onTrigger() {
 		new ui.Dialog(this, game.baseUI.root);
 	}
-
-	override function update(dt : Float) {
-		super.update(dt);
-		var inRange = game.player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
-		if ( inRange ) {
-			onOver();
-			if ( hxd.Key.isPressed(hxd.Key.F) )
-				trigger();
-		} else {
-			onOut();
-		}
-	}
 }

@@ -85,6 +85,29 @@
 			"source": "content/Room/Prog_Test/CamFollowPlayer.prefab",
 			"x": -13.43,
 			"editMode": "Edit"
+		},
+		{
+			"type": "reference",
+			"name": "TeleportColor",
+			"source": "content/Room/Prog_Test/TeleportColor.prefab",
+			"x": 14.68,
+			"y": 20.81,
+			"editMode": "Edit"
+		},
+		{
+			"type": "reference",
+			"name": "TeleportHub",
+			"source": "content/Room/Prog_Test/TeleportHub.prefab",
+			"x": 0.13,
+			"y": 21.31,
+			"editMode": "Edit"
+		},
+		{
+			"type": "reference",
+			"name": "TeleportColor2",
+			"source": "content/Room/Prog_Test/TeleportColor2.prefab",
+			"y": 40.8,
+			"editMode": "Edit"
 		}
 	]
 }

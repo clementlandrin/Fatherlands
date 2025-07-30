@@ -112,7 +112,16 @@ class Entity implements hxbit.Serializable {
 	}
 
 	public function update(dt : Float) {
-
+		if ( interact ) {
+			var inRange = game.player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
+			if ( inRange ) {
+				onOver();
+				if ( hxd.Key.isPressed(hxd.Key.F) )
+					trigger();
+			} else {
+				onOut();
+			}
+		}
 	}
 
 	public function setMode(mode : Game.TimeMode) {
