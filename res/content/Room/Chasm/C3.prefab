@@ -3,9 +3,9 @@
 	"children": [
 		{
 			"type": "object",
-			"name": "R2",
+			"name": "C3",
 			"props": {
-				"id": "R2",
+				"id": "C3",
 				"type": 0,
 				"$cdbtype": "element"
 			},

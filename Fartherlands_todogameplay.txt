@@ -2,13 +2,12 @@ Fartherlands
 
 done - Camera ortho
 done - Echelles
-done - Setup renderer par room
+done - Setup renderer par room et deux scènes
 done - connexions salles en 3d
 done - UI de dialogues, utile pour proto
 done - échelles verticales
 done - Caméra qui monte avec le joueur avec un flag
-done - Setup renderer par mode avec deux scènes
-
+done - Afficher le nom des salles
 wip - Interaction -> Boîtes de dialogues
 
 (Artefact à débloquer ?)

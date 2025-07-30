@@ -3,17 +3,17 @@
 	"children": [
 		{
 			"type": "object",
-			"name": "R2",
+			"name": "G3",
 			"props": {
-				"id": "R2",
+				"id": "G3",
 				"type": 0,
 				"$cdbtype": "element"
 			},
 			"children": [
 				{
 					"type": "reference",
-					"name": "ladderDown",
-					"source": "gameplay/ladderDown.prefab"
+					"name": "doorDown",
+					"source": "gameplay/doorDown.prefab"
 				},
 				{
 					"type": "reference",
