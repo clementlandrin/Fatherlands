@@ -67,7 +67,7 @@ class Game extends hxd.App {
 		sh.customMake = customMake;
 		var p = null;
 		if ( startLevel == null ) {
-			p = hxd.Res.world_prog.load().clone(sh);
+			p = hxd.Res.world.load().clone(sh);
 		} else {
 			p = hxd.res.Loader.currentInstance.load(startLevel).toPrefab().load().clone(sh);
 		}
