@@ -31,7 +31,8 @@ class Game extends hxd.App {
 	var cameraController : CameraController;
 	var mainUI : ui.MainUI;
 
-	public function new() {
+	var startLevel : String;
+	public function new(?level : String) {
 		super();
 		inst = this;
 		modelCache = new h3d.prim.ModelCache();
@@ -40,6 +41,8 @@ class Game extends hxd.App {
 		presentShader = new prefab.TemporalShader.Temporal();
 
 		pastWindowShader = new prefab.TemporalWindowShader.TemporalWindow();
+
+		startLevel = level;
 	}
 
 	override function init() {
@@ -62,7 +65,12 @@ class Game extends hxd.App {
 
 		var sh = new hrt.prefab.ContextShared(s3d);
 		sh.customMake = customMake;
-		var p = hxd.Res.world.load().clone(sh);
+		var p = null;
+		if ( startLevel == null ) {
+			p = hxd.Res.world_prog.load().clone(sh);
+		} else {
+			p = hxd.res.Loader.currentInstance.load(startLevel).toPrefab().load().clone(sh);
+		}
 		p.make();
 
 		cameraController = new CameraController();

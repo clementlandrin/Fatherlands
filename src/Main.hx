@@ -12,6 +12,16 @@ class Main extends hxd.App {
 		hxd.res.Resource.LIVE_UPDATE = true;
 		hxd.Res.initLocal();
 
+		var level = null;
+		var args = Sys.args();
+		while ( args.length > 0 ) {
+			var arg = args.shift();
+			switch(arg) {
+			case "--level":
+				level = args.shift();
+			}
+		}
+
 		gfx.MaterialSetup.set();
 
 		Data.load(hxd.Res.data.entry.getText());
@@ -22,7 +32,7 @@ class Main extends hxd.App {
 
 		PREFS = hxd.Save.load(PREFS, "prefs", true);
 
-		new Game();
+		new Game(level);
 	}
 
 	public static function savePrefs() {
