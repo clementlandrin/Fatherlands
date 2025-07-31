@@ -87,7 +87,16 @@ class Entity implements hxbit.Serializable {
 			onTrigger();
 	}
 
+	final function secondTrigger() {
+		if ( game.canControl() )
+			onSecondTrigger();
+	}
+
 	function onTrigger() {
+
+	}
+
+	function onSecondTrigger() {
 
 	}
 
@@ -118,6 +127,8 @@ class Entity implements hxbit.Serializable {
 				onOver();
 				if ( hxd.Key.isPressed(hxd.Key.F) )
 					trigger();
+				if ( hxd.Key.isPressed(hxd.Key.E) )
+					secondTrigger();
 			} else {
 				onOut();
 			}

@@ -83,7 +83,7 @@ class Game extends hxd.App {
 		for ( e in entities ) {
 			var r = Std.downcast(e, ent.Room);
 			if ( r != null ) {
-				moveTo(r.doors[0]);
+				moveTo(r);
 				break;
 			}
 		}
@@ -290,33 +290,22 @@ class Game extends hxd.App {
 			save();
 	}
 
-	public function moveTo(door : ent.Door) {
-		var newRoom = door.room;
+	public function moveTo(newRoom : ent.Room, ?pos : h3d.col.Point) {
 		for ( e in entities ) {
 			var r = Std.downcast(e, ent.Room);
 			if ( r == null )
 				continue;
 			r.leave();
 		}
-		if ( curRoom == null ) {
-			player.x = newRoom.x;
-			player.y = newRoom.y;
-			player.z = newRoom.z;
-		} else {
-			var offset = door.getEnteringDirection().scaled(1.0);
-			player.x = door.x + offset.x;
-			player.y = door.y + offset.y;
-			player.z = door.z + offset.z;
-			if ( player.isClimbing() ) {
-				var ladders = newRoom.ladders.filter(l -> l.door == door);
-				if ( ladders.length == 0 )
-					throw 'missing matching ladder from ${curRoom.name} to ${newRoom.name}';
-				if ( ladders.length > 1 )
-					throw 'too many ladders from ${curRoom.name} to ${newRoom.name}';
-				var ladder = ladders[0];
-				player.enterLadder(ladder, player.getPos());
-			}
+		if ( pos == null ) {
+			pos = new h3d.col.Point();
+			pos.x = newRoom.x;
+			pos.y = newRoom.y;
+			pos.z = newRoom.z;
 		}
+		player.x = pos.x;
+		player.y = pos.y;
+		player.z = pos.z;
 		newRoom.enter();
 		cameraController.enteredRoom(newRoom);
 		mainUI.enterRoom(newRoom);

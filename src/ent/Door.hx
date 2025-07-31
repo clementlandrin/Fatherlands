@@ -100,7 +100,17 @@ class Door extends Entity {
 	function enters() {
 		if ( to == null || !enabled )
 			return;
-		game.moveTo(to);
+		var newRoom = to.room;
+		game.moveTo(newRoom, to.getPos().add(to.getEnteringDirection()));
+		if ( game.player.isClimbing() ) {
+			var ladders = newRoom.ladders.filter(l -> l.door == to);
+			if ( ladders.length == 0 )
+				throw 'missing matching ladder to ${newRoom.name}';
+			if ( ladders.length > 1 )
+				throw 'too many ladders to ${newRoom.name}';
+			var ladder = ladders[0];
+			game.player.enterLadder(ladder, game.player.getPos());
+		}
 	}
 
 	override function update(dt : Float) {

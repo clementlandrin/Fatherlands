@@ -4,26 +4,26 @@ class Teleport extends Entity {
 
 	var room : Room;
 	public var color : Null<Int>;
+	var shader : h3d.shader.ColorMult;
+	var targetIndex = 0;
+
 	public function new() {
 		super();
 		interact = true;
 		room = game.curRoom;
+		shader = new h3d.shader.ColorMult();
+	}
+
+	override function start() {
+		super.start();
+		color = (inf != null && inf.color != null) ? inf.color : null;
+		updateColor();
 	}
 
 	override function setObject(obj) {
 		super.setObject(obj);
-		color = (inf != null && inf.color != null) ? inf.color : null;
-		if ( color != null ) {
-			var s = new h3d.shader.ColorMult();
-			s.color.setColor(inf.color);
-			for ( m in obj.getMaterials() ) {
-				m.mainPass.addShader(s);
-			}
-		}
-	}
-
-	override function update(dt : Float) {
-		super.update(dt);
+		for ( m in obj.getMaterials() )
+			m.mainPass.addShader(shader);
 	}
 
 	override function onTrigger() {
@@ -36,15 +36,42 @@ class Teleport extends Entity {
 		}
 	}
 
+	override function onSecondTrigger() {
+		targetIndex++;
+		updateColor();
+	}
+
+	function updateColor() {
+		if ( color != null ) {
+			shader.color.setColor(color);
+		} else {
+			var targets = [];
+			for ( e in game.entities ) {
+				var t = Std.downcast(e, Teleport);
+				if ( t == null || t == this )
+					continue;
+				targets.push(t);
+			}
+			var target = targets[targetIndex % targets.length];
+			shader.color.setColor(target.color);
+		}
+	}
+
+	function getTargetColor() {
+		if ( color != null )
+			throw "assert";
+		return shader.color.toColor();
+	}
+
 	function matches(t : Teleport) {
-		if ( t.color == null && color != null )
+		if ( color == null && getTargetColor() == t.color )
 			return true;
-		if ( t.color != null && color == null )
+		if ( color != null && t.color == null )
 			return true;
 		return false;
 	}
 
 	function teleport() {
-		room.enter();
+		game.moveTo(room, getPos().add(new h3d.Vector(1,1)));
 	}
 }
