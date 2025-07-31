@@ -11,19 +11,9 @@ class Room extends Entity {
 	public var presentRenderProps : hrt.prefab.RenderProps;
 	public var pastRenderProps : hrt.prefab.RenderProps;
 
+	public var prefab : hrt.prefab.Object3D;
 	public var pastPrefab : hrt.prefab.Object3D;
 	public var presentPrefab : hrt.prefab.Object3D;
-
-	override function set_enabled(v : Bool) {
-		super.set_enabled(v);
-		for ( d in doors )
-			d.enabled = enabled;
-		for ( l in ladders )
-			l.enabled = enabled;
-		for ( n in navmeshes )
-			n.enabled = enabled;
-		return enabled;
-	}
 
 	public function enter() {
 		if ( voxels != null )

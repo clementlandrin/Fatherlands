@@ -2,7 +2,6 @@ package ent;
 
 class Teleport extends Entity {
 
-	var room : Room;
 	public var color : Null<Int>;
 	var shader : h3d.shader.ColorMult;
 	var targetIndex = 0;
@@ -10,7 +9,6 @@ class Teleport extends Entity {
 	public function new() {
 		super();
 		interact = true;
-		room = game.curRoom;
 		shader = new h3d.shader.ColorMult();
 	}
 
@@ -80,5 +78,12 @@ class Teleport extends Entity {
 		if ( color == null )
 			text += " Press E to change color.";
 		return text;
+	}
+
+	override function update(dt : Float) {
+		super.update(dt);
+
+		if ( color != null )
+			trace("should be culled");
 	}
 }

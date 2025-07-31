@@ -27,11 +27,11 @@ class Player extends Entity {
 		for ( m in temporalVisual.getMaterials() ) {
 			m.color.set(1.0, 1.0, 1.0, 0.2);
 			m.mainPass.setBlendMode(Alpha);
-			m.mainPass.setPassName("afterTonemapping");
+			m.mainPass.setPassName("beforeTonemapping");
 			m.mainPass.depthWrite = false;
 			m.shadows = false;
 			@:privateAccess m.mainPass.addSelfShader(game.pastWindowShader);
-			var p = m.allocPass("overlay");
+			var p = m.allocPass("afterTonemapping");
 			p.setBlendMode(Alpha);
 			var cm = new h3d.shader.ColorMult();
 			cm.color.setColor(Const.getColor(SphereColor));

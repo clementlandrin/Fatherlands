@@ -20,6 +20,7 @@ class Game extends hxd.App {
 	public var pastWindowShader : prefab.TemporalWindowShader.TemporalWindow;
 	
 	public var baseUI : ui.BaseUI;
+	public var globalEvent : hxd.WaitEvent;
 
 	var modeMake : TimeMode = Common;
 	
@@ -32,6 +33,11 @@ class Game extends hxd.App {
 	var mainUI : ui.MainUI;
 
 	var startLevel : String;
+
+	var fadeEffect : hrt.prefab.rfx.Vignetting;
+	var fadeDuration = 0.0;
+	var curFade = 0.0;
+
 	public function new(?level : String) {
 		super();
 		inst = this;
@@ -43,11 +49,17 @@ class Game extends hxd.App {
 		pastWindowShader = new prefab.TemporalWindowShader.TemporalWindow();
 
 		startLevel = level;
+		fadeEffect = new hrt.prefab.rfx.Vignetting(null, null);
+		fadeEffect.alpha = 0.0;
+		fadeEffect.color = 0;
+		fadeEffect.radius = 0.0;
+		fadeEffect.softness = 0.0;
 	}
 
 	override function init() {
 		baseUI = new ui.BaseUI();
 		new ui.Console();
+		globalEvent = new hxd.WaitEvent();
 
 		mainUI = new ui.MainUI(baseUI.root);
 		
@@ -167,6 +179,7 @@ class Game extends hxd.App {
 			if ( curRoom != null )
 				throw 'room in room. ${source} should not be in room?';
 			var r = new ent.Room();
+			r.prefab = obj3d;
 			@:privateAccess r.name = source.split("content/Room/")[1];
 			curRoom = r;
 			e = r;
@@ -276,10 +289,35 @@ class Game extends hxd.App {
 
 	override function update(dt : Float) {
 		super.update(dt);
+		globalEvent.update(dt);
 
 		for ( e in entities )
-			if ( e.enabled )
-				e.update(dt);
+			e.cull();
+
+		if ( fadeDuration > 0.0 ) {
+			var k = 3.0 * curFade / fadeDuration;
+			if ( k < 1.0 ) {
+				fadeEffect.alpha = k;
+			} else if ( k >= 1.0 && k <= 2.0 ) {
+				fadeEffect.alpha = 1.0;
+			} else {
+				fadeEffect.alpha = 3.0 - k;
+			}
+			curFade += dt;
+
+			if ( curFade > fadeDuration ) {
+				curFade = 0.0;
+				fadeDuration = 0.0;
+				presentRenderer.effects.remove(fadeEffect);
+			} else {
+				if ( !presentRenderer.effects.contains(fadeEffect) )
+					presentRenderer.effects.push(fadeEffect);
+			}
+			return;
+		}
+
+		for ( e in entities )
+			e.update(dt);
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
@@ -291,24 +329,26 @@ class Game extends hxd.App {
 	}
 
 	public function moveTo(newRoom : ent.Room, ?pos : h3d.col.Point) {
-		for ( e in entities ) {
-			var r = Std.downcast(e, ent.Room);
-			if ( r == null )
-				continue;
-			r.leave();
-		}
-		if ( pos == null ) {
-			pos = new h3d.col.Point();
-			pos.x = newRoom.x;
-			pos.y = newRoom.y;
-			pos.z = newRoom.z;
-		}
-		player.x = pos.x;
-		player.y = pos.y;
-		player.z = pos.z;
-		newRoom.enter();
-		cameraController.enteredRoom(newRoom);
-		mainUI.enterRoom(newRoom);
+		fade(Const.get(FadeDurationBetweenRooms), function() {
+			for ( e in entities ) {
+				var r = Std.downcast(e, ent.Room);
+				if ( r == null )
+					continue;
+				r.leave();
+			}
+			if ( pos == null ) {
+				pos = new h3d.col.Point();
+				pos.x = newRoom.x;
+				pos.y = newRoom.y;
+				pos.z = newRoom.z;
+			}
+			player.x = pos.x;
+			player.y = pos.y;
+			player.z = pos.z;
+			newRoom.enter();
+			cameraController.enteredRoom(newRoom);
+			mainUI.enterRoom(newRoom);
+		});
 	}
 
 	public function canControl() {
@@ -317,6 +357,15 @@ class Game extends hxd.App {
 				return false;
 		}
 		return true;
+	}
+
+	public function fade(t : Float = 1.0, ?cb : Void -> Void) {
+		if ( fadeDuration > 0.0 )
+			throw "fade in fade";
+		fadeDuration = t;
+		curFade = 0.0;
+		presentRenderer.effects.push(fadeEffect);
+		globalEvent.wait(t / 3.0, cb);
 	}
 
 	public function onCdbReload() {

@@ -7,17 +7,14 @@ class Ladder extends Entity {
 	public var bottomOut : h3d.scene.Object;
 	public var topOut : h3d.scene.Object;
 
-	public var room(default, null) : Room;
 	public var door(default, null) : Door;
 
 	var bounds : h3d.col.Bounds;
 	public function new() {
 		super();
 		bounds = createUnitBounds();
-		if ( game.curRoom != null ) {
-			game.curRoom.ladders.push(this);
-			room = game.curRoom;
-		}
+		if ( room != null )
+			room.ladders.push(this);
 	}
 
 	override function setObject(obj) {

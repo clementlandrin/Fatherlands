@@ -4,18 +4,13 @@ class Entity implements hxbit.Serializable {
 
 	var game : Game;
 	public var name(default, null) : String;
+	public var room(default, null) : Room;
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
 	var tooltip : ui.Tooltip;
 
-	public var enabled(default, set) : Bool = true;
-	public function set_enabled(v : Bool) {
-		enabled = v;
-		if ( obj != null )
-			obj.culled = !v;
-		return enabled;
-	}
+	public var enabled : Bool = true;
 	
 	public var x(default, set) : Float;
 	public function set_x(v) {
@@ -36,6 +31,7 @@ class Entity implements hxbit.Serializable {
 	public function new() {
 		game = Game.inst;
 		game.entities.push(this);
+		room = game.curRoom;
 	}
 
 	public function getPos() {
@@ -138,6 +134,11 @@ class Entity implements hxbit.Serializable {
 		}
 	}
 
+	public function cull() {
+		var culled = !enabled || (room != null && !room.enabled);
+		obj.culled = culled;
+	}
+
 	public function setMode(mode : Game.TimeMode) {
 
 	}
@@ -199,7 +200,7 @@ class Entity implements hxbit.Serializable {
 	public function getTooltipText() {
 		return "default tooltip";
 	}
-	
+
 	public function dispose() {
 		obj.remove();
 		if ( tooltip != null )

@@ -3,20 +3,12 @@ package ent;
 class Door extends Entity {
 
 	public var to : Door;
-	public var room : Room;
 	var direction : h3d.col.Point;
 	var g : h3d.scene.Graphics;
 
 	public function new() {
 		super();
-		this.room = game.curRoom;
 		game.curRoom.doors.push(this);
-	}
-
-	override function set_enabled(v : Bool) {
-		var res = super.set_enabled(v);
-		obj.culled = true;
-		return res;
 	}
 
 	public function getLeavingDirection() {

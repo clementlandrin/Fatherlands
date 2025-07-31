@@ -115,6 +115,10 @@
 				{
 					"id": "OutlineColor",
 					"color": 6983599
+				},
+				{
+					"id": "FadeDurationBetweenRooms",
+					"value": 1
 				}
 			],
 			"separators": [

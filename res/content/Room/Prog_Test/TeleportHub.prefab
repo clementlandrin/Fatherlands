@@ -103,7 +103,7 @@
 					"name": "door",
 					"source": "gameplay/door.prefab",
 					"x": 0.8,
-					"y": -7.83
+					"y": -7.61
 				},
 				{
 					"type": "reference",
@@ -131,6 +131,36 @@
 					"z": 1.08,
 					"rotationY": 90,
 					"kind": 4,
+					"args": [
+						24,
+						24
+					]
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "La stèle du Hub. Elle téléporte vers la stèle de la couleur correspondante. On peut changer la couleur de cette stèle."
+				}
+			},
+			"x": 0.96,
+			"y": -2.79,
+			"children": [
+				{
+					"type": "polygon",
+					"name": "polygon",
+					"z": 1.21,
+					"scaleX": 0.49,
+					"scaleY": 0.49,
+					"scaleZ": 0.49,
+					"color": -65536,
+					"kind": 3,
 					"args": [
 						24,
 						24
