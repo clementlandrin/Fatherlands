@@ -70,22 +70,13 @@
 				{
 					"type": "rfx.genFog",
 					"name": "genFog",
-					"startDistance": null,
 					"endDistance": 100,
-					"distanceOpacity": 1,
-					"distanceFixed": null,
+					"distanceOpacity": 0.8,
 					"startHeight": 100,
-					"endHeight": null,
-					"startOpacity": null,
 					"endOpacity": 1,
 					"startColor": 13954815,
 					"endColor": 8153815,
-					"renderMode": "AfterTonemapping",
-					"posX": null,
-					"posY": null,
-					"posZ": null,
-					"usePosition": null,
-					"lightColorAmount": null
+					"renderMode": "AfterTonemapping"
 				}
 			]
 		}

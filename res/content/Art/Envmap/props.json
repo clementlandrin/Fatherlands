@@ -1,0 +1,8 @@
+{
+	"fs.convert": {
+		"content/Art/Envmap/drakensberg_solitary_mountain_puresky_1k.envd": {
+			"convert": "none",
+			"priority": 10000000
+		}
+	}
+}

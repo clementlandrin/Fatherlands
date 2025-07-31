@@ -18,14 +18,15 @@
 			"rotationZ": 122.6
 		},
 		{
+			"type": "reference",
+			"name": "Present",
+			"source": "lighting/Present.prefab",
+			"x": 2
+		},
+		{
 			"type": "object",
 			"name": "present",
 			"children": [
-				{
-					"type": "reference",
-					"name": "redLighting",
-					"source": "lighting/redLighting.prefab"
-				},
 				{
 					"type": "polygon",
 					"name": "polygon",

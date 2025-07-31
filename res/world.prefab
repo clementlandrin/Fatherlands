@@ -56,6 +56,7 @@
 				{
 					"type": "rfx.kuwaharaFilter",
 					"name": "kuwaharaFilter",
+					"enabled": false,
 					"radius": 3,
 					"endDist": 0
 				},
@@ -63,6 +64,29 @@
 					"type": "environment",
 					"name": "environment",
 					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "Arch",
+			"x": -10,
+			"y": -52.5,
+			"z": 15,
+			"children": [
+				{
+					"type": "reference",
+					"name": "A2",
+					"source": "content/Room/Arch/A2.prefab",
+					"x": 2,
+					"y": 7.5
+				},
+				{
+					"type": "reference",
+					"name": "A1",
+					"source": "content/Room/Arch/A1.prefab",
+					"x": -2,
+					"y": -7.5
 				}
 			]
 		},
@@ -448,7 +472,22 @@
 					"source": "content/Room/Factory/F7.prefab",
 					"x": -8,
 					"y": -35,
-					"z": 15,
+					"z": 15
+				},
+				{
+					"type": "reference",
+					"name": "F8",
+					"source": "content/Room/Factory/F8.prefab",
+					"x": -8,
+					"y": -35
+				},
+				{
+					"type": "reference",
+					"name": "F9",
+					"source": "content/Room/Factory/F9.prefab",
+					"x": -11.5,
+					"y": -45,
+					"z": 10,
 					"children": [
 						{
 							"type": "shader",
@@ -465,21 +504,6 @@
 							}
 						}
 					]
-				},
-				{
-					"type": "reference",
-					"name": "F8",
-					"source": "content/Room/Factory/F8.prefab",
-					"x": -8,
-					"y": -35
-				},
-				{
-					"type": "reference",
-					"name": "F9",
-					"source": "content/Room/Factory/F9.prefab",
-					"x": -11.5,
-					"y": -45,
-					"z": 10
 				},
 				{
 					"type": "reference",
@@ -757,14 +781,14 @@
 					"name": "C3",
 					"source": "content/Room/Chasm/C3.prefab",
 					"x": -55,
-					"z": -50
+					"z": -30
 				},
 				{
 					"type": "reference",
 					"name": "C4",
 					"source": "content/Room/Chasm/C4.prefab",
 					"x": -75,
-					"z": -50,
+					"z": -30,
 					"children": [
 						{
 							"type": "shader",
@@ -1090,6 +1114,48 @@
 					]
 				}
 			]
+		},
+		{
+			"type": "reference",
+			"name": "C5",
+			"source": "content/Room/Chasm/C5.prefab",
+			"x": -75,
+			"z": -45
+		},
+		{
+			"type": "reference",
+			"name": "C6",
+			"source": "content/Room/Chasm/C6.prefab",
+			"x": -95,
+			"z": -45
+		},
+		{
+			"type": "reference",
+			"name": "C7",
+			"source": "content/Room/Chasm/C7.prefab",
+			"x": -95,
+			"z": -60
+		},
+		{
+			"type": "reference",
+			"name": "C8",
+			"source": "content/Room/Chasm/C8.prefab",
+			"x": -115,
+			"z": -60
+		},
+		{
+			"type": "reference",
+			"name": "C9",
+			"source": "content/Room/Chasm/C9.prefab",
+			"x": -115,
+			"z": -75
+		},
+		{
+			"type": "reference",
+			"name": "C10",
+			"source": "content/Room/Chasm/C10.prefab",
+			"x": -135,
+			"z": -75
 		}
 	]
 }
