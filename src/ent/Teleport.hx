@@ -74,4 +74,11 @@ class Teleport extends Entity {
 	function teleport() {
 		game.moveTo(room, getPos().add(new h3d.Vector(1,1)));
 	}
+	
+	override function getTooltipText() {
+		var text = "Press F to teleport";
+		if ( color == null )
+			text += " Press E to change color.";
+		return text;
+	}
 }

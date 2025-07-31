@@ -16,4 +16,15 @@ dialog #button {
   min-width: 10;
   background: url("ui/comp/buttonClose.png") 10 10;
 }
+tooltip {
+  margin: 20;
+  background: #000000 0.8;
+  align: top left;
+  max-width: 500;
+}
+tooltip #text {
+  margin: 10;
+  align: middle middle;
+  min-height: 20;
+}
 /*# sourceMappingURL=./style.css.map */

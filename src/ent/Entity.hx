@@ -7,6 +7,7 @@ class Entity implements hxbit.Serializable {
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
+	var tooltip : ui.Tooltip;
 
 	public var enabled(default, set) : Bool = true;
 	public function set_enabled(v : Bool) {
@@ -76,10 +77,12 @@ class Entity implements hxbit.Serializable {
 
 	function onOver() {
 		setOutline(true);
+		setTooltip();
 	}
 
 	function onOut() {
 		setOutline(false);
+		removeTooltip();
 	}
 
 	final function trigger() {
@@ -180,7 +183,26 @@ class Entity implements hxbit.Serializable {
 		}
 	}
 
+	function setTooltip() {
+		if ( tooltip != null )
+			return;
+		tooltip = new ui.Tooltip(this, game.baseUI.root);
+	}
+
+	function removeTooltip() {
+		if ( tooltip != null ) {
+			tooltip.remove();
+			tooltip = null;
+		}
+	}
+
+	public function getTooltipText() {
+		return "default tooltip";
+	}
+	
 	public function dispose() {
 		obj.remove();
+		if ( tooltip != null )
+			tooltip.remove();
 	}
 }
