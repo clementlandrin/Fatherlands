@@ -336,7 +336,7 @@ class Game extends hxd.App {
 			save();
 	}
 
-	public function moveTo(newRoom : ent.Room, ?pos : h3d.col.Point) {
+	public function moveTo(newRoom : ent.Room, ?pos : h3d.col.Point, ?door : ent.Door) {
 		fade(Const.get(FadeDurationBetweenRooms), function() {
 			for ( e in entities ) {
 				var r = Std.downcast(e, ent.Room);
@@ -356,6 +356,16 @@ class Game extends hxd.App {
 			newRoom.enter();
 			cameraController.enteredRoom(newRoom);
 			mainUI.enterRoom(newRoom);
+
+			if ( player.isClimbing() && door != null ) {
+				var ladders = newRoom.ladders.filter(l -> l.door == door);
+				if ( ladders.length == 0 )
+					throw 'missing matching ladder to ${newRoom.name}';
+				if ( ladders.length > 1 )
+					throw 'too many ladders to ${newRoom.name}';
+				var ladder = ladders[0];
+				player.enterLadder(ladder, player.getPos());
+			}
 		});
 	}
 
