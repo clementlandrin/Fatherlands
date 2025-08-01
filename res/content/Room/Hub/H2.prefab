@@ -18,12 +18,6 @@
 			"rotationZ": 122.6
 		},
 		{
-			"type": "reference",
-			"name": "Present",
-			"source": "lighting/Present.prefab",
-			"x": 2
-		},
-		{
 			"type": "object",
 			"name": "present",
 			"children": [
@@ -81,6 +75,12 @@
 					"args": [
 						0
 					]
+				},
+				{
+					"type": "reference",
+					"name": "Present",
+					"source": "lighting/Present.prefab",
+					"x": 2
 				}
 			]
 		},
@@ -103,6 +103,12 @@
 					"args": [
 						0
 					]
+				},
+				{
+					"type": "reference",
+					"name": "Past",
+					"source": "lighting/Past.prefab",
+					"x": 2
 				}
 			]
 		},

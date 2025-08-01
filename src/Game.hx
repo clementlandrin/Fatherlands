@@ -94,12 +94,13 @@ class Game extends hxd.App {
 
 		for ( e in entities ) {
 			var r = Std.downcast(e, ent.Room);
-			if ( r != null ) {
+			if ( r == null )
+				continue;
+			if ( r.inf != null && r.inf.startingRoom ) {
 				moveTo(r);
 				break;
 			}
 		}
-
 
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
@@ -144,19 +145,26 @@ class Game extends hxd.App {
 	}
 
 	public function applyRenderer(p : hrt.prefab.RenderProps, mode : TimeMode) {
+		s3d.renderer = null;
 		switch(mode) {
-		case Present:
+			case Present:
 			if ( presentLighting != null )
 				presentLighting.remove();
 			presentLighting = new h3d.scene.Object(s3d);
-			p.make(presentLighting); // p.clone()?
+			var p = p.make(presentLighting); // p.clone()?
 			p.applyProps(presentRenderer);
+			var env = p.find(hrt.prefab.l3d.Environment);
+			if ( env != null )
+				env.applyToRenderer(presentRenderer);
 		case Past:
 			if ( pastLighting != null )
 				pastLighting.remove();
 			pastLighting = new h3d.scene.Object(s3d);
-			p.make(pastLighting); // p.clone()?
+			var p = p.make(pastLighting); // p.clone()?
 			p.applyProps(pastRenderer);
+			var env = p.find(hrt.prefab.l3d.Environment);
+			if ( env != null )
+				env.applyToRenderer(pastRenderer);
 		default:
 			throw "invalid mode";
 		}

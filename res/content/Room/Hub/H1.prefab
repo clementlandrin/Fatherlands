@@ -223,6 +223,18 @@
 					"rotationZ": 179.8
 				}
 			]
+		},
+		{
+			"type": "object",
+			"name": "roomProps",
+			"props": {
+				"id": "H1_roomProps",
+				"type": 0,
+				"$cdbtype": "element",
+				"props": {
+					"startingRoom": true
+				}
+			}
 		}
 	]
 }

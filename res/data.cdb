@@ -160,6 +160,11 @@
 					"typeStr": "11",
 					"name": "color",
 					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "startingRoom",
+					"opt": true
 				}
 			]
 		}

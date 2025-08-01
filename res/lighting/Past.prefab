@@ -9,7 +9,7 @@
 					"mode": "Pbr",
 					"emissive": 1,
 					"exposure": 0,
-					"sky": "CustomColor",
+					"sky": "Specular",
 					"tone": "Linear",
 					"occlusion": 1,
 					"a": 2.51,
@@ -24,6 +24,7 @@
 				{
 					"type": "environment",
 					"name": "environment",
+					"power": 0.44,
 					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
 				},
 				{

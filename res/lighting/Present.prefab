@@ -9,7 +9,7 @@
 					"mode": "Pbr",
 					"emissive": 1,
 					"exposure": 0,
-					"sky": "CustomColor",
+					"sky": "Specular",
 					"tone": "Linear",
 					"occlusion": 1,
 					"a": 2.51,
