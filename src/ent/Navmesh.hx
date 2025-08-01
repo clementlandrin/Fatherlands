@@ -46,7 +46,7 @@ class Navmesh extends Entity {
                 return center.distanceSq(p) < 1.0;
             case Quad(_):
                 tmp2d.load(localPos.to2D());
-                return polygonBounds.contains(tmp2d) && Math.abs(localPos.z * zScale) < ent.Voxels.getVoxelSize();
+                return polygonBounds.contains(tmp2d) && Math.abs(localPos.z * zScale) < Voxels.getVoxelSize();
             default:
                 throw "";
             }

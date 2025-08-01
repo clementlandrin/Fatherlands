@@ -1,5 +1,3 @@
-package ent;
-
 class Voxels {
 
     public static function getVoxelSize() {
@@ -10,10 +8,10 @@ class Voxels {
 
     var values : haxe.io.Bytes;
     var minPos : h3d.col.Point;
-    var room : Room;
+    var room : ent.Room;
     var debugObj : h3d.scene.Object;
 
-    public function new(room : Room) {
+    public function new(room : ent.Room) {
         this.room = room;
         var bounds = new h3d.col.Bounds();
         for ( n in room.navmeshes ) {
@@ -98,7 +96,7 @@ class Voxels {
         values.set(voxelId, value);
     }
 
-    function build(room : Room) {
+    function build(room : ent.Room) {
         for ( n in room.navmeshes )
             n.fillVoxel(this);
         for ( i in 0...size.x ) {
