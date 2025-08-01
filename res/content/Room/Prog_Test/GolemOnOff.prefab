@@ -66,13 +66,59 @@
 			"type": "object",
 			"name": "present",
 			"x": 1.344,
-			"y": 0.002
+			"y": 0.002,
+			"children": [
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "H1_object",
+						"type": 4,
+						"$cdbtype": "element",
+						"props": {
+							"dialog": "La stèle du Hub. Elle téléporte vers la stèle de la couleur correspondante. On peut changer la couleur de cette stèle."
+						}
+					},
+					"x": -0.384,
+					"y": -2.792,
+					"children": [
+						{
+							"type": "reference",
+							"name": "test_golem",
+							"source": "gameplay/test_golem.prefab"
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "object",
 			"name": "past",
 			"x": 1.344,
-			"y": 0.002
+			"y": 0.002,
+			"children": [
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "H1_object",
+						"type": 4,
+						"$cdbtype": "element",
+						"props": {
+							"dialog": "La stèle du Hub. Elle téléporte vers la stèle de la couleur correspondante. On peut changer la couleur de cette stèle."
+						}
+					},
+					"x": -0.73,
+					"y": 0.78,
+					"children": [
+						{
+							"type": "reference",
+							"name": "test_golem_broken",
+							"source": "gameplay/test_golem_broken.prefab"
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "object",
@@ -84,7 +130,6 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
-					"enabled": false,
 					"x": -3.72,
 					"y": -2.23,
 					"rotationZ": -90
@@ -104,7 +149,7 @@
 					"source": "gameplay/door.prefab",
 					"enabled": false,
 					"x": 0.8,
-					"y": -7.83
+					"y": -7.61
 				},
 				{
 					"type": "reference",
@@ -114,52 +159,6 @@
 					"x": 0.8,
 					"y": 7.38,
 					"rotationZ": -180
-				}
-			]
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
-				"id": "TeleportColor2_object",
-				"type": 5,
-				"$cdbtype": "element",
-				"props": {
-					"color": 55551
-				}
-			},
-			"children": [
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 1.08,
-					"rotationY": 90,
-					"kind": 4,
-					"args": [
-						24,
-						24
-					]
-				}
-			]
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
-				"id": "H1_object",
-				"type": 4,
-				"$cdbtype": "element",
-				"props": {
-					"dialog": "Cette stèle ramène à la stèle du Hub."
-				}
-			},
-			"x": 0.96,
-			"y": -2.79,
-			"children": [
-				{
-					"type": "reference",
-					"name": "test_golem",
-					"source": "gameplay/test_golem.prefab"
 				}
 			]
 		}

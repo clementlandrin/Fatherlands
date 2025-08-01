@@ -16,18 +16,9 @@
 			"y": -3.31,
 			"children": [
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 1.21,
-					"scaleX": 0.49,
-					"scaleY": 0.49,
-					"scaleZ": 0.49,
-					"color": -65536,
-					"kind": 3,
-					"args": [
-						24,
-						24
-					]
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
 				}
 			]
 		},
@@ -46,18 +37,9 @@
 			"y": 0.68,
 			"children": [
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 1.21,
-					"scaleX": 0.49,
-					"scaleY": 0.49,
-					"scaleZ": 0.49,
-					"color": -65536,
-					"kind": 3,
-					"args": [
-						24,
-						24
-					]
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
 				}
 			]
 		},
@@ -250,7 +232,6 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
-					"enabled": false,
 					"x": 3.89,
 					"y": -2.24,
 					"rotationZ": 90

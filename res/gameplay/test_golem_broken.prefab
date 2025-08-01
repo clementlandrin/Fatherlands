@@ -1,0 +1,143 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "object",
+			"name": "object",
+			"x": 0.01,
+			"y": 0.28,
+			"z": 0.19,
+			"scaleX": 0.38,
+			"scaleY": 0.38,
+			"scaleZ": 0.38,
+			"children": [
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.005,
+					"y": -0.282,
+					"z": 0.076
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": 0.18,
+					"y": -1.48,
+					"z": -0.09,
+					"scaleX": 0.53,
+					"scaleY": 0.53,
+					"scaleZ": 0.53
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.62,
+					"y": -0.32,
+					"z": 0.13,
+					"scaleX": 0.3,
+					"scaleY": 0.3,
+					"scaleZ": 0.3,
+					"rotationX": 18
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.62,
+					"y": -0.24,
+					"z": -0.12,
+					"scaleX": 0.19,
+					"scaleY": 0.3,
+					"scaleZ": 0.3,
+					"rotationX": 18
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": 1.09,
+					"y": -0.39,
+					"z": -0.45,
+					"scaleX": 0.19,
+					"scaleY": 0.3,
+					"scaleZ": 0.3,
+					"rotationY": -64.8,
+					"rotationZ": 38.5
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": 0.91,
+					"y": -0.53,
+					"z": -0.33,
+					"scaleX": 0.3,
+					"scaleY": 0.3,
+					"scaleZ": 0.3,
+					"rotationY": -64.8,
+					"rotationZ": 38.5
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": 0.73,
+					"y": 0.2,
+					"z": -0.24,
+					"scaleX": 0.3,
+					"scaleY": 0.3,
+					"scaleZ": 0.3,
+					"rotationZ": -27.1
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.305,
+					"y": 0.308,
+					"z": -0.244,
+					"scaleX": 0.3,
+					"scaleY": 0.3,
+					"scaleZ": 0.3
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.305,
+					"y": 0.538,
+					"z": -0.244,
+					"scaleX": 0.19,
+					"scaleY": 0.3,
+					"scaleZ": 0.22
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": 1.05,
+					"y": 0.56,
+					"z": -0.24,
+					"scaleX": 0.19,
+					"scaleY": 0.3,
+					"scaleZ": 0.22,
+					"rotationZ": -27.1
+				},
+				{
+					"type": "material",
+					"name": "material",
+					"props": {
+						"PBR": {
+							"mode": "PBR",
+							"blend": "None",
+							"shadows": true,
+							"culling": "Back",
+							"depthTest": "Less",
+							"colorMask": 15,
+							"enableStencil": false
+						}
+					},
+					"color": [
+						0.5294117647058824,
+						0.5294117647058824,
+						0.5294117647058824,
+						1
+					]
+				}
+			]
+		}
+	]
+}

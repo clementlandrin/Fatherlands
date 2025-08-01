@@ -16,18 +16,9 @@
 			"y": -0.95,
 			"children": [
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 0.53,
-					"scaleX": 0.49,
-					"scaleY": 0.49,
-					"scaleZ": 0.49,
-					"color": -65536,
-					"kind": 3,
-					"args": [
-						24,
-						24
-					]
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
 				}
 			]
 		},

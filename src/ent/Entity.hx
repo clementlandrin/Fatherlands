@@ -9,6 +9,7 @@ class Entity implements hxbit.Serializable {
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
 	var tooltip : ui.Tooltip;
+	var timeMode : Game.TimeMode;
 
 	public var enabled : Bool = true;
 	
@@ -32,6 +33,7 @@ class Entity implements hxbit.Serializable {
 		game = Game.inst;
 		game.entities.push(this);
 		room = game.curRoom;
+		timeMode = @:privateAccess game.modeMake;
 	}
 
 	public function getPos() {
@@ -121,7 +123,17 @@ class Entity implements hxbit.Serializable {
 
 	public function update(dt : Float) {
 		if ( interact ) {
-			var inRange = game.player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
+			var player = game.player;
+			var inRange = player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
+			switch ( timeMode ) {
+			case Common:
+			case Past:
+				inRange = inRange && getPos().distance(player.getTemporalPos()) < player.getTemporalRadius();
+			case Present:
+				inRange = inRange && getPos().distance(player.getTemporalPos()) > player.getTemporalRadius();
+			case None:
+				throw "assert";
+			}
 			if ( inRange ) {
 				onOver();
 				if ( hxd.Key.isPressed(hxd.Key.F) )

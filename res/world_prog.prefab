@@ -108,6 +108,12 @@
 			"source": "content/Room/Prog_Test/TeleportColor2.prefab",
 			"y": 40.8,
 			"editMode": "Edit"
+		},
+		{
+			"type": "reference",
+			"name": "GolemOnOff",
+			"source": "content/Room/Prog_Test/GolemOnOff.prefab",
+			"x": 14.95
 		}
 	]
 }
