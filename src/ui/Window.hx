@@ -4,6 +4,7 @@ class Window extends ui.comp.BaseElement {
 
 	public var preventControl : Bool = false;
 	public var unique : Bool = false;
+	public var autoRemoved : Bool = false;
 
 	public function new(?parent) {
 		super(parent);

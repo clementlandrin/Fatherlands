@@ -43,9 +43,14 @@ class BaseUI {
 	public function update(dt : Float) {
 		style.sync(dt);
 		if ( hxd.Key.isPressed(hxd.Key.ESCAPE) || hxd.Key.isPressed(hxd.Key.ENTER) ) {
-			var w = windows.pop();
-			if ( w != null )
+			var i = windows.length;
+			while ( i-- > 0 )  {
+				var w = windows[i];
+				if ( w.autoRemoved )
+					continue;
 				w.remove();
+				break;
+			}
 		}
 	}
 }

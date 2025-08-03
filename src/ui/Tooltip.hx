@@ -9,6 +9,7 @@ class Tooltip extends Window {
 	var entity : ent.Entity;
 	public function new(entity : ent.Entity, ?parent) {
 		super(parent);
+		autoRemoved = true;
 		this.entity = entity;
 		initComponent();
 		text.text = entity.getTooltipText();
