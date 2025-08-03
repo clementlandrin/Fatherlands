@@ -231,8 +231,13 @@ class Game extends hxd.App {
 				e = l;
 				e.inf = props.props;
 			case Interactible:
-				var i = new ent.Interactible();
-				e = i;
+				if ( props.props != null && props.props.memo ) {
+					var m = new ent.Memo();
+					e = m;
+				} else {
+					var i = new ent.Interactible();
+					e = i;
+				}
 				e.inf = props.props;
 			case Teleport:
 				var t = new ent.Teleport();

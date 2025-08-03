@@ -264,6 +264,11 @@
 					"typeStr": "2",
 					"name": "startingRoom",
 					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "memo",
+					"opt": true
 				}
 			]
 		}

@@ -11,6 +11,9 @@ class Entity implements hxbit.Serializable {
 	var tooltip : ui.Tooltip;
 	var timeMode : Game.TimeMode;
 
+	public var obj : h3d.scene.Object;
+	public var inf : Data.Element_props;
+
 	public var enabled : Bool = true;
 	
 	public var x(default, set) : Float;
@@ -25,9 +28,6 @@ class Entity implements hxbit.Serializable {
 	public function set_z(v) {
 		return obj.z = z = v;
 	}
-	
-	public var obj : h3d.scene.Object;
-	public var inf : Data.Element_props;
 	
 	public function new() {
 		game = Game.inst;
@@ -52,6 +52,8 @@ class Entity implements hxbit.Serializable {
 		@:bypassAccessor x = pos.x;
 		@:bypassAccessor y = pos.y;
 		@:bypassAccessor z = pos.z;
+		if ( isMemo() )
+			setTooltip();
 		// not point and click for now
 		// if ( interact ) {
 		// 	initInteractive();
@@ -71,6 +73,10 @@ class Entity implements hxbit.Serializable {
 		interactive.onOut = function(e : hxd.Event) {
 			onOut();
 		}
+	}
+
+	function isMemo() {
+		return inf != null && inf.memo;
 	}
 
 	function onOver() {
@@ -203,7 +209,7 @@ class Entity implements hxbit.Serializable {
 	}
 
 	function removeTooltip() {
-		if ( tooltip != null ) {
+		if ( !isMemo() && tooltip != null ) {
 			tooltip.remove();
 			tooltip = null;
 		}

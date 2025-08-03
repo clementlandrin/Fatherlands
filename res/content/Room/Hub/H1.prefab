@@ -9,7 +9,8 @@
 				"type": 4,
 				"$cdbtype": "element",
 				"props": {
-					"dialog": "Welcome to Fartherlands."
+					"dialog": "Welcome to Fartherlands.",
+					"memo": true
 				}
 			},
 			"x": 0.61,
