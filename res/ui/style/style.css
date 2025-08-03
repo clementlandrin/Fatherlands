@@ -27,4 +27,22 @@ tooltip #text {
   align: middle middle;
   min-height: 20;
 }
+knowledge-window {
+  margin: 20;
+  background: #000000 1;
+  fill-height: true;
+  fill-width: true;
+  content-align: middle middle;
+}
+knowledge-window #title {
+  margin: 10;
+  align: top middle;
+}
+knowledge-window knowledgeComp {
+  background: red;
+  align: middle middle;
+}
+knowledge-window knowledgeComp.discovered {
+  background: green;
+}
 /*# sourceMappingURL=./style.css.map */

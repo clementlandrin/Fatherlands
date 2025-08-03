@@ -138,6 +138,105 @@
 			"props": {}
 		},
 		{
+			"name": "knowledge",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "id",
+					"opt": false,
+					"scope": null
+				},
+				{
+					"typeStr": "6:knowledge",
+					"name": "parent",
+					"opt": true
+				},
+				{
+					"typeStr": "17",
+					"name": "props",
+					"opt": false
+				},
+				{
+					"typeStr": "1",
+					"name": "desc",
+					"opt": false
+				}
+			],
+			"lines": [
+				{
+					"id": "Root",
+					"props": {},
+					"desc": ""
+				},
+				{
+					"id": "WhoIAm",
+					"props": {},
+					"desc": "",
+					"parent": "Root"
+				},
+				{
+					"id": "WhereIAm",
+					"props": {},
+					"desc": "",
+					"parent": "Root"
+				},
+				{
+					"id": "WhatDoIDo",
+					"props": {},
+					"desc": "",
+					"parent": "Root"
+				},
+				{
+					"id": "GolemsWereCreated",
+					"props": {},
+					"desc": "",
+					"parent": "WhoIAm"
+				},
+				{
+					"id": "ThereIsAGoddess",
+					"props": {},
+					"desc": "",
+					"parent": "WhoIAm"
+				},
+				{
+					"id": "IAmTheGoddess",
+					"props": {},
+					"desc": "",
+					"parent": "WhoIAm"
+				},
+				{
+					"id": "TempleTeleports",
+					"props": {},
+					"desc": "",
+					"parent": "WhereIAm"
+				},
+				{
+					"id": "IWasBornInTheUSA",
+					"props": {},
+					"desc": "",
+					"parent": "WhereIAm"
+				},
+				{
+					"id": "ThereIsATree",
+					"props": {},
+					"desc": "",
+					"parent": "WhereIAm"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "knowledge@props",
+			"props": {
+				"hide": true,
+				"isProps": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		},
+		{
 			"name": "element@props",
 			"props": {
 				"hide": true,

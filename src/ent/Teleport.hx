@@ -79,11 +79,4 @@ class Teleport extends Entity {
 			text += " Press E to change color.";
 		return text;
 	}
-
-	override function update(dt : Float) {
-		super.update(dt);
-
-		if ( color != null )
-			trace("should be culled");
-	}
 }

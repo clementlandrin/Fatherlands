@@ -21,6 +21,7 @@ class Game extends hxd.App {
 	
 	public var baseUI : ui.BaseUI;
 	public var globalEvent : hxd.WaitEvent;
+	public var knowledgeRoot : KnowledgeNode;
 
 	var modeMake : TimeMode = Common;
 	
@@ -31,6 +32,7 @@ class Game extends hxd.App {
 
 	var cameraController : CameraController;
 	var mainUI : ui.MainUI;
+	var knowledgeWindow : ui.KnowledgeWindow;
 
 	var startLevel : String;
 
@@ -104,6 +106,8 @@ class Game extends hxd.App {
 
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
+
+		knowledgeRoot = KnowledgeNode.buildTree();
 	}
 
 	var pastTexCopy : h3d.mat.Texture;
@@ -298,6 +302,10 @@ class Game extends hxd.App {
 	override function update(dt : Float) {
 		super.update(dt);
 		globalEvent.update(dt);
+
+		if ( hxd.Key.isPressed(hxd.Key.K) ) {
+			new ui.KnowledgeWindow(baseUI.root);
+		}
 
 		for ( e in entities )
 			e.cull();
