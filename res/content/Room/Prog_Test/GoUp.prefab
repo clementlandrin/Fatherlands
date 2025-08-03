@@ -9,28 +9,8 @@
 				"type": 4,
 				"$cdbtype": "element",
 				"props": {
-					"dialog": "Empruntez ce trigger pour monter à l'étage supérieur."
-				}
-			},
-			"x": 1.14,
-			"y": -3.31,
-			"children": [
-				{
-					"type": "reference",
-					"name": "test_golem",
-					"source": "gameplay/test_golem.prefab"
-				}
-			]
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
-				"id": "H1_object",
-				"type": 4,
-				"$cdbtype": "element",
-				"props": {
-					"dialog": "Bonjour, ceci est un dialogue. Appuyez sur Echap ou Entrée pour quitter."
+					"dialog": "Bonjour, voici l'artefact.",
+					"unlockArtefact": true
 				}
 			},
 			"x": 1.14,
@@ -218,7 +198,22 @@
 					"name": "doorUp",
 					"source": "gameplay/doorUp.prefab",
 					"x": -0.33,
-					"y": -3.05
+					"y": -3.05,
+					"children": [
+						{
+							"type": "object",
+							"name": "object",
+							"props": {
+								"id": "H1_object",
+								"type": 4,
+								"$cdbtype": "element",
+								"props": {
+									"dialog": "Empruntez ce trigger pour monter à l'étage supérieur.",
+									"memo": true
+								}
+							}
+						}
+					]
 				},
 				{
 					"type": "reference",

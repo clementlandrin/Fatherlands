@@ -40,6 +40,7 @@ class Player extends Entity {
 		}
 		temporalVisual.followPositionOnly = true;
 		temporalVisual.follow = chara.find(o -> o.name == "sphereCenter" ? o : null);
+		temporalVisual.setScale(temporalRadius);
 	}
 	
 	public function getTemporalRadius() {
@@ -64,6 +65,8 @@ class Player extends Entity {
 	}
 
 	function updateSphere(dt : Float) {
+		if ( !unlockedSkill )
+			return;
 		var sphereIncrease = dt * Const.get(SphereMaxRadius) / Const.get(SphereTransitionDuration);
 		if ( hxd.Key.isPressed(hxd.Key.SPACE) ) {
 			sphereActive = !sphereActive;

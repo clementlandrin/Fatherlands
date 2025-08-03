@@ -21,6 +21,8 @@ class Interactible extends Entity {
 			});
 			k.discovered = true;
 		}
+		if ( inf.unlockArtefact )
+			Game.inst.player.unlockedSkill = true;
 		if ( tooltip != null )
 			removeTooltip();
 	}

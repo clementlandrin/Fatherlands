@@ -274,6 +274,11 @@
 					"typeStr": "6:knowledge",
 					"name": "knowledge",
 					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "unlockArtefact",
+					"opt": true
 				}
 			]
 		}
