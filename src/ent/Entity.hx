@@ -155,6 +155,8 @@ class Entity implements hxbit.Serializable {
 	public function cull() {
 		var culled = !enabled || (room != null && !room.enabled);
 		obj.culled = culled;
+		if ( tooltip != null )
+			tooltip.visible = !culled;
 	}
 
 	public function setMode(mode : Game.TimeMode) {

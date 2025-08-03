@@ -12,7 +12,7 @@ class Interactible extends Entity {
 	override function onTrigger() {
 		new ui.Dialog(this, game.baseUI.root);
 		if ( tooltip != null )
-			tooltip.visible = false;
+			removeTooltip();
 	}
 
 	override function getTooltipText() {

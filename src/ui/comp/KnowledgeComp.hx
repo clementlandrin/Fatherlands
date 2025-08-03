@@ -9,6 +9,7 @@ class KnowledgeComp extends BaseElement {
 
 	var knowledgeNode : KnowledgeNode;
 	var win : KnowledgeWindow;
+	var g : h2d.Graphics;
 
 	public function new(win : KnowledgeWindow, k : KnowledgeNode, ?parent) {
 		super(parent);
@@ -33,11 +34,28 @@ class KnowledgeComp extends BaseElement {
 			x = Math.sin(theta) * ctx.scene.width * size;
 			y = Math.cos(theta) * ctx.scene.height * size;
 		}
-		// if ( knowledgeNode.level == 0 ) {
-		// } else {
-		// 	var level = knowledgeNode.level;
-		// 	x = Math.cos(theta) * 0.5;
-		// 	y = Math.sin(theta) * 0.5;
-		// }
+		
+		scaleX = scaleY = win.zoom;
+
+		// drawLinks(ctx);
 	}
+
+	// function drawLinks(ctx : h2d.RenderContext) {
+	// 	if ( knowledgeNode.children.length == 0 )
+	// 		return;
+	// 	if ( g == null ) {
+	// 		g = new h2d.Graphics();
+	// 		win.addChild(g);
+	// 	}
+	// 	g.clear();
+	// 	g.lineStyle(10.0, knowledgeNode.level == 0 ? 0xFF00FF : 0xFF0000);
+	// 	for ( c in children ) {
+	// 		var k = Std.downcast(c, KnowledgeComp);
+	// 		if ( k == null )
+	// 			continue;
+			
+	// 		g.moveTo(0.0, 0.0);
+	// 		g.lineTo(0.5 * ctx.scene.width, 0.5 * ctx.scene.height);
+	// 	}
+	// }
 }

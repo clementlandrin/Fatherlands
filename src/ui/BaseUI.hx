@@ -29,6 +29,7 @@ class BaseUI {
 		}
 
 		root = new BaseUIRoot(s2d);
+		root.layout = Stack;
 		style.addObject(root);
 
 		loadStyle();

@@ -30,6 +30,51 @@
 				"type": 4,
 				"$cdbtype": "element",
 				"props": {
+					"dialog": "Vers \"la cam suit le joueur\"",
+					"memo": true
+				}
+			},
+			"x": -3.48,
+			"y": -3.31
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "Vers \"golem passé/présent\"",
+					"memo": true
+				}
+			},
+			"x": 3.3,
+			"y": -3.31
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "Vers \"stèles de TP\"",
+					"memo": true
+				}
+			},
+			"x": 0.14,
+			"y": 6.24
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
 					"dialog": "Bonjour, ceci est un dialogue. Appuyez sur Echap ou Entrée pour quitter."
 				}
 			},

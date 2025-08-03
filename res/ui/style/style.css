@@ -39,10 +39,8 @@ knowledge-window #title {
   align: top middle;
 }
 knowledge-window knowledgeComp {
-  background: red;
   align: middle middle;
-}
-knowledge-window knowledgeComp.discovered {
-  background: green;
+  max-width: 200;
+  padding: 5;
 }
 /*# sourceMappingURL=./style.css.map */
