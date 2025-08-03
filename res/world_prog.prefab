@@ -114,6 +114,12 @@
 			"name": "GolemOnOff",
 			"source": "content/Room/Prog_Test/GolemOnOff.prefab",
 			"x": 14.95
+		},
+		{
+			"type": "reference",
+			"name": "Knowledge",
+			"source": "content/Room/Prog_Test/Knowledge.prefab",
+			"y": -23.877443806333062
 		}
 	]
 }

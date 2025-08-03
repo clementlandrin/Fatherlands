@@ -4,10 +4,10 @@ class KnowledgeNode {
 	public var parent : KnowledgeNode = null;
 	public var children : Array<KnowledgeNode> = [];
 	public var inf : Data.Knowledge_props;
-	public var id : String;
+	public var id : Data.KnowledgeKind;
 	public var level : Int;
 
-	public function new(id : String) {
+	public function new(id) {
 		this.id = id;
 	}
 
@@ -25,7 +25,7 @@ class KnowledgeNode {
 
 	public static function buildTree() {
 		var knowledgeCdb = Data.knowledge.all.toArrayCopy();
-		var knowledges = [for ( i => k in knowledgeCdb ) new KnowledgeNode(k.id.toString())];
+		var knowledges = [for ( i => k in knowledgeCdb ) new KnowledgeNode(k.id)];
 		var root = null;
 		for ( i => k in knowledgeCdb ) {
 			var knowledge = knowledges[i];

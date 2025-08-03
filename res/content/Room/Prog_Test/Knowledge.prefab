@@ -1,0 +1,142 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "Empruntez ce trigger pour monter à l'étage supérieur.",
+					"knowledge": "GolemsWereCreated"
+				}
+			},
+			"x": 1.14,
+			"y": -3.31,
+			"children": [
+				{
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
+				}
+			]
+		},
+		{
+			"type": "reference",
+			"name": "camera",
+			"source": "gameplay/camera.prefab",
+			"editMode": "Edit"
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"scaleX": 7.5,
+			"scaleY": 15,
+			"scaleZ": 9.72,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"x": -3.75,
+			"z": 3,
+			"scaleX": 6,
+			"scaleY": 15,
+			"scaleZ": 9.72,
+			"rotationY": 90,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"y": -7.5,
+			"z": 3,
+			"scaleX": 6,
+			"scaleY": 7.5,
+			"scaleZ": 9.72,
+			"rotationX": -90,
+			"rotationY": 90,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "object",
+			"name": "present",
+			"x": 1.344,
+			"y": 0.002
+		},
+		{
+			"type": "object",
+			"name": "past",
+			"x": 1.344,
+			"y": 0.002
+		},
+		{
+			"type": "object",
+			"name": "doors",
+			"x": -0.095,
+			"y": 0.0275,
+			"children": [
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": -3.72,
+					"y": -2.23,
+					"rotationZ": -90
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": 3.89,
+					"y": -2.24,
+					"rotationZ": 90
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": 0.8,
+					"y": -7.83
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"x": 0.8,
+					"y": 7.38,
+					"rotationZ": -180
+				}
+			]
+		}
+	]
+}

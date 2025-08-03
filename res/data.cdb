@@ -269,6 +269,11 @@
 					"typeStr": "2",
 					"name": "memo",
 					"opt": true
+				},
+				{
+					"typeStr": "6:knowledge",
+					"name": "knowledge",
+					"opt": true
 				}
 			]
 		}

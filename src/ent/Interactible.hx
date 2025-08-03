@@ -10,7 +10,17 @@ class Interactible extends Entity {
 	}
 
 	override function onTrigger() {
-		new ui.Dialog(this, game.baseUI.root);
+		if ( inf.dialog != null ) {
+			new ui.Dialog(this, game.baseUI.root);
+		}
+		if ( inf.knowledgeId != null ) {
+			var k = null;
+			Game.inst.knowledgeRoot.iter(function(n) {
+				if ( inf.knowledgeId == n.id )
+					k = n;
+			});
+			k.discovered = true;
+		}
 		if ( tooltip != null )
 			removeTooltip();
 	}

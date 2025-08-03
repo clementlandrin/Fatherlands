@@ -16,7 +16,7 @@ class KnowledgeComp extends BaseElement {
 		this.win = win;
 		this.knowledgeNode = k;
 		initComponent();
-		text.text = knowledgeNode.id;
+		text.text = knowledgeNode.id.toString();
 		if ( k.discovered )
 			dom.addClass("discovered");
 	}

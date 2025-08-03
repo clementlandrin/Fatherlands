@@ -43,4 +43,7 @@ knowledge-window knowledgeComp {
   max-width: 200;
   padding: 5;
 }
+knowledge-window knowledgeComp.discovered text {
+  color: green;
+}
 /*# sourceMappingURL=./style.css.map */
