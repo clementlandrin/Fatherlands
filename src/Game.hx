@@ -9,8 +9,21 @@ class Game extends hxd.App {
 
 	public static var inst : Game;
 
-	public var player : ent.Player;
-	public var curRoom : ent.Room;
+	public var player(get, set) : ent.Player;
+	public function get_player() {
+		return state.player;
+	}
+	public function set_player(p : ent.Player) {
+		return state.player = p;
+	}
+	public var curRoom(get, set) : ent.Room;
+	public function get_curRoom() {
+		return state.curRoom;
+	}
+	public function set_curRoom(r : ent.Room) {
+		return state.curRoom = r;
+	}
+	public var state : st.GameState;
 	public var states : Array<st.State>;
 	public var entities : Array<ent.Entity>;
 	public var modelCache : h3d.prim.ModelCache;
@@ -59,7 +72,13 @@ class Game extends hxd.App {
 		fadeEffect.softness = 0.0;
 	}
 
-	override function init() {		
+	override function init() {
+		states = [];
+		entities = [];
+
+		load();
+		if ( state == null )
+			state = new st.GameState();	
 		baseUI = new ui.BaseUI();
 		new ui.Console();
 		globalEvent = new hxd.WaitEvent();
@@ -74,10 +93,6 @@ class Game extends hxd.App {
 		pastWindowShader.tex = h3d.mat.Texture.fromColor(0xFF00FF);
 
 		s3d.renderer = pastRenderer;
-
-		states = [];
-		entities = [];
-		player = new ent.Player();
 
 		var sh = new hrt.prefab.ContextShared(s3d);
 		sh.customMake = customMake;
@@ -100,18 +115,18 @@ class Game extends hxd.App {
 			var r = Std.downcast(e, ent.Room);
 			if ( r == null )
 				continue;
-			if ( r.inf != null && r.inf.startingRoom ) {
-				moveTo(r);
+			var defaultStartRoom = state.curRoomId == null && r.inf != null && r.inf.startingRoom;
+			var roomFromSave = state.curRoomId != null && state.curRoomId == r.name;
+			if ( defaultStartRoom || roomFromSave ) {
+				moveTo(r, roomFromSave ? player.getPos() : null);
 				break;
-			}
+			} 
 		}
 
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
 
 		knowledgeRoot = st.KnowledgeNode.buildTree();
-
-		load();
 	}
 
 	var pastTexCopy : h3d.mat.Texture;
@@ -196,7 +211,7 @@ class Game extends hxd.App {
 				throw 'room in room. ${source} should not be in room?';
 			var r = new ent.Room();
 			r.prefab = obj3d;
-			@:privateAccess r.name = source.split("content/Room/")[1];
+			@:privateAccess r.name = source;
 			curRoom = r;
 			e = r;
 		}
@@ -271,6 +286,7 @@ class Game extends hxd.App {
 		onPrefabMake(p);
 		if ( e != null ) {
 			e.setObject(obj3d.local3d);
+			e.posFromObj();
 			// leaving room
 			if ( Std.isOfType(e, ent.Room) )
 				curRoom = null;
@@ -384,6 +400,7 @@ class Game extends hxd.App {
 				player.enterLadder(ladder, player.getPos());
 			}
 		});
+		state.curRoomId = newRoom != null ? newRoom.name : null;
 	}
 
 	public function canControl() {
@@ -406,18 +423,18 @@ class Game extends hxd.App {
 	public function onCdbReload() {
 	}
 
-	public function save(path = "save.sav") {
-		var res = hxbit.Serializer.save(player);
-		sys.io.File.saveBytes(path, res);
+	public function load(path = "save.sav") {
+		if ( !sys.FileSystem.exists(path) )
+			return;
+		var bytes = sys.io.File.getBytes(path);
+		state = hxbit.Serializer.load(bytes, st.GameState, function(o) {
+			var s = Std.downcast(o, st.State);
+			s.init();
+		});
 	}
 
-	public function load(path = "save.sav") {
-		var bytes = sys.io.File.getBytes(path);
-		hxbit.Serializer.load(bytes, ent.Player, function(o) {
-			var e = Std.downcast(o, ent.Entity);
-			if ( e != null ) {
-				trace(e);
-			}
-		});
+	public function save(path = "save.sav") {
+		var res = hxbit.Serializer.save(state);
+		sys.io.File.saveBytes(path, res);
 	}
 }

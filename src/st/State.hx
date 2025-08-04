@@ -8,6 +8,10 @@ class State implements hxbit.Serializable {
 	public var enabled : Bool = true;
 	
 	public function new() {
+		init();
+	}
+
+	public function init() {
 		game = Game.inst;
 		game.states.push(this);
 	}

@@ -5,7 +5,7 @@ class KnowledgeNode extends State {
 	@:s public var discovered : Bool = false;
 	@:s public var id : Data.KnowledgeKind;
 	public var parent : KnowledgeNode = null;
-	public var children : Array<KnowledgeNode> = [];
+	@:s public var children : Array<KnowledgeNode> = [];
 	public var inf : Data.Knowledge_props;
 	public var level : Int;
 

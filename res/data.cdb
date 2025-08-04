@@ -22,7 +22,7 @@
 			],
 			"separators": [],
 			"props": {
-				"dataFiles": "*.prefab"
+				"dataFiles": "content/*.prefab"
 			}
 		},
 		{

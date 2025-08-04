@@ -12,22 +12,29 @@ class Entity extends st.State {
 
 	public var obj : h3d.scene.Object;
 	
-	public var x(default, set) : Float;
+	@:s public var x(default, set) : Float;
 	public function set_x(v) {
-		return obj.x = x = v;
+		if ( obj != null )
+			obj.x = v;
+		return x = v;
 	}
-	public var y(default, set) : Float;
+	@:s public var y(default, set) : Float;
 	public function set_y(v) {
-		return obj.y = y = v;
+		if ( obj != null )
+			obj.y = v;
+		return y = v;
 	}
-	public var z(default, set) : Float;
+	@:s public var z(default, set) : Float;
 	public function set_z(v) {
-		return obj.z = z = v;
+		if ( obj != null )
+			obj.z = v;
+		return z = v;
 	}
 	
-	public function new() {
-		super();
-		room = game.curRoom;
+	override function init() {
+		super.init();
+		if ( game.state != null )
+			room = game.state.curRoom;
 		timeMode = @:privateAccess game.modeMake;
 		game.entities.push(this);
 	}
@@ -44,16 +51,19 @@ class Entity extends st.State {
 		this.obj = obj;
 		obj.inheritCulled = true;
 		this.name = obj.name;
-		var pos = obj.getAbsPos().getPosition();
-		@:bypassAccessor x = pos.x;
-		@:bypassAccessor y = pos.y;
-		@:bypassAccessor z = pos.z;
 		if ( isMemo() )
 			setTooltip();
 		// not point and click for now
 		// if ( interact ) {
 		// 	initInteractive();
 		// }
+	}
+
+	public function posFromObj() {
+		var pos = obj.getAbsPos().getPosition();
+		@:bypassAccessor x = pos.x;
+		@:bypassAccessor y = pos.y;
+		@:bypassAccessor z = pos.z;
 	}
 
 	function initInteractive() {
