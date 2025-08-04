@@ -14,7 +14,7 @@ class KnowledgeWindow extends Window {
 		preventControl = true;
 		initComponent();
 		title.text = "Knowledge graph";
-		var root = Game.inst.knowledgeRoot;
+		var root = Game.inst.state.knowledgeRoot;
 		var rootComp = new ui.comp.KnowledgeComp(this, root, content);
 		function rec(n : st.KnowledgeNode, comp : ui.comp.KnowledgeComp) {
 			for ( c in n.children ) {

@@ -14,6 +14,19 @@ class KnowledgeNode extends State {
 		this.id = id;
 	}
 
+	override function start() {
+		super.start();
+
+		for ( c in children )
+			c.parent = this;
+		level = 0;
+		var p = parent;
+		while ( p != null ) {
+			p = p.parent;
+			level++;
+		}
+	}
+
 	public function iter(cb : KnowledgeNode -> Void) {
 		cb(this);
 		for ( c in children )
@@ -43,15 +56,6 @@ class KnowledgeNode extends State {
 					throw "There must be ONLY one knowledge without parent (the root)";
 				root = knowledge;
 			}
-		}
-		for ( n in knowledges ) {
-			var level = 0;
-			var p = n.parent;
-			while ( p != null ) {
-				p = p.parent;
-				level++;
-			}
-			n.level = level;
 		}
 		if ( root == null )
 			throw "There must be one knowledge without parent (the root)";

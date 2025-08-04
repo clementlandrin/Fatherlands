@@ -35,7 +35,6 @@ class Game extends hxd.App {
 	
 	public var baseUI : ui.BaseUI;
 	public var globalEvent : hxd.WaitEvent;
-	public var knowledgeRoot : st.KnowledgeNode;
 
 	var modeMake : TimeMode = Common;
 	
@@ -125,8 +124,6 @@ class Game extends hxd.App {
 
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
-
-		knowledgeRoot = st.KnowledgeNode.buildTree();
 	}
 
 	var pastTexCopy : h3d.mat.Texture;

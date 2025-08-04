@@ -13,7 +13,7 @@ class Interactible extends Entity {
 		}
 		if ( inf.knowledgeId != null ) {
 			var k = null;
-			Game.inst.knowledgeRoot.iter(function(n) {
+			Game.inst.state.knowledgeRoot.iter(function(n) {
 				if ( inf.knowledgeId == n.id )
 					k = n;
 			});
