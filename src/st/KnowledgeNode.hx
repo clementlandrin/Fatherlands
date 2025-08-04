@@ -1,13 +1,16 @@
-class KnowledgeNode {
+package st;
 
-	public var discovered : Bool = false;
+class KnowledgeNode extends State {
+
+	@:s public var discovered : Bool = false;
+	@:s public var id : Data.KnowledgeKind;
 	public var parent : KnowledgeNode = null;
 	public var children : Array<KnowledgeNode> = [];
 	public var inf : Data.Knowledge_props;
-	public var id : Data.KnowledgeKind;
 	public var level : Int;
 
 	public function new(id) {
+		super();
 		this.id = id;
 	}
 

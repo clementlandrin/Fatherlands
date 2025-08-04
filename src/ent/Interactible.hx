@@ -2,8 +2,6 @@ package ent;
 
 class Interactible extends Entity {
 
-	var dialog : ui.Dialog;
-
 	public function new() {
 		super();
 		interact = true;
@@ -25,6 +23,15 @@ class Interactible extends Entity {
 			Game.inst.player.unlockedSkill = true;
 		if ( tooltip != null )
 			removeTooltip();
+	}
+
+	override function setTooltip() {
+		var windows = @:privateAccess game.baseUI.windows;
+		for ( w in windows ) {
+			if ( Std.isOfType(w, ui.Dialog) )
+				return;
+		}
+		super.setTooltip();
 	}
 
 	override function getTooltipText() {

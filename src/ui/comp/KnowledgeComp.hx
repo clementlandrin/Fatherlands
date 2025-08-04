@@ -7,11 +7,11 @@ class KnowledgeComp extends BaseElement {
 		<text id="text"/>
 	</knowledgeComp>
 
-	var knowledgeNode : KnowledgeNode;
+	var knowledgeNode : st.KnowledgeNode;
 	var win : KnowledgeWindow;
 	var g : h2d.Graphics;
 
-	public function new(win : KnowledgeWindow, k : KnowledgeNode, ?parent) {
+	public function new(win : KnowledgeWindow, k : st.KnowledgeNode, ?parent) {
 		super(parent);
 		this.win = win;
 		this.knowledgeNode = k;

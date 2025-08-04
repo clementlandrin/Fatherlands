@@ -16,7 +16,7 @@ class KnowledgeWindow extends Window {
 		title.text = "Knowledge graph";
 		var root = Game.inst.knowledgeRoot;
 		var rootComp = new ui.comp.KnowledgeComp(this, root, content);
-		function rec(n : KnowledgeNode, comp : ui.comp.KnowledgeComp) {
+		function rec(n : st.KnowledgeNode, comp : ui.comp.KnowledgeComp) {
 			for ( c in n.children ) {
 				var newRootComp = new ui.comp.KnowledgeComp(this, c, comp);
 				rec(c, newRootComp);

@@ -11,6 +11,7 @@ class Game extends hxd.App {
 
 	public var player : ent.Player;
 	public var curRoom : ent.Room;
+	public var states : Array<st.State>;
 	public var entities : Array<ent.Entity>;
 	public var modelCache : h3d.prim.ModelCache;
 
@@ -21,7 +22,7 @@ class Game extends hxd.App {
 	
 	public var baseUI : ui.BaseUI;
 	public var globalEvent : hxd.WaitEvent;
-	public var knowledgeRoot : KnowledgeNode;
+	public var knowledgeRoot : st.KnowledgeNode;
 
 	var modeMake : TimeMode = Common;
 	
@@ -58,7 +59,7 @@ class Game extends hxd.App {
 		fadeEffect.softness = 0.0;
 	}
 
-	override function init() {
+	override function init() {		
 		baseUI = new ui.BaseUI();
 		new ui.Console();
 		globalEvent = new hxd.WaitEvent();
@@ -74,6 +75,7 @@ class Game extends hxd.App {
 
 		s3d.renderer = pastRenderer;
 
+		states = [];
 		entities = [];
 		player = new ent.Player();
 
@@ -91,8 +93,8 @@ class Game extends hxd.App {
 
 		cameraController = new CameraController();
 
-		for ( e in entities )
-			e.start();
+		for ( s in states )
+			s.start();
 
 		for ( e in entities ) {
 			var r = Std.downcast(e, ent.Room);
@@ -107,7 +109,9 @@ class Game extends hxd.App {
 		presentLighting = new h3d.scene.Object(s3d);
 		pastLighting = new h3d.scene.Object(s3d);
 
-		knowledgeRoot = KnowledgeNode.buildTree();
+		knowledgeRoot = st.KnowledgeNode.buildTree();
+
+		load();
 	}
 
 	var pastTexCopy : h3d.mat.Texture;
@@ -337,8 +341,8 @@ class Game extends hxd.App {
 			return;
 		}
 
-		for ( e in entities )
-			e.update(dt);
+		for ( s in states )
+			s.update(dt);
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();

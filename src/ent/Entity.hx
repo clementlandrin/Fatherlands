@@ -1,10 +1,9 @@
 package ent;
 
-class Entity implements hxbit.Serializable {
+class Entity extends st.State {
 
-	var game : Game;
-	public var name(default, null) : String;
 	public var room(default, null) : Room;
+	public var inf : Data.Element_props;
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
@@ -12,9 +11,6 @@ class Entity implements hxbit.Serializable {
 	var timeMode : Game.TimeMode;
 
 	public var obj : h3d.scene.Object;
-	public var inf : Data.Element_props;
-
-	public var enabled : Bool = true;
 	
 	public var x(default, set) : Float;
 	public function set_x(v) {
@@ -30,10 +26,10 @@ class Entity implements hxbit.Serializable {
 	}
 	
 	public function new() {
-		game = Game.inst;
-		game.entities.push(this);
+		super();
 		room = game.curRoom;
 		timeMode = @:privateAccess game.modeMake;
+		game.entities.push(this);
 	}
 
 	public function getPos() {
@@ -107,7 +103,8 @@ class Entity implements hxbit.Serializable {
 
 	}
 
-	public function start() {
+	override function start() {
+		super.start();
 		if ( obj != null ) {
 			var newTransform = new h3d.Matrix();
 			newTransform.multiply3x4inline(obj.getTransform(), obj.parent.getAbsPos());
@@ -127,7 +124,8 @@ class Entity implements hxbit.Serializable {
 		return boxBounds;
 	}
 
-	public function update(dt : Float) {
+	override function update(dt : Float) {
+		super.update(dt);
 		if ( interact ) {
 			var player = game.player;
 			var inRange = player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
@@ -221,9 +219,11 @@ class Entity implements hxbit.Serializable {
 		return "default tooltip";
 	}
 
-	public function dispose() {
+	override function dispose() {
+		super.dispose();
 		obj.remove();
 		if ( tooltip != null )
 			tooltip.remove();
+		game.entities.remove(this);
 	}
 }
