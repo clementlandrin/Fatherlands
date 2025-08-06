@@ -9,7 +9,6 @@ class KnowledgeComp extends BaseElement {
 
 	var knowledgeNode : st.KnowledgeNode;
 	var win : KnowledgeWindow;
-	var g : h2d.Graphics;
 
 	public function new(win : KnowledgeWindow, k : st.KnowledgeNode, ?parent) {
 		super(parent);
@@ -22,6 +21,13 @@ class KnowledgeComp extends BaseElement {
 			dom.addClass("discovered");
 	}
 
+	function getOutAngle() {
+		var parentComp = Std.downcast(parent, KnowledgeComp);
+		if ( parentComp == null )
+			return 0.0;
+		return -Math.PI * 0.5 + Math.atan2(y, -x);
+	}
+
 	override function sync(ctx : h2d.RenderContext) {
 		super.sync(ctx);
 
@@ -29,11 +35,22 @@ class KnowledgeComp extends BaseElement {
 			x = 0.0;
 			y = 0.0;
 		} else {
+			var space = switch ( knowledgeNode.level ) {
+			case 0: 0.0;
+			case 1: 0.25;
+			case 2: 0.1;
+			default: 0.1;
+			}
+			var siblingsCount = knowledgeNode.parent.children.length;
 			var index = knowledgeNode.getIndex();
-			var theta = Math.PI - index / knowledgeNode.parent.children.length * 2.0 * Math.PI;
-			var size = Math.pow(0.25 * win.zoom, knowledgeNode.level); 
-			x = Math.sin(theta) * ctx.scene.width * size;
-			y = Math.cos(theta) * ctx.scene.height * size;
+			if ( knowledgeNode.parent.parent != null ) {
+				siblingsCount++;
+				index++;
+			}
+			var theta = Math.PI - index / siblingsCount * 2.0 * Math.PI;
+			theta += cast(parent, KnowledgeComp).getOutAngle();
+			x = Math.sin(theta) * ctx.scene.width * space * win.zoom;
+			y = Math.cos(theta) * ctx.scene.height * space * win.zoom;
 		}
 		
 		drawLinks(ctx);
@@ -42,19 +59,15 @@ class KnowledgeComp extends BaseElement {
 	function drawLinks(ctx : h2d.RenderContext) {
 		if ( knowledgeNode.children.length == 0 )
 			return;
-		if ( g == null ) {
-			g = new h2d.Graphics();
-			win.addChild(g);
-		}
-		g.clear();
-		g.lineStyle(10.0, knowledgeNode.level == 0 ? 0xFF00FF : 0xFF0000);
+		var g = win.g;
 		for ( c in children ) {
 			var k = Std.downcast(c, KnowledgeComp);
 			if ( k == null )
 				continue;
-			
-			g.moveTo(0.0, 0.0);
-			g.lineTo(c.x, c.y);
+			var absPos = getAbsPos();
+			var cAbsPos = c.getAbsPos();
+			g.moveTo(absPos.x, absPos.y);
+			g.lineTo(cAbsPos.x, cAbsPos.y);
 		}
 	}
 }
