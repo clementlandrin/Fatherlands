@@ -13,6 +13,7 @@ class KnowledgeWindow extends Window {
 		super(parent);
 		preventControl = true;
 		initComponent();
+		layout = Stack;
 		title.text = "Knowledge graph";
 		var root = Game.inst.state.knowledgeRoot;
 		var rootComp = new ui.comp.KnowledgeComp(this, root, content);

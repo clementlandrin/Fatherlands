@@ -17,6 +17,7 @@ class KnowledgeComp extends BaseElement {
 		this.knowledgeNode = k;
 		initComponent();
 		text.text = knowledgeNode.id.toString();
+		text.textAlign = Center;
 		if ( k.discovered )
 			dom.addClass("discovered");
 	}
@@ -35,27 +36,25 @@ class KnowledgeComp extends BaseElement {
 			y = Math.cos(theta) * ctx.scene.height * size;
 		}
 		
-		// scaleX = scaleY = win.zoom;
-
-		// drawLinks(ctx);
+		drawLinks(ctx);
 	}
 
-	// function drawLinks(ctx : h2d.RenderContext) {
-	// 	if ( knowledgeNode.children.length == 0 )
-	// 		return;
-	// 	if ( g == null ) {
-	// 		g = new h2d.Graphics();
-	// 		win.addChild(g);
-	// 	}
-	// 	g.clear();
-	// 	g.lineStyle(10.0, knowledgeNode.level == 0 ? 0xFF00FF : 0xFF0000);
-	// 	for ( c in children ) {
-	// 		var k = Std.downcast(c, KnowledgeComp);
-	// 		if ( k == null )
-	// 			continue;
+	function drawLinks(ctx : h2d.RenderContext) {
+		if ( knowledgeNode.children.length == 0 )
+			return;
+		if ( g == null ) {
+			g = new h2d.Graphics();
+			win.addChild(g);
+		}
+		g.clear();
+		g.lineStyle(10.0, knowledgeNode.level == 0 ? 0xFF00FF : 0xFF0000);
+		for ( c in children ) {
+			var k = Std.downcast(c, KnowledgeComp);
+			if ( k == null )
+				continue;
 			
-	// 		g.moveTo(0.0, 0.0);
-	// 		g.lineTo(0.5 * ctx.scene.width, 0.5 * ctx.scene.height);
-	// 	}
-	// }
+			g.moveTo(0.0, 0.0);
+			g.lineTo(c.x, c.y);
+		}
+	}
 }

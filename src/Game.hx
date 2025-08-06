@@ -52,6 +52,7 @@ class Game extends hxd.App {
 	var fadeEffect : hrt.prefab.rfx.Vignetting;
 	var fadeDuration = 0.0;
 	var curFade = 0.0;
+	var bench : h3d.impl.Benchmark;
 
 	public function new(?level : String) {
 		super();
@@ -170,6 +171,8 @@ class Game extends hxd.App {
 		s3d.render(e);
 		s3d.fixedPosition = false;
 		s2d.render(e);
+		if ( bench != null )
+			bench.end();
 	}
 
 	public function applyRenderer(p : hrt.prefab.RenderProps, mode : TimeMode) {
@@ -333,6 +336,8 @@ class Game extends hxd.App {
 
 	override function update(dt : Float) {
 		super.update(dt);
+		if( bench != null )
+			bench.begin();
 		globalEvent.update(dt);
 
 		if ( hxd.Key.isPressed(hxd.Key.K) ) {
@@ -374,6 +379,30 @@ class Game extends hxd.App {
 
 		if ( hxd.Key.isDown(hxd.Key.CTRL) && hxd.Key.isPressed(hxd.Key.S) )
 			save();
+
+		if ( hxd.Key.isPressed(hxd.Key.F6) ) {
+			if(bench == null) {
+				bench = new h3d.impl.Benchmark();
+				s2d.add(bench, 10);
+				bench.enable = true;
+			}
+			else {
+				if(!bench.measureCpu) {
+					bench.measureCpu = true;
+				} else {
+					bench.clear();
+					bench.remove();
+					bench = null;
+				}
+			}
+		}
+		if( bench != null )
+			bench.setPosition(0, s2d.height - bench.height);
+		if ( bench != null && !bench.visible ) {
+			bench.clear();
+			bench.remove();
+			bench = null;
+		}
 	}
 
 	public function moveTo(newRoom : ent.Room, cbs : Array<Void -> Void>, fadeOutOnly : Bool = false) {
@@ -418,6 +447,11 @@ class Game extends hxd.App {
 					globalEvent.wait(t / 3.0, cb);
 			}
 		}
+	}
+
+	public function measure(id: String) {
+		if(bench != null)
+			bench.measure(id);
 	}
 
 	public function onCdbReload() {

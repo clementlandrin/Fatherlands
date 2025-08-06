@@ -174,61 +174,133 @@
 				{
 					"id": "Root",
 					"props": {},
-					"desc": ""
+					"desc": "Origine des songes."
 				},
 				{
-					"id": "WhoIAm",
+					"id": "Deesse",
 					"props": {},
 					"desc": "",
 					"parent": "Root"
 				},
 				{
-					"id": "WhereIAm",
+					"id": "Civilisation",
 					"props": {},
 					"desc": "",
 					"parent": "Root"
 				},
 				{
-					"id": "WhatDoIDo",
+					"id": "Infusion",
 					"props": {},
 					"desc": "",
 					"parent": "Root"
 				},
 				{
-					"id": "GolemsWereCreated",
+					"id": "Temple",
 					"props": {},
 					"desc": "",
-					"parent": "WhoIAm"
+					"parent": "Root"
 				},
 				{
-					"id": "ThereIsAGoddess",
+					"id": "LoreAdditionnel",
 					"props": {},
 					"desc": "",
-					"parent": "WhoIAm"
+					"parent": "Root"
 				},
 				{
-					"id": "IAmTheGoddess",
+					"id": "SeuleSurvivante",
 					"props": {},
 					"desc": "",
-					"parent": "WhoIAm"
+					"parent": "Deesse"
 				},
 				{
-					"id": "TempleTeleports",
+					"id": "Amnesique",
 					"props": {},
 					"desc": "",
-					"parent": "WhereIAm"
+					"parent": "Deesse"
 				},
 				{
-					"id": "IWasBornInTheUSA",
+					"id": "DorsDepuisLongtemps",
 					"props": {},
 					"desc": "",
-					"parent": "WhereIAm"
+					"parent": "Deesse"
 				},
 				{
-					"id": "ThereIsATree",
+					"id": "OrigineInfusion",
 					"props": {},
 					"desc": "",
-					"parent": "WhereIAm"
+					"parent": "Infusion"
+				},
+				{
+					"id": "InfusionUtilite",
+					"props": {},
+					"desc": "",
+					"parent": "Infusion"
+				},
+				{
+					"id": "LienDeesseCivilisation",
+					"props": {},
+					"desc": "",
+					"parent": "Infusion"
+				},
+				{
+					"id": "InstabiliteSpatiale",
+					"props": {},
+					"desc": "",
+					"parent": "Temple"
+				},
+				{
+					"id": "TempleExisteAvantCivilisation",
+					"props": {},
+					"desc": "",
+					"parent": "Temple"
+				},
+				{
+					"id": "RochesTP",
+					"props": {},
+					"desc": "",
+					"parent": "Temple"
+				},
+				{
+					"id": "MortCivilisation",
+					"props": {},
+					"desc": "",
+					"parent": "LoreAdditionnel"
+				},
+				{
+					"id": "PenseesCivilisation",
+					"props": {},
+					"desc": "",
+					"parent": "LoreAdditionnel"
+				},
+				{
+					"id": "ModeVieCivisiliation",
+					"props": {},
+					"desc": "",
+					"parent": "LoreAdditionnel"
+				},
+				{
+					"id": "LienCivilisationGolem",
+					"props": {},
+					"desc": "",
+					"parent": "LoreAdditionnel"
+				},
+				{
+					"id": "CreationGolem",
+					"props": {},
+					"desc": "",
+					"parent": "Civilisation"
+				},
+				{
+					"id": "CreationArche",
+					"props": {},
+					"desc": "",
+					"parent": "Civilisation"
+				},
+				{
+					"id": "TousDisparus",
+					"props": {},
+					"desc": "",
+					"parent": "Civilisation"
 				}
 			],
 			"separators": [],

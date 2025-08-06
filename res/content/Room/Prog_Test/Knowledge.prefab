@@ -9,8 +9,8 @@
 				"type": 4,
 				"$cdbtype": "element",
 				"props": {
-					"dialog": "Empruntez ce trigger pour monter à l'étage supérieur.",
-					"knowledge": "GolemsWereCreated"
+					"dialog": "La civilisation nous a créé.",
+					"knowledge": "CreationGolem"
 				}
 			},
 			"x": 1.14,
