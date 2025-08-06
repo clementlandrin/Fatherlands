@@ -93,7 +93,7 @@
 					"type": "object",
 					"name": "object",
 					"props": {
-						"id": "TeleportColor2_object",
+						"id": "Test_Desactivated_Pillar",
 						"type": 5,
 						"$cdbtype": "element",
 						"props": {

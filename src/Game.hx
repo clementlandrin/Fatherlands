@@ -226,12 +226,12 @@ class Game extends hxd.App {
 			switch(props.type) {
 			case Room:
 				curRoom.inf = props.props;
+				curRoom.id = props.id;
 			case Door:
 				if ( curRoom == null )
 					throw "door outside room";
 				var d = new ent.Door();
 				e = d;
-				e.inf = props.props;
 			case Navmesh:
 				if ( curRoom == null )
 					throw "navmesh outside room";
@@ -248,11 +248,9 @@ class Game extends hxd.App {
 				}
 				n.navmeshMode = modeMake;
 				e = n;
-				e.inf = props.props;
 			case Ladder:
 				var l = new ent.Ladder();
 				e = l;
-				e.inf = props.props;
 			case Interactible:
 				if ( props.props != null && props.props.memo ) {
 					var m = new ent.Memo();
@@ -261,11 +259,13 @@ class Game extends hxd.App {
 					var i = new ent.Interactible();
 					e = i;
 				}
-				e.inf = props.props;
 			case Teleport:
 				var t = new ent.Teleport();
 				e = t;
+			}
+			if ( e != null ) {
 				e.inf = props.props;
+				e.id = props.id;
 			}
 		default:
 			switch ( p.type ) {

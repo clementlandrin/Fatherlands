@@ -23,6 +23,12 @@ class Interactible extends Entity {
 			Game.inst.player.unlockedSkill = true;
 		if ( tooltip != null )
 			removeTooltip();
+		if ( inf.activatorId != null ) {
+			for ( e in game.entities ) {
+				if ( e.id == inf.activatorId )
+					e.activated = true;
+			}
+		}
 	}
 
 	override function setTooltip() {

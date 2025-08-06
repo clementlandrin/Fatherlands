@@ -4,6 +4,8 @@ class Entity extends st.State {
 
 	public var room(default, null) : Room;
 	public var inf : Data.Element_props;
+	public var id : Data.ElementKind;
+	@:s public var activated : Bool = true;
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
 	var interact : Bool;
@@ -125,6 +127,8 @@ class Entity extends st.State {
 
 	override function start() {
 		super.start();
+		if ( inf != null && inf.deactivated )
+			activated = false;
 		if ( obj != null ) {
 			var newTransform = new h3d.Matrix();
 			newTransform.multiply3x4inline(obj.getTransform(), obj.parent.getAbsPos());

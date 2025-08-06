@@ -171,6 +171,41 @@
 					"source": "gameplay/test_golem.prefab"
 				}
 			]
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "La stèle bleue est activée.",
+					"activator": "Test_Desactivated_Pillar"
+				}
+			},
+			"x": -2.15,
+			"y": 5.09,
+			"children": [
+				{
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
+				},
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "H1_object",
+						"type": 4,
+						"$cdbtype": "element",
+						"props": {
+							"dialog": "Parlez au golem pour activer la stèle bleue.",
+							"memo": true
+						}
+					}
+				}
+			]
 		}
 	]
 }

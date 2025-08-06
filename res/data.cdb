@@ -297,6 +297,11 @@
 					"typeStr": "2",
 					"name": "deactivated",
 					"opt": true
+				},
+				{
+					"typeStr": "6:element",
+					"name": "activator",
+					"opt": true
 				}
 			]
 		}

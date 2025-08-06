@@ -2,8 +2,6 @@ package ent;
 
 class Teleport extends Entity {
 
-	@:s public var activated : Bool = true;
-
 	public var color : Null<Int>;
 	var shader : h3d.shader.ColorMult;
 	var targetIndex = 0;
@@ -26,8 +24,6 @@ class Teleport extends Entity {
 					throw "duplicate teleport pillar hub. should be unique.";
 			}
 		}
-		if ( inf != null && inf.deactivated )
-			activated = false;
 		updateColor();
 	}
 
