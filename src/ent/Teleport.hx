@@ -2,6 +2,8 @@ package ent;
 
 class Teleport extends Entity {
 
+	@:s public var activated : Bool = true;
+
 	public var color : Null<Int>;
 	var shader : h3d.shader.ColorMult;
 	var targetIndex = 0;
@@ -24,6 +26,8 @@ class Teleport extends Entity {
 					throw "duplicate teleport pillar hub. should be unique.";
 			}
 		}
+		if ( inf != null && inf.deactivated )
+			activated = false;
 		updateColor();
 	}
 
@@ -43,6 +47,17 @@ class Teleport extends Entity {
 			if ( t == null )
 				continue;
 			if ( matches(t) ) {
+				if ( !t.activated ) {
+					var s = new h3d.shader.ColorMult();
+					s.color.setColor(0);
+					for ( m in obj.getMaterials() )
+						m.mainPass.addShader(s);
+					game.globalEvent.wait(0.1, function() {
+						for ( m in obj.getMaterials() )
+							m.mainPass.removeShader(s);
+					});
+					break;
+				}
 				var toTp = [];
 				for ( e in game.entities ) {
 					if ( e.canBeTp() ) {

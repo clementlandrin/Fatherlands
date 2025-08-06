@@ -127,6 +127,13 @@
 			"source": "content/Room/Prog_Test/InvisibleBridge.prefab",
 			"y": 21.13,
 			"z": 25.84
+		},
+		{
+			"type": "reference",
+			"name": "TeleportDesactivated",
+			"source": "content/Room/Prog_Test/TeleportDeactivated.prefab",
+			"x": 15,
+			"y": 40.22
 		}
 	]
 }

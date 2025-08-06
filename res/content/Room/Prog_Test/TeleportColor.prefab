@@ -97,7 +97,7 @@
 						"type": 5,
 						"$cdbtype": "element",
 						"props": {
-							"color": 55551
+							"color": 16711680
 						}
 					},
 					"x": -1.344,

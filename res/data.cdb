@@ -292,6 +292,11 @@
 					"typeStr": "2",
 					"name": "canTp",
 					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "deactivated",
+					"opt": true
 				}
 			]
 		}
