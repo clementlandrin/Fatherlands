@@ -1,6 +1,8 @@
 package st;
 
 class GameState extends State {
+	@:s public var level : String;
+	
 	@:s public var player : ent.Player;
 	
 	@:s public var curRoomId : String;

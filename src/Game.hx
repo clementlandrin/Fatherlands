@@ -76,8 +76,10 @@ class Game extends hxd.App {
 		entities = [];
 
 		load();
-		if ( state == null )
+		if ( state == null ) {
 			state = new st.GameState();	
+			state.level = startLevel;
+		}
 		baseUI = new ui.BaseUI();
 		new ui.Console();
 		globalEvent = new hxd.WaitEvent();
@@ -96,11 +98,10 @@ class Game extends hxd.App {
 		var sh = new hrt.prefab.ContextShared(s3d);
 		sh.customMake = customMake;
 		var p = null;
-		if ( startLevel == null ) {
+		if ( state.level == null )
 			p = hxd.Res.world.load().clone(sh);
-		} else {
-			p = hxd.res.Loader.currentInstance.load(startLevel).toPrefab().load().clone(sh);
-		}
+		else
+			p = hxd.res.Loader.currentInstance.load(state.level).toPrefab().load().clone(sh);
 		p.make();
 		for ( m in s3d.getMaterials() )
 			m.refreshProps();
