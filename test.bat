@@ -1,1 +1,1 @@
-main.hl --level world_prog.prefab
+hl main.hl --level world_prog.prefab
