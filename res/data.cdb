@@ -119,6 +119,10 @@
 				{
 					"id": "FadeDurationBetweenRooms",
 					"value": 1
+				},
+				{
+					"id": "PillarRadiusEffect",
+					"value": 1.5
 				}
 			],
 			"separators": [
@@ -133,6 +137,10 @@
 				{
 					"title": "Gfx",
 					"id": "OutlineSize"
+				},
+				{
+					"title": "Pillars",
+					"id": "PillarRadiusEffect"
 				}
 			],
 			"props": {}
@@ -278,6 +286,11 @@
 				{
 					"typeStr": "2",
 					"name": "unlockArtefact",
+					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "canTp",
 					"opt": true
 				}
 			]

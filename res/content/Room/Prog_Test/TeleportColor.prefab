@@ -163,16 +163,30 @@
 				"type": 4,
 				"$cdbtype": "element",
 				"props": {
-					"dialog": "Cette stèle ramène à la stèle du Hub."
+					"dialog": "Cette stèle ramène à la stèle du Hub.",
+					"canTp": true
 				}
 			},
-			"x": 0.96,
-			"y": -2.79,
+			"x": 0.68,
+			"y": -0.52,
 			"children": [
 				{
 					"type": "reference",
 					"name": "test_golem",
 					"source": "gameplay/test_golem.prefab"
+				},
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "TeleportColor_object",
+						"type": 4,
+						"$cdbtype": "element",
+						"props": {
+							"dialog": "Je peux me TP avec toi !",
+							"memo": true
+						}
+					}
 				}
 			]
 		}

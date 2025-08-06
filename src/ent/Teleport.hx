@@ -42,8 +42,18 @@ class Teleport extends Entity {
 			var t = Std.downcast(e, Teleport);
 			if ( t == null )
 				continue;
-			if ( matches(t) )
-				t.teleport();
+			if ( matches(t) ) {
+				var toTp = [];
+				for ( e in game.entities ) {
+					if ( e.canBeTp() ) {
+						var d = e.getPos().to2D().distance(getPos().to2D());
+						if ( d < Const.get(PillarRadiusEffect) )
+							toTp.push(e);
+					}
+				}
+				t.teleport(toTp);
+				break;
+			}
 		}
 	}
 
@@ -82,8 +92,22 @@ class Teleport extends Entity {
 		return false;
 	}
 
-	function teleport() {
-		game.moveTo(room, getPos().add(new h3d.Vector(1,1)));
+	function teleport(toTp : Array<Entity>) {
+		var teleportCb = function() {
+			var outPos = new h3d.col.Point();
+			var outRadius = 1.0;
+			for ( i => e in toTp ) {
+				var theta = 2.0 * Math.PI * i / toTp.length;
+				outPos.load(getPos());
+				outPos.x += Math.cos(theta) * outRadius;
+				outPos.y += Math.sin(theta) * outRadius;
+				e.x = outPos.x;
+				e.y = outPos.y;
+				e.z = outPos.z;
+				e.room = room;
+			}
+		};
+		game.moveTo(room, [teleportCb]);
 	}
 	
 	override function getTooltipText() {

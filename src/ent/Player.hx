@@ -51,6 +51,10 @@ class Player extends Entity {
 		return temporalVisual.getAbsPos().getPosition();
 	}
 
+	override function canBeTp() {
+		return true;
+	}
+
 	override function update(dt : Float) {
 		super.update(dt);
 

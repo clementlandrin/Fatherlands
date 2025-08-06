@@ -117,9 +117,16 @@ class Game extends hxd.App {
 			var defaultStartRoom = state.curRoomId == null && r.inf != null && r.inf.startingRoom;
 			var roomFromSave = state.curRoomId != null && state.curRoomId == r.name;
 			if ( defaultStartRoom || roomFromSave ) {
-				moveTo(r, roomFromSave ? player.getPos() : null);
+				var cb = null;
+				if ( roomFromSave ) {
+					var playerPos = player.getPos();
+					cb = function() {
+						player.setPos(playerPos);
+					}
+				}
+				moveTo(r, [cb]);
 				break;
-			} 
+			}
 		}
 
 		presentLighting = new h3d.scene.Object(s3d);
@@ -366,37 +373,22 @@ class Game extends hxd.App {
 			save();
 	}
 
-	public function moveTo(newRoom : ent.Room, ?pos : h3d.col.Point, ?door : ent.Door) {
-		fade(Const.get(FadeDurationBetweenRooms), function() {
+	public function moveTo(newRoom : ent.Room, cbs : Array<Void -> Void>) {
+		var enterCb = function() {
 			for ( e in entities ) {
 				var r = Std.downcast(e, ent.Room);
 				if ( r == null )
 					continue;
 				r.leave();
 			}
-			if ( pos == null ) {
-				pos = new h3d.col.Point();
-				pos.x = newRoom.x;
-				pos.y = newRoom.y;
-				pos.z = newRoom.z;
-			}
-			player.x = pos.x;
-			player.y = pos.y;
-			player.z = pos.z;
+			player.x = newRoom.x;
+			player.y = newRoom.y;
+			player.z = newRoom.z;
 			newRoom.enter();
 			cameraController.enteredRoom(newRoom);
 			mainUI.enterRoom(newRoom);
-
-			if ( player.isClimbing() && door != null ) {
-				var ladders = newRoom.ladders.filter(l -> l.door == door);
-				if ( ladders.length == 0 )
-					throw 'missing matching ladder to ${newRoom.name}';
-				if ( ladders.length > 1 )
-					throw 'too many ladders to ${newRoom.name}';
-				var ladder = ladders[0];
-				player.enterLadder(ladder, player.getPos());
-			}
-		});
+		};
+		fade(Const.get(FadeDurationBetweenRooms), [enterCb].concat(cbs));
 		state.curRoomId = newRoom != null ? newRoom.name : null;
 	}
 
@@ -408,13 +400,14 @@ class Game extends hxd.App {
 		return true;
 	}
 
-	public function fade(t : Float = 1.0, ?cb : Void -> Void) {
+	public function fade(t : Float = 1.0, cbs : Array<Void -> Void>) {
 		if ( fadeDuration > 0.0 )
 			throw "fade in fade";
 		fadeDuration = t;
 		curFade = 0.0;
 		presentRenderer.effects.push(fadeEffect);
-		globalEvent.wait(t / 3.0, cb);
+		for ( cb in cbs )
+			globalEvent.wait(t / 3.0, cb);
 	}
 
 	public function onCdbReload() {

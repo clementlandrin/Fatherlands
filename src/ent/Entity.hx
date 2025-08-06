@@ -39,8 +39,18 @@ class Entity extends st.State {
 		game.entities.push(this);
 	}
 
+	public function canBeTp() {
+		return inf != null && inf.canTp;
+	}
+
 	public function getPos() {
 		return new h3d.col.Point(x,y,z);
+	}
+
+	public function setPos(pos : h3d.Vector) {
+		x = pos.x;
+		y = pos.y;
+		z = pos.z;
 	}
 
 	public function getPos2D() {
