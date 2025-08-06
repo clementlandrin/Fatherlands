@@ -31,6 +31,11 @@ class Console {
 			Main.savePrefs();
 		});
 
+		console.add("memo", function() {
+			Main.PREFS.memo = !Main.PREFS.memo;
+			Main.savePrefs();
+		});
+
 		console.add("prof", function(arg:String) {
 			// https://github.com/HaxeFoundation/hashlink/wiki/Profiler
 			switch (arg) {

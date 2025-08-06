@@ -42,7 +42,7 @@ class Voxels {
         var pos = pos.clone();
         pos = pos.sub(minPos);
         
-        return new h3d.col.IPoint(ifloor(pos.x), ifloor(pos.y), ifloor(pos.z));
+        return new h3d.col.IPoint(ifloor(pos.x), ifloor(pos.y), hxd.Math.iclamp(ifloor(pos.z), 0, size.z - 1));
     }
 
     public function get(pos : h3d.col.Point) {
@@ -84,8 +84,8 @@ class Voxels {
             return false;
         if ( relPos.x > (size.x-1) * getVoxelSize() || relPos.y > (size.y-1) * getVoxelSize() )
             return false;
-        return true;
-        // return isValid(get(pos));
+        // return true;
+        return isValid(get(pos));
     }
 
     public inline function getVoxelId(x : Int, y : Int, z : Int) {

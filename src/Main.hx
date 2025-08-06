@@ -3,6 +3,7 @@ class Main extends hxd.App {
 	public static var PREFS = hxd.Save.load({
 		voxelDebug : false,
 		doorDebug : false,
+		memo : true,
 	});
 
 	static var level : String;
