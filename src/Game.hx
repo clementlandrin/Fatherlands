@@ -124,7 +124,7 @@ class Game extends hxd.App {
 						player.setPos(playerPos);
 					}
 				}
-				moveTo(r, [cb]);
+				moveTo(r, [cb], true);
 				break;
 			}
 		}
@@ -172,9 +172,9 @@ class Game extends hxd.App {
 	}
 
 	public function applyRenderer(p : hrt.prefab.RenderProps, mode : TimeMode) {
-		s3d.renderer = null;
 		switch(mode) {
-			case Present:
+		case Present:
+			s3d.renderer = presentRenderer;
 			if ( presentLighting != null )
 				presentLighting.remove();
 			presentLighting = new h3d.scene.Object(s3d);
@@ -184,6 +184,7 @@ class Game extends hxd.App {
 			if ( env != null )
 				env.applyToRenderer(presentRenderer);
 		case Past:
+			s3d.renderer = pastRenderer;
 			if ( pastLighting != null )
 				pastLighting.remove();
 			pastLighting = new h3d.scene.Object(s3d);
@@ -195,6 +196,7 @@ class Game extends hxd.App {
 		default:
 			throw "invalid mode";
 		}
+		s3d.renderer = null;
 	} 
 	
 	function customMake(p : hrt.prefab.Prefab) {
@@ -373,7 +375,7 @@ class Game extends hxd.App {
 			save();
 	}
 
-	public function moveTo(newRoom : ent.Room, cbs : Array<Void -> Void>) {
+	public function moveTo(newRoom : ent.Room, cbs : Array<Void -> Void>, fadeOutOnly : Bool = false) {
 		var enterCb = function() {
 			for ( e in entities ) {
 				var r = Std.downcast(e, ent.Room);
@@ -388,7 +390,7 @@ class Game extends hxd.App {
 			cameraController.enteredRoom(newRoom);
 			mainUI.enterRoom(newRoom);
 		};
-		fade(Const.get(FadeDurationBetweenRooms), [enterCb].concat(cbs));
+		fade(Const.get(FadeDurationBetweenRooms), [enterCb].concat(cbs), fadeOutOnly);
 		state.curRoomId = newRoom != null ? newRoom.name : null;
 	}
 
@@ -400,15 +402,21 @@ class Game extends hxd.App {
 		return true;
 	}
 
-	public function fade(t : Float = 1.0, cbs : Array<Void -> Void>) {
+	public function fade(t : Float = 1.0, cbs : Array<Void -> Void>, fadeOutOnly : Bool = false) {
 		if ( fadeDuration > 0.0 )
 			throw "fade in fade";
 		fadeDuration = t;
-		curFade = 0.0;
+		if ( fadeOutOnly )
+			curFade = 2.0 * t / 3.0;
 		presentRenderer.effects.push(fadeEffect);
-		for ( cb in cbs )
-			if ( cb != null )
-				globalEvent.wait(t / 3.0, cb);
+		for ( cb in cbs ) {
+			if ( cb != null ) {
+				if ( fadeOutOnly )
+					cb();
+				else
+					globalEvent.wait(t / 3.0, cb);
+			}
+		}
 	}
 
 	public function onCdbReload() {
