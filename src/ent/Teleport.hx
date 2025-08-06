@@ -14,8 +14,21 @@ class Teleport extends Entity {
 
 	override function start() {
 		super.start();
-		color = (inf != null && inf.color != null) ? inf.color : null;
+		color = isHub() ? null : inf.color;
+		if ( color == null ) {
+			for ( e in game.entities ) {
+				var t = Std.downcast(e, Teleport);
+				if ( t == null || t == this )
+					continue;
+				if ( t.isHub() )
+					throw "duplicate teleport pillar hub. should be unique.";
+			}
+		}
 		updateColor();
+	}
+
+	public function isHub() {
+		return inf == null || inf.color == null;
 	}
 
 	override function setObject(obj) {

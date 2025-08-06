@@ -84,7 +84,8 @@ class Voxels {
             return false;
         if ( relPos.x > (size.x-1) * getVoxelSize() || relPos.y > (size.y-1) * getVoxelSize() )
             return false;
-        return isValid(get(pos));
+        return true;
+        // return isValid(get(pos));
     }
 
     public inline function getVoxelId(x : Int, y : Int, z : Int) {

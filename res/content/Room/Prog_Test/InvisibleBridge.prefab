@@ -132,15 +132,6 @@
 			"type": "object",
 			"name": "object",
 			"props": {
-				"id": "TeleportColor2_object",
-				"type": 5,
-				"$cdbtype": "element"
-			}
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
 				"id": "H1_object",
 				"type": 4,
 				"$cdbtype": "element",

@@ -66,13 +66,48 @@
 			"type": "object",
 			"name": "present",
 			"x": 1.344,
-			"y": 0.002
+			"y": 0.002,
+			"children": [
+				{
+					"type": "object",
+					"name": "object",
+					"x": -1.344,
+					"y": -0.002,
+					"children": [
+						{
+							"type": "reference",
+							"name": "test_pillar_broken",
+							"source": "gameplay/test_pillar_broken.prefab"
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "object",
 			"name": "past",
 			"x": 1.344,
-			"y": 0.002
+			"y": 0.002,
+			"children": [
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "TeleportColor2_object",
+						"type": 5,
+						"$cdbtype": "element"
+					},
+					"x": -1.344,
+					"y": -0.002,
+					"children": [
+						{
+							"type": "reference",
+							"name": "test_pillar",
+							"source": "gameplay/test_pillar.prefab"
+						}
+					]
+				}
+			]
 		},
 		{
 			"type": "object",
@@ -113,28 +148,6 @@
 					"x": 0.8,
 					"y": 7.38,
 					"rotationZ": -180
-				}
-			]
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
-				"id": "TeleportColor2_object",
-				"type": 5,
-				"$cdbtype": "element"
-			},
-			"children": [
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 1.08,
-					"rotationY": 90,
-					"kind": 4,
-					"args": [
-						24,
-						24
-					]
 				}
 			]
 		},
