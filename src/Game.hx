@@ -407,7 +407,8 @@ class Game extends hxd.App {
 		curFade = 0.0;
 		presentRenderer.effects.push(fadeEffect);
 		for ( cb in cbs )
-			globalEvent.wait(t / 3.0, cb);
+			if ( cb != null )
+				globalEvent.wait(t / 3.0, cb);
 	}
 
 	public function onCdbReload() {
