@@ -58,8 +58,7 @@ class Voxels {
     }
 
     public function collideValue(v : Int, mode : Game.TimeMode) {
-        var isValid = (v & (1 << 7)) != 0;
-        if ( !isValid )
+        if ( !isValid(v) )
             return false;
         var v = v & ((1 << 7) - 1);
         var voxelMode = Game.TimeMode.createByIndex(v);
@@ -75,13 +74,17 @@ class Voxels {
         }
     }
 
-    public function isInside(pos : h2d.col.Point) {
-        var relPos = pos.sub(minPos.to2D());
+    public function isValid(voxelValue : Int) {
+        return (voxelValue & (1 << 7)) != 0;
+    }
+
+    public function isInside(pos : h3d.col.Point) {
+        var relPos = pos.sub(minPos);
         if ( relPos.x < 0.0 || relPos.y < 0.0 )
             return false;
         if ( relPos.x > (size.x-1) * getVoxelSize() || relPos.y > (size.y-1) * getVoxelSize() )
             return false;
-        return true;
+        return isValid(get(pos));
     }
 
     public inline function getVoxelId(x : Int, y : Int, z : Int) {
@@ -138,25 +141,25 @@ class Voxels {
                     var pos = getPos(new h3d.col.IPoint(i,j,k));
                     var value = values.get(i + j * size.x + k * size.x * size.y);
                     var voxelMode = Game.TimeMode.createByIndex(value & 7);
-                    if ( voxelMode != None ) {
-                        var alpha = 1.0;
-                        switch(voxelMode) {
-                        case None:
-                            throw "assert";
-                        case Past:
-                            shader.color.set(1.0, 0.0, 0.0, alpha);
-                        case Present:
-                            shader.color.set(0.0, 1.0 , 0.0,alpha);
-                        case Common:
-                            shader.color.set(0.0, 0.0, 1.0, alpha);
-                        default:
-                            shader.color.set(1.0, 0.0, 1.0, alpha);  
-                        }
-
-                        batch.worldPosition.initScale(getVoxelSize(), getVoxelSize(), getVoxelSize());
-                        batch.worldPosition.translate(pos.x, pos.y, pos.z);
-                        batch.emitInstance();
+                    var alpha = 1.0;
+                    switch(voxelMode) {
+                    case None:
+                        shader.color.set(0.0, 0.0, 0.0, 0.0);
+                    case Past:
+                        shader.color.set(0.0, 1.0, 1.0, alpha);
+                    case Present:
+                        shader.color.set(0.0, 0.0 , 1.0,alpha);
+                    case Common:
+                        shader.color.set(0.0, 1.0, 1.0, alpha);
+                    default:
+                        shader.color.set(1.0, 0.0, 1.0, alpha);  
                     }
+                    if ( value & 7 == 0 )
+                        shader.color.set(1.0, 0.0, 0.0, alpha);
+
+                    batch.worldPosition.initScale(getVoxelSize(), getVoxelSize(), getVoxelSize());
+                    batch.worldPosition.translate(pos.x, pos.y, pos.z);
+                    batch.emitInstance();
                 }
             }
         }

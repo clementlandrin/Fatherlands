@@ -35,7 +35,7 @@ class KnowledgeComp extends BaseElement {
 			y = Math.cos(theta) * ctx.scene.height * size;
 		}
 		
-		scaleX = scaleY = win.zoom;
+		// scaleX = scaleY = win.zoom;
 
 		// drawLinks(ctx);
 	}

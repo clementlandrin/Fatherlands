@@ -41,7 +41,7 @@ knowledge-window #title {
 knowledge-window knowledgeComp {
   align: middle middle;
   max-width: 200;
-  padding: 5;
+  content-align: middle middle;
 }
 knowledge-window knowledgeComp.discovered text {
   color: green;

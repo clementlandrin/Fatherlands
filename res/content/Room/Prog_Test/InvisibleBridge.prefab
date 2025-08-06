@@ -1,0 +1,162 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "reference",
+			"name": "camera",
+			"source": "gameplay/camera.prefab",
+			"editMode": "Edit"
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"y": 4.51,
+			"scaleX": 7.5,
+			"scaleY": 5.84,
+			"scaleZ": 9.72,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"y": -0.33,
+			"scaleX": 2,
+			"scaleY": 5.84,
+			"scaleZ": 9.72,
+			"visible": false,
+			"kind": 0,
+			"args": [
+				0
+			],
+			"children": [
+				{
+					"type": "object",
+					"name": "object",
+					"props": {
+						"id": "InvisibleBridge_object",
+						"type": 4,
+						"$cdbtype": "element",
+						"props": {
+							"dialog": "Il y a un pont invisible ici.",
+							"memo": true
+						}
+					}
+				}
+			]
+		},
+		{
+			"type": "polygon",
+			"name": "polygon",
+			"props": {
+				"id": "Start_polygon",
+				"type": 2,
+				"$cdbtype": "element"
+			},
+			"y": -4.79,
+			"scaleX": 7.5,
+			"scaleY": 5.84,
+			"scaleZ": 9.72,
+			"kind": 0,
+			"args": [
+				0
+			]
+		},
+		{
+			"type": "object",
+			"name": "present",
+			"x": 1.344,
+			"y": 0.002
+		},
+		{
+			"type": "object",
+			"name": "past",
+			"x": 1.344,
+			"y": 0.002
+		},
+		{
+			"type": "object",
+			"name": "doors",
+			"x": -0.095,
+			"y": 0.0275,
+			"children": [
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": -3.72,
+					"y": -2.23,
+					"rotationZ": -90
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": 3.89,
+					"y": -2.24,
+					"rotationZ": 90
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"x": 0.8,
+					"y": -7.61
+				},
+				{
+					"type": "reference",
+					"name": "door",
+					"source": "gameplay/door.prefab",
+					"enabled": false,
+					"x": 0.8,
+					"y": 7.38,
+					"rotationZ": -180
+				}
+			]
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "TeleportColor2_object",
+				"type": 5,
+				"$cdbtype": "element"
+			}
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "H1_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"dialog": "GG"
+				}
+			},
+			"x": 0.96,
+			"y": 4.69,
+			"children": [
+				{
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
+				}
+			]
+		}
+	]
+}

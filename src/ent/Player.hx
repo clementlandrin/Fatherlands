@@ -116,7 +116,7 @@ class Player extends Entity {
 		right.normalize();
 
 		var move = displacement.y * front + displacement.x * right;
-		var newPos = new h2d.col.Point(x + move.x, y + move.y);
+		var newPos = new h3d.col.Point(x + move.x, y + move.y, z);
 
 		if ( move.length() > 0.0 ) {
 			setFront(move.normalized());

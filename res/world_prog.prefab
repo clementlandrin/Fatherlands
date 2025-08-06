@@ -120,6 +120,13 @@
 			"name": "Knowledge",
 			"source": "content/Room/Prog_Test/Knowledge.prefab",
 			"y": -23.877443806333062
+		},
+		{
+			"type": "reference",
+			"name": "InvisibleBridge",
+			"source": "content/Room/Prog_Test/InvisibleBridge.prefab",
+			"y": 21.13,
+			"z": 25.84
 		}
 	]
 }
