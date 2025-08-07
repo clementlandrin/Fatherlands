@@ -2,7 +2,7 @@ package ent;
 
 class Entity extends st.State {
 
-	public var room(default, null) : Room;
+	public var room : Room;
 	public var inf : Data.Element_props;
 	public var id : Data.ElementKind;
 	@:s public var activated : Bool = true;

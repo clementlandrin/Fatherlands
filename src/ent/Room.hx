@@ -15,7 +15,7 @@ class Room extends Entity {
 	public var pastPrefab : hrt.prefab.Object3D;
 	public var presentPrefab : hrt.prefab.Object3D;
 
-	public function enter() {
+	public function onEnter() {
 		if ( voxels != null )
 			voxels.dispose();
 		voxels = new Voxels(this);
@@ -25,15 +25,9 @@ class Room extends Entity {
 			camera.applyTo(game.s3d.camera);
 
 		var presentProps = presentRenderProps != null ?  presentRenderProps : hxd.Res.lighting._default.load().clone().find(hrt.prefab.RenderProps);
-		// var presentEnv = presentProps.find(hrt.prefab.l3d.Environment);
-		// if ( presentEnv != null )
-		// 	presentEnv.make();
 		game.applyRenderer(presentProps, Present);
 
 		var pastProps = pastRenderProps != null ?  pastRenderProps : hxd.Res.lighting._default.load().clone().find(hrt.prefab.RenderProps);
-		// var pastEnv = pastProps.find(hrt.prefab.l3d.Environment);
-		// if ( pastEnv != null )
-		// 	pastEnv.make();
 		game.applyRenderer(pastProps, Past);
 	}
 

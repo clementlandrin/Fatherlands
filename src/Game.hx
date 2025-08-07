@@ -427,10 +427,9 @@ class Game extends hxd.App {
 					continue;
 				r.leave();
 			}
-			player.x = newRoom.x;
-			player.y = newRoom.y;
-			player.z = newRoom.z;
-			newRoom.enter();
+			player.setPos(newRoom.getPos());
+			player.room = newRoom;
+			newRoom.onEnter();
 			cameraController.enteredRoom(newRoom);
 			mainUI.enterRoom(newRoom);
 		};
