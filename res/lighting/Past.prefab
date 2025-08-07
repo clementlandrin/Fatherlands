@@ -25,18 +25,54 @@
 					"type": "environment",
 					"name": "environment",
 					"power": 0.44,
-					"sourceMapPath": "content/Art/Envmap/clarens_night_02_1k.hdr"
+					"sourceMapPath": "content/Art/Envmap/test_sky_J.hdr"
 				},
 				{
 					"type": "rfx.sao",
 					"name": "sao",
 					"size": 0.5,
-					"blur": 4.7,
-					"noiseScale": 1000,
+					"blur": 4,
+					"noiseScale": 100,
 					"samples": 50,
-					"radius": 0.7,
-					"intensity": 3,
-					"bias": 0.1
+					"radius": 1,
+					"intensity": 0.4,
+					"bias": 0.1,
+					"useScalableBias": true
+				},
+				{
+					"type": "rfx.sao",
+					"name": "sao",
+					"size": 0.5,
+					"blur": 4,
+					"noiseScale": 100,
+					"samples": 50,
+					"radius": 5,
+					"intensity": 5,
+					"bias": 0.1,
+					"useScalableBias": true
+				},
+				{
+					"type": "rfx.volumetricLighting",
+					"name": "volumetricLighting",
+					"AFTER_FX": true,
+					"color": 10724055,
+					"steps": 40,
+					"blur": 2,
+					"startDistance": 100,
+					"endDistance": 0,
+					"maxCamDist": 2000,
+					"noiseScale": 0.5,
+					"noiseSharpness": 5,
+					"noisePersistence": 1,
+					"noiseTurmoil": 0.1,
+					"fogDensity": 1.2,
+					"fogUseNoise": 0,
+					"fogHeightFalloff": 2,
+					"fogTop": 600,
+					"fogEnvColorMult": 1,
+					"secondFogHeightFalloff": 3,
+					"secondFogTop": 400,
+					"offsetCamHeight": true
 				},
 				{
 					"type": "rfx.kuwaharaFilter",
@@ -51,7 +87,6 @@
 					"rotationZ": -30.7,
 					"kind": "Directional",
 					"color": 9675764,
-					"power": 0.3,
 					"range": 10,
 					"zNear": 0.02,
 					"shadows": {
@@ -67,17 +102,6 @@
 							"bias": 0.1
 						}
 					}
-				},
-				{
-					"type": "rfx.genFog",
-					"name": "genFog",
-					"endDistance": 100,
-					"distanceOpacity": 0.8,
-					"startHeight": 100,
-					"endOpacity": 1,
-					"startColor": 13954815,
-					"endColor": 8153815,
-					"renderMode": "AfterTonemapping"
 				}
 			]
 		}

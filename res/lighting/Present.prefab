@@ -24,23 +24,35 @@
 				{
 					"type": "environment",
 					"name": "environment",
-					"sourceMapPath": "content/Art/Envmap/drakensberg_solitary_mountain_puresky_1k.hdr"
+					"sourceMapPath": "content/Art/Envmap/test_sky_J.hdr"
 				},
 				{
-					"type": "rfx.sao",
-					"name": "sao",
-					"size": 0.5,
-					"blur": 4.7,
-					"noiseScale": 1000,
-					"samples": 50,
-					"radius": 0.7,
-					"intensity": 3,
-					"bias": 0.1
+					"type": "rfx.volumetricLighting",
+					"name": "volumetricLighting",
+					"AFTER_FX": true,
+					"color": 13355770,
+					"steps": 40,
+					"blur": 2,
+					"startDistance": 100,
+					"endDistance": 0,
+					"maxCamDist": 2000,
+					"noiseScale": 0.5,
+					"noiseSharpness": 5,
+					"noisePersistence": 1,
+					"noiseTurmoil": 0.1,
+					"fogDensity": 0.4,
+					"fogUseNoise": 0,
+					"fogHeightFalloff": 2,
+					"fogTop": 600,
+					"fogEnvColorMult": 1,
+					"secondFogHeightFalloff": 3,
+					"secondFogTop": 400,
+					"offsetCamHeight": true
 				},
 				{
 					"type": "rfx.kuwaharaFilter",
 					"name": "kuwaharaFilter",
-					"radius": 3,
+					"radius": 2,
 					"endDist": 0
 				},
 				{
@@ -49,7 +61,6 @@
 					"rotationY": 58.7,
 					"rotationZ": -30.7,
 					"kind": "Directional",
-					"power": 1.8,
 					"range": 10,
 					"zNear": 0.02,
 					"shadows": {

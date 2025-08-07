@@ -77,7 +77,17 @@
 			"type": "object",
 			"name": "present",
 			"x": 1.344,
-			"y": 0.002
+			"y": 0.002,
+			"children": [
+				{
+					"type": "reference",
+					"name": "Present",
+					"source": "lighting/Present.prefab",
+					"x": 3.5399,
+					"y": -0.6998,
+					"editMode": "Edit"
+				}
+			]
 		},
 		{
 			"type": "object",
@@ -159,6 +169,13 @@
 					"x": -0.84,
 					"y": 3.18,
 					"scaleZ": 12.45
+				},
+				{
+					"type": "reference",
+					"name": "Past",
+					"source": "lighting/Past.prefab",
+					"x": -1.344,
+					"y": -0.002
 				}
 			]
 		},
