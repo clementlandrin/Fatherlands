@@ -15,7 +15,9 @@ class KnowledgeComp extends BaseElement {
 		this.win = win;
 		this.knowledgeNode = k;
 		initComponent();
-		text.text = knowledgeNode.id.toString();
+		// init, find inf from cdb
+		var desc = knowledgeNode.inf?.desc;
+		text.text = desc != null ? desc : knowledgeNode.id.toString();
 		text.textAlign = Center;
 		if ( k.discovered )
 			dom.addClass("discovered");

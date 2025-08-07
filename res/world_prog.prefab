@@ -134,6 +134,28 @@
 			"source": "content/Room/Prog_Test/TeleportDeactivated.prefab",
 			"x": 15,
 			"y": 40.22
+		},
+		{
+			"type": "object",
+			"name": "object",
+			"props": {
+				"id": "World_prog_object",
+				"type": 4,
+				"$cdbtype": "element",
+				"props": {
+					"unstableTeleport": true,
+					"dialog": "Tu m'as attrapé !"
+				}
+			},
+			"x": -15.33,
+			"y": -19.93,
+			"children": [
+				{
+					"type": "reference",
+					"name": "test_golem",
+					"source": "gameplay/test_golem.prefab"
+				}
+			]
 		}
 	]
 }

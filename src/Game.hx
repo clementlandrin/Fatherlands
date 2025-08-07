@@ -42,6 +42,8 @@ class Game extends hxd.App {
 	var presentRenderer : gfx.Renderer;
 	var pastLighting : h3d.scene.Object;
 	var pastRenderer : gfx.Renderer;
+	var pastTextureCache : h3d.impl.TextureCache;
+	var presentTextureCache : h3d.impl.TextureCache;
 
 	var cameraController : CameraController;
 	var mainUI : ui.MainUI;
@@ -91,6 +93,9 @@ class Game extends hxd.App {
 		presentRenderer.timeMode = Present;
 		pastRenderer = new gfx.Renderer(h3d.scene.pbr.Environment.getDefault());
 		pastRenderer.timeMode = Past;
+
+		presentTextureCache = @:privateAccess s3d.renderer.ctx.textures;
+		pastTextureCache = new h3d.impl.TextureCache();
 
 		pastWindowShader.tex = h3d.mat.Texture.fromColor(0xFF00FF);
 
@@ -144,6 +149,7 @@ class Game extends hxd.App {
 		for ( e in entities ) {
 			e.setMode(Past);	
 		}
+		@:privateAccess s3d.renderer.ctx.textures = pastTextureCache;
 		s3d.render(e);
 		var pastTex = @:privateAccess pastRenderer.textures.ldr;
 		if ( pastTexCopy != null && (pastTexCopy.width != pastTex.width || pastTexCopy.height != pastTex.height) )
@@ -168,6 +174,7 @@ class Game extends hxd.App {
 
 		// prevent syncRec twice.
 		s3d.fixedPosition = true;
+		@:privateAccess s3d.renderer.ctx.textures = presentTextureCache;
 		s3d.render(e);
 		s3d.fixedPosition = false;
 		s2d.render(e);
@@ -261,6 +268,9 @@ class Game extends hxd.App {
 				if ( props.props != null && props.props.memo ) {
 					var m = new ent.Memo();
 					e = m;
+				} else if ( props.props != null && props.props.unstableTeleport ) {
+					var u = new ent.UnstableTeleport();
+					e = u;
 				} else {
 					var i = new ent.Interactible();
 					e = i;
@@ -374,6 +384,10 @@ class Game extends hxd.App {
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();
+		if ( hxd.Key.isPressed(hxd.Key.F8) ) {
+			deleteSave();
+			Main.reload();
+		}
 
 		baseUI.update(dt);
 
@@ -465,6 +479,11 @@ class Game extends hxd.App {
 			var s = Std.downcast(o, st.State);
 			s.init();
 		});
+	}
+
+	public function deleteSave(path = "save.sav") {
+		if ( sys.FileSystem.exists(path) )
+			sys.FileSystem.deleteFile(path);
 	}
 
 	public function save(path = "save.sav") {

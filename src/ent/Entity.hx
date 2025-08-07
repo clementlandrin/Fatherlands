@@ -108,13 +108,17 @@ class Entity extends st.State {
 	}
 
 	final function trigger() {
-		if ( game.canControl() )
+		if ( canTrigger() )
 			onTrigger();
 	}
 
 	final function secondTrigger() {
-		if ( game.canControl() )
+		if ( canTrigger() )
 			onSecondTrigger();
+	}
+
+	function canTrigger() {
+		return game.canControl();
 	}
 
 	function onTrigger() {

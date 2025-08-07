@@ -123,6 +123,18 @@
 				{
 					"id": "PillarRadiusEffect",
 					"value": 1.5
+				},
+				{
+					"id": "UnstableTeleportMinTime",
+					"value": 15
+				},
+				{
+					"id": "UnstableTeleportMaxTime",
+					"value": 30
+				},
+				{
+					"id": "UnstableTriggerDistance",
+					"value": 3
 				}
 			],
 			"separators": [
@@ -141,6 +153,10 @@
 				{
 					"title": "Pillars",
 					"id": "PillarRadiusEffect"
+				},
+				{
+					"title": "UnstableTeleport",
+					"id": "UnstableTeleportMinTime"
 				}
 			],
 			"props": {}
@@ -163,143 +179,118 @@
 					"typeStr": "17",
 					"name": "props",
 					"opt": false
-				},
-				{
-					"typeStr": "1",
-					"name": "desc",
-					"opt": false
 				}
 			],
 			"lines": [
 				{
 					"id": "Root",
-					"props": {},
-					"desc": "Origine des songes."
+					"props": {
+						"desc": "Origine des songes"
+					}
 				},
 				{
 					"id": "Deesse",
 					"props": {},
-					"desc": "",
 					"parent": "Root"
 				},
 				{
 					"id": "Civilisation",
 					"props": {},
-					"desc": "",
 					"parent": "Root"
 				},
 				{
 					"id": "Infusion",
 					"props": {},
-					"desc": "",
 					"parent": "Root"
 				},
 				{
 					"id": "Temple",
 					"props": {},
-					"desc": "",
 					"parent": "Root"
 				},
 				{
 					"id": "LoreAdditionnel",
 					"props": {},
-					"desc": "",
 					"parent": "Root"
 				},
 				{
 					"id": "SeuleSurvivante",
 					"props": {},
-					"desc": "",
 					"parent": "Deesse"
 				},
 				{
 					"id": "Amnesique",
 					"props": {},
-					"desc": "",
 					"parent": "Deesse"
 				},
 				{
 					"id": "DorsDepuisLongtemps",
 					"props": {},
-					"desc": "",
 					"parent": "Deesse"
 				},
 				{
 					"id": "OrigineInfusion",
 					"props": {},
-					"desc": "",
 					"parent": "Infusion"
 				},
 				{
 					"id": "InfusionUtilite",
 					"props": {},
-					"desc": "",
 					"parent": "Infusion"
 				},
 				{
 					"id": "LienDeesseCivilisation",
 					"props": {},
-					"desc": "",
 					"parent": "Infusion"
 				},
 				{
 					"id": "InstabiliteSpatiale",
 					"props": {},
-					"desc": "",
 					"parent": "Temple"
 				},
 				{
 					"id": "TempleExisteAvantCivilisation",
 					"props": {},
-					"desc": "",
 					"parent": "Temple"
 				},
 				{
 					"id": "RochesTP",
 					"props": {},
-					"desc": "",
 					"parent": "Temple"
 				},
 				{
 					"id": "MortCivilisation",
 					"props": {},
-					"desc": "",
 					"parent": "LoreAdditionnel"
 				},
 				{
 					"id": "PenseesCivilisation",
 					"props": {},
-					"desc": "",
 					"parent": "LoreAdditionnel"
 				},
 				{
 					"id": "ModeVieCivisiliation",
 					"props": {},
-					"desc": "",
 					"parent": "LoreAdditionnel"
 				},
 				{
 					"id": "LienCivilisationGolem",
 					"props": {},
-					"desc": "",
 					"parent": "LoreAdditionnel"
 				},
 				{
 					"id": "CreationGolem",
 					"props": {},
-					"desc": "",
 					"parent": "Civilisation"
 				},
 				{
 					"id": "CreationArche",
 					"props": {},
-					"desc": "",
 					"parent": "Civilisation"
 				},
 				{
 					"id": "TousDisparus",
 					"props": {},
-					"desc": "",
 					"parent": "Civilisation"
 				}
 			],
@@ -314,7 +305,13 @@
 			},
 			"separators": [],
 			"lines": [],
-			"columns": []
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "desc",
+					"opt": true
+				}
+			]
 		},
 		{
 			"name": "element@props",
@@ -373,6 +370,11 @@
 				{
 					"typeStr": "6:element",
 					"name": "activator",
+					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "unstableTeleport",
 					"opt": true
 				}
 			]
