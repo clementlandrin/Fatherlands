@@ -264,7 +264,7 @@ class Game extends hxd.App {
 			case Ladder:
 				var l = new ent.Ladder();
 				e = l;
-			case Interactible:
+			case Element:
 				if ( props.props != null && props.props.memo ) {
 					var m = new ent.Memo();
 					e = m;
@@ -272,7 +272,7 @@ class Game extends hxd.App {
 					var u = new ent.UnstableTeleport();
 					e = u;
 				} else {
-					var i = new ent.Interactible();
+					var i = new ent.Entity();
 					e = i;
 				}
 			case Teleport:

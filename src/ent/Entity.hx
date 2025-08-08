@@ -117,11 +117,36 @@ class Entity extends st.State {
 	}
 
 	function canTrigger() {
-		return game.canControl();
+		return game.canControl() && activated;
 	}
 
 	function onTrigger() {
 		game.player.requestInteract = false;
+		if ( tooltip != null )
+			removeTooltip();
+		if ( inf != null ) {
+			if ( inf.dialog != null ) {
+				new ui.Dialog(this, game.baseUI.root);
+			}
+			if ( inf.knowledgeId != null ) {
+				var k = null;
+				game.state.knowledgeRoot.iter(function(n) {
+					if ( inf.knowledgeId == n.id )
+						k = n;
+				});
+				k.discovered = true;
+			}
+			if ( inf.unlockArtefact )
+				game.player.unlockedSkill = true;
+			if ( inf.activatorId != null ) {
+				for ( e in game.entities ) {
+					if ( e.id == inf.activatorId )
+						e.activated = true;
+				}
+			}
+			if ( inf.pickableItem )
+				game.player.pickItem(this);
+		}
 	}
 
 	function onSecondTrigger() {
@@ -180,7 +205,11 @@ class Entity extends st.State {
 	}
 
 	public function canInteract() {
-		return false;
+		if ( inf == null )
+			return false;
+		if ( game.player.item == this )
+			return false;
+		return inf.dialog != null || inf.pickableItem;
 	}
 
 	public function cull() {
@@ -238,6 +267,11 @@ class Entity extends st.State {
 	function setTooltip() {
 		if ( tooltip != null )
 			return;
+		var windows = @:privateAccess game.baseUI.windows;
+		for ( w in windows ) {
+			if ( Std.isOfType(w, ui.Dialog) )
+				return;
+		}
 		tooltip = new ui.Tooltip(this, game.baseUI.root);
 	}
 
@@ -248,8 +282,16 @@ class Entity extends st.State {
 		}
 	}
 
+	function hasTooltip() {
+		return inf.dialog == null && !inf.pickableItem;
+	}
+
 	public function getTooltipText() {
-		return "default tooltip";
+		if ( inf.dialog != null )
+			return "Press F to discuss.";
+		if ( inf.pickableItem )
+			return "Press F to pick.";
+		return "Press F to interact.";
 	}
 
 	override function dispose() {

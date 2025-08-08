@@ -1,6 +1,6 @@
 package ent;
 
-class UnstableTeleport extends Interactible {
+class UnstableTeleport extends Entity {
 
 	var cd : Float = 0.0;
 	override function update(dt : Float) {
