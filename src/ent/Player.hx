@@ -3,7 +3,10 @@ package ent;
 class Player extends Entity {
 
 	@:s public var unlockedSkill : Bool = false;
-	
+	public var item : Entity = null;
+	public var requestInteract : Bool = false;
+	public var requestSecondaryInteract : Bool = false;
+
 	var temporalVisual : h3d.scene.Object;
 	var temporalRadius : Float = 0.0;
 	var sphereActive : Bool = false;
@@ -42,6 +45,11 @@ class Player extends Entity {
 		temporalVisual.follow = chara.find(o -> o.name == "sphereCenter" ? o : null);
 		temporalVisual.setScale(temporalRadius);
 	}
+
+	public function onEnd() {
+		requestInteract = false;
+		requestSecondaryInteract = false;
+	}
 	
 	public function getTemporalRadius() {
 		return temporalRadius;
@@ -61,7 +69,15 @@ class Player extends Entity {
 		if ( canControl() ) {
 			updateSphere(dt);
 			updateMovement(dt);
+			if ( hxd.Key.isPressed(hxd.Key.G) )
+				dropItem();
+			if ( hxd.Key.isPressed(hxd.Key.F) )
+				requestInteract = true;
+			if ( hxd.Key.isPressed(hxd.Key.E) )
+				requestSecondaryInteract = true;
 		}
+
+		updateItem(dt);
 	}
 
 	function canControl() {
@@ -199,6 +215,13 @@ class Player extends Entity {
 		}
 	}
 
+	function updateItem(dt : Float) {
+		if ( item == null )
+			return;
+		item.setPos(getPos());
+		item.room = room;
+	}
+
 	function moveTo(target : h3d.col.Point, dt : Float) {
 		var curPos = new h3d.col.Point(x,y,z);
 		var diff = target.sub(curPos);
@@ -279,5 +302,15 @@ class Player extends Entity {
 		super.setMode(mode);
 
 		temporalVisual.visible = mode == Present;
+	}
+
+	public function pickItem(e : Entity) {
+		if ( item != null )
+			dropItem();
+		item = e;
+	}
+
+	public function dropItem() {
+		item = null;
 	}
 }

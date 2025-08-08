@@ -379,8 +379,13 @@ class Game extends hxd.App {
 			return;
 		}
 
-		for ( s in states )
+		player.update(dt);
+		for ( s in states ) {
+			if ( s == player )
+				continue;
 			s.update(dt);
+		}
+		player.onEnd();
 
 		if ( hxd.Key.isPressed(hxd.Key.F5) )
 			Main.reload();

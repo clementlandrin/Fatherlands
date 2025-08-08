@@ -8,7 +8,6 @@ class Entity extends st.State {
 	@:s public var activated : Bool = true;
 	var interactive : h3d.scene.Interactive;
 	var outlineShader : shaders.OutlineShader;
-	var interact : Bool;
 	var tooltip : ui.Tooltip;
 	var timeMode : Game.TimeMode;
 
@@ -122,11 +121,11 @@ class Entity extends st.State {
 	}
 
 	function onTrigger() {
-
+		game.player.requestInteract = false;
 	}
 
 	function onSecondTrigger() {
-
+		game.player.requestSecondaryInteract = false;
 	}
 
 	override function start() {
@@ -154,7 +153,7 @@ class Entity extends st.State {
 
 	override function update(dt : Float) {
 		super.update(dt);
-		if ( interact ) {
+		if ( canInteract() ) {
 			var player = game.player;
 			var inRange = player.getPos().distance(getPos()) < Const.get(InteractibleRadius);
 			switch ( timeMode ) {
@@ -168,14 +167,20 @@ class Entity extends st.State {
 			}
 			if ( inRange ) {
 				onOver();
-				if ( hxd.Key.isPressed(hxd.Key.F) )
+				if ( game.player.requestInteract )
 					trigger();
-				if ( hxd.Key.isPressed(hxd.Key.E) )
+				if ( game.player.requestSecondaryInteract )
 					secondTrigger();
 			} else {
 				onOut();
 			}
+		} else {
+			onOut();
 		}
+	}
+
+	public function canInteract() {
+		return false;
 	}
 
 	public function cull() {

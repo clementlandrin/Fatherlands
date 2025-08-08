@@ -69,7 +69,7 @@
 				},
 				{
 					"id": "SphereMaxRadius",
-					"value": 2
+					"value": 4
 				},
 				{
 					"id": "SphereTransitionDuration",
@@ -375,6 +375,11 @@
 				{
 					"typeStr": "2",
 					"name": "unstableTeleport",
+					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "pickableItem",
 					"opt": true
 				}
 			]

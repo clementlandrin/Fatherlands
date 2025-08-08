@@ -41,4 +41,11 @@ knowledge-window #title {
 knowledge-window knowledgeComp.discovered text {
   color: green;
 }
+inventory {
+  margin: 30;
+  align: bottom right;
+  background: #000000 0.5;
+  padding: 20;
+  content-align: middle middle;
+}
 /*# sourceMappingURL=./style.css.map */

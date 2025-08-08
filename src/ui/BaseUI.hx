@@ -32,6 +32,8 @@ class BaseUI {
 		root.layout = Stack;
 		style.addObject(root);
 
+		root.addChild(new ui.Inventory());
+		
 		loadStyle();
 	}
 

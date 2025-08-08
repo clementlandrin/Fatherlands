@@ -8,8 +8,11 @@ class Teleport extends Entity {
 
 	public function new() {
 		super();
-		interact = true;
 		shader = new h3d.shader.ColorMult();
+	}
+
+	override function canInteract() {
+		return true;
 	}
 
 	override function start() {
@@ -38,6 +41,7 @@ class Teleport extends Entity {
 	}
 
 	override function onTrigger() {
+		super.onTrigger();
 		for ( e in game.entities ) {
 			var t = Std.downcast(e, Teleport);
 			if ( t == null )
@@ -69,6 +73,7 @@ class Teleport extends Entity {
 	}
 
 	override function onSecondTrigger() {
+		super.onSecondTrigger();
 		targetIndex++;
 		updateColor();
 	}

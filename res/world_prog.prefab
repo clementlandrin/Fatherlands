@@ -156,6 +156,17 @@
 					"source": "gameplay/test_golem.prefab"
 				}
 			]
+		},
+		{
+			"type": "reference",
+			"name": "PickItem",
+			"source": "content/Room/Prog_Test/PickItem.prefab",
+			"x": -13.37,
+			"y": -0.81,
+			"z": 25.81,
+			"rotationX": 6.366017419360943e-12,
+			"rotationY": -5.3031564165448225e-12,
+			"rotationZ": -2.946114566572193e-25
 		}
 	]
 }
