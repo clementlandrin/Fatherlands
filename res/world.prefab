@@ -1156,6 +1156,13 @@
 			"source": "content/Room/Chasm/C10.prefab",
 			"x": -135,
 			"z": -75
+		},
+		{
+			"type": "reference",
+			"name": "H9",
+			"source": "content/Room/Hub/H9.prefab",
+			"x": -15,
+			"z": -15
 		}
 	]
 }
