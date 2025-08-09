@@ -64,10 +64,6 @@ class Entity extends st.State {
 		this.name = obj.name;
 		if ( isMemo() )
 			setTooltip();
-		// not point and click for now
-		// if ( interact ) {
-		// 	initInteractive();
-		// }
 	}
 
 	public function posFromObj() {
@@ -75,21 +71,6 @@ class Entity extends st.State {
 		@:bypassAccessor x = pos.x;
 		@:bypassAccessor y = pos.y;
 		@:bypassAccessor z = pos.z;
-	}
-
-	function initInteractive() {
-		interactive = new h3d.scene.Interactive(obj.getBounds(null, obj));
-		obj.addChild(interactive);
-		interactive.onClick = function(e : hxd.Event) {
-			if ( e.button == 0 )
-				trigger();
-		}
-		interactive.onOver = function(e : hxd.Event) {
-			onOver();
-		}
-		interactive.onOut = function(e : hxd.Event) {
-			onOut();
-		}
 	}
 
 	function isMemo() {
@@ -237,11 +218,6 @@ class Entity extends st.State {
 		if ( game.player.item == this )
 			return false;
 		return canTrigger() || canSecondaryTrigger();
-		// if ( inf == null )
-		// 	return false;
-		// if ( game.player.item == this )
-		// 	return false;
-		// return (activated && (inf.dialog != null || inf.pickableItem)) || (deactivated && inf.activateByInfusion);
 	}
 
 	public function cull() {

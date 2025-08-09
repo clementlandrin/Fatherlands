@@ -1,32 +1,25 @@
 package ent;
 
-class SeedPot extends Entity {
+class SeedPot extends Chest {
 
-    var seed : Seed = null;
-
-    override function hasSpecificInteraction() {
-        return game.player.item != null && Std.isOfType(game.player.item, Seed);
+    function getSeed() {
+        return item != null ? cast(item, ent.Seed) : null;
     }
 
+    override function filterItem(i : ent.Entity) {
+        return Std.isOfType(i, Seed);
+    }
+    
     override function getTriggerText() {
         return "Press F to plant.";
-    }
-
-    override function onTrigger() {
-        super.onTrigger();
-        seed = cast(game.player.item, Seed);
-        game.player.dropItem();
     }
 
     override function update(dt : Float) {
         super.update(dt);
 
-        if ( seed != null ) {
-            seed.setPos(getPos());
-            seed.grow(dt);
-            // player picked seed
-            if ( game.player.item == seed )
-                seed = null;
+        var s = getSeed();
+        if ( s != null ) {
+            s.grow(dt);
         }
     }
 }

@@ -30,6 +30,7 @@
 				{
 					"type": "rfx.sao",
 					"name": "sao",
+					"enabled": false,
 					"size": 0.5,
 					"blur": 4,
 					"noiseScale": 100,
@@ -43,12 +44,10 @@
 					"type": "rfx.sao",
 					"name": "sao",
 					"size": 0.5,
-					"blur": 4,
-					"noiseScale": 100,
+					"noiseScale": 1000,
 					"samples": 50,
-					"radius": 5,
-					"intensity": 5,
-					"bias": 0.1,
+					"radius": 0.91,
+					"intensity": 2.88,
 					"useScalableBias": true
 				},
 				{
@@ -77,6 +76,7 @@
 				{
 					"type": "rfx.kuwaharaFilter",
 					"name": "kuwaharaFilter",
+					"enabled": false,
 					"radius": 3,
 					"endDist": 0
 				},
