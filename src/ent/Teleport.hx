@@ -2,7 +2,6 @@ package ent;
 
 class Teleport extends Entity {
 
-	public var color : Null<Int>;
 	var shader : h3d.shader.ColorMult;
 	var targetIndex = 0;
 
@@ -11,14 +10,25 @@ class Teleport extends Entity {
 		shader = new h3d.shader.ColorMult();
 	}
 
-	override function canInteract() {
+	override function canSecondaryTrigger() {
+		return super.canSecondaryTrigger() || isHub();
+	}
+
+	override function hasSpecificInteraction() {
 		return true;
+	}
+
+	function getColor() : Null<Int> {
+		if ( inf == null )
+			return null;
+		if ( inf.color == null )
+			return null;
+		return inf.color;
 	}
 
 	override function start() {
 		super.start();
-		color = isHub() ? null : inf.color;
-		if ( color == null ) {
+		if ( isHub() ) {
 			for ( e in game.entities ) {
 				var t = Std.downcast(e, Teleport);
 				if ( t == null || t == this )
@@ -31,7 +41,7 @@ class Teleport extends Entity {
 	}
 
 	public function isHub() {
-		return inf == null || inf.color == null;
+		return getColor() == null;
 	}
 
 	override function setObject(obj) {
@@ -79,31 +89,30 @@ class Teleport extends Entity {
 	}
 
 	function updateColor() {
-		if ( color != null ) {
-			shader.color.setColor(color);
-		} else {
+		if ( isHub() ) {
 			var targets = [];
 			for ( e in game.entities ) {
 				var t = Std.downcast(e, Teleport);
-				if ( t == null || t == this )
+				if ( t == null || t == this || Std.isOfType(t, FinalTeleport) )
 					continue;
 				targets.push(t);
 			}
 			var target = targets[targetIndex % targets.length];
-			shader.color.setColor(target.color);
-		}
+			shader.color.setColor(target.getColor());
+		} else
+			shader.color.setColor(getColor());
 	}
 
 	function getTargetColor() {
-		if ( color != null )
+		if ( !isHub() )
 			throw "assert";
 		return shader.color.toColor();
 	}
 
 	function matches(t : Teleport) {
-		if ( color == null && getTargetColor() == t.color )
+		if ( isHub() && getTargetColor() == t.getColor() )
 			return true;
-		if ( color != null && t.color == null )
+		if ( !isHub() && t.isHub() )
 			return true;
 		return false;
 	}
@@ -126,10 +135,13 @@ class Teleport extends Entity {
 		game.moveTo(room, [teleportCb]);
 	}
 	
-	override function getTooltipText() {
-		var text = "Press F to teleport";
-		if ( color == null )
-			text += " Press E to change color.";
-		return text;
+	override function getTriggerText() {
+		return "Press F to teleport. ";
+	}
+
+	override function getSecondTriggerText() {
+		if ( isHub() )
+			return "Press E to change color. ";
+		return super.getSecondTriggerText();
 	}
 }

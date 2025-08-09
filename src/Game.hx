@@ -278,6 +278,15 @@ class Game extends hxd.App {
 			case Teleport:
 				var t = new ent.Teleport();
 				e = t;
+			case Seed:
+				var s = new ent.Seed();
+				e = s;
+			case SeedPot:
+				var sp = new ent.SeedPot();
+				e = sp;
+			case FinalTeleport:
+				var ft = new ent.FinalTeleport();
+				e = ft;
 			}
 			if ( e != null ) {
 				e.inf = props.props;

@@ -112,12 +112,28 @@ class Entity extends st.State {
 	}
 
 	final function secondTrigger() {
-		if ( canTrigger() )
+		if ( canSecondaryTrigger() )
 			onSecondTrigger();
 	}
 
+	function hasSpecificInteraction() {
+		return false;
+	}
+
 	function canTrigger() {
-		return game.canControl() && activated;
+		if ( !activated )
+			return false;
+		if ( hasSpecificInteraction() )
+			return true;
+		if ( inf == null )
+			return false;
+		return inf.dialog != null || inf.pickableItem;
+	}
+
+	function canSecondaryTrigger() {
+		if ( inf == null )
+			return false;
+		return !activated && inf.activateByInfusion;
 	}
 
 	function onTrigger() {
@@ -151,6 +167,17 @@ class Entity extends st.State {
 
 	function onSecondTrigger() {
 		game.player.requestSecondaryInteract = false;
+		if ( tooltip != null )
+			removeTooltip();
+		if ( inf != null ) {
+			if ( inf.activateByInfusion ) {
+				activated = true;
+				if ( inf.activatedModel != null ) {
+					obj.removeChildren();
+					hxd.res.Loader.currentInstance.load(inf.activatedModel).toPrefab().load().make(obj);
+				}
+			}
+		}
 	}
 
 	override function start() {
@@ -205,11 +232,16 @@ class Entity extends st.State {
 	}
 
 	public function canInteract() {
-		if ( inf == null )
+		if ( !game.canControl() )
 			return false;
 		if ( game.player.item == this )
 			return false;
-		return inf.dialog != null || inf.pickableItem;
+		return canTrigger() || canSecondaryTrigger();
+		// if ( inf == null )
+		// 	return false;
+		// if ( game.player.item == this )
+		// 	return false;
+		// return (activated && (inf.dialog != null || inf.pickableItem)) || (deactivated && inf.activateByInfusion);
 	}
 
 	public function cull() {
@@ -286,12 +318,27 @@ class Entity extends st.State {
 		return inf.dialog == null && !inf.pickableItem;
 	}
 
+	function getTriggerText() {
+		if ( inf == null )
+			return "";
+		if ( inf != null && inf.dialog != null )
+			return "Press F to discuss. ";
+		else if ( inf != null && inf.pickableItem )
+			return "Press F to pick. ";
+		return "";
+	}
+
+	function getSecondTriggerText() {
+		return "Press E to infuse. ";
+	}
+
 	public function getTooltipText() {
-		if ( inf.dialog != null )
-			return "Press F to discuss.";
-		if ( inf.pickableItem )
-			return "Press F to pick.";
-		return "Press F to interact.";
+		var str = "";
+		if ( canTrigger() )
+			str = getTriggerText();
+		if ( canSecondaryTrigger() )
+			str += getSecondTriggerText();
+		return str;
 	}
 
 	override function dispose() {

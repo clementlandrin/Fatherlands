@@ -1,0 +1,36 @@
+{
+	"type": "prefab",
+	"children": [
+		{
+			"type": "object",
+			"name": "object",
+			"children": [
+				{
+					"type": "box",
+					"name": "box",
+					"x": 0.5,
+					"z": 0.5,
+					"scaleX": 0.44,
+					"scaleY": 0.44
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"z": 1.2,
+					"scaleX": 0.44,
+					"scaleY": 0.44,
+					"scaleZ": 1.43,
+					"rotationY": 90
+				},
+				{
+					"type": "box",
+					"name": "box",
+					"x": -0.5,
+					"z": 0.5,
+					"scaleX": 0.44,
+					"scaleY": 0.44
+				}
+			]
+		}
+	]
+}

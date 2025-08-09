@@ -93,6 +93,7 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
+					"enabled": false,
 					"x": 3.89,
 					"y": -2.24,
 					"rotationZ": 90
@@ -101,6 +102,7 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
+					"enabled": false,
 					"x": 0.8,
 					"y": -7.61
 				},
@@ -108,7 +110,6 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
-					"enabled": false,
 					"x": 0.8,
 					"y": 7.38,
 					"rotationZ": -180
@@ -119,60 +120,21 @@
 			"type": "object",
 			"name": "object",
 			"props": {
-				"id": "AgapantheSeed",
-				"type": 6,
+				"id": "BrokenArch_object",
+				"type": 8,
 				"$cdbtype": "element",
 				"props": {
-					"pickableItem": true,
-					"color": 6399
+					"activateByInfusion": true,
+					"deactivated": true,
+					"activatedModel": "gameplay/test_fixed_arch.prefab"
 				}
 			},
-			"x": -0.75,
-			"y": 3.68,
+			"y": -4.28,
 			"children": [
 				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 0.84,
-					"scaleX": 0.2,
-					"scaleY": 0.2,
-					"scaleZ": 0.2,
-					"color": -16760065,
-					"kind": 3,
-					"args": [
-						24,
-						24
-					]
-				}
-			]
-		},
-		{
-			"type": "object",
-			"name": "object",
-			"props": {
-				"id": "PickItem_object",
-				"type": 4,
-				"$cdbtype": "element",
-				"props": {
-					"pickableItem": true
-				}
-			},
-			"x": -0.75,
-			"y": -0.75,
-			"children": [
-				{
-					"type": "polygon",
-					"name": "polygon",
-					"z": 0.84,
-					"scaleX": 0.2,
-					"scaleY": 0.2,
-					"scaleZ": 0.2,
-					"color": -10420480,
-					"kind": 3,
-					"args": [
-						24,
-						24
-					]
+					"type": "reference",
+					"name": "test_broken_arch",
+					"source": "gameplay/test_broken_arch.prefab"
 				}
 			]
 		}

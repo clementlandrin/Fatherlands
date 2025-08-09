@@ -167,6 +167,22 @@
 			"rotationX": 6.366017419360943e-12,
 			"rotationY": -5.3031564165448225e-12,
 			"rotationZ": -2.946114566572193e-25
+		},
+		{
+			"type": "reference",
+			"name": "Serre",
+			"source": "content/Room/Prog_Test/Serre.prefab",
+			"x": -13.64,
+			"y": -25.2,
+			"z": 25.41
+		},
+		{
+			"type": "reference",
+			"name": "BrokenArch",
+			"source": "content/Room/Prog_Test/BrokenArch.prefab",
+			"x": -13.46,
+			"y": -49.47,
+			"z": 26.01
 		}
 	]
 }

@@ -79,27 +79,42 @@
 					"name": "object",
 					"props": {
 						"id": "AgapantheSeed",
-						"type": 4,
+						"type": 7,
 						"$cdbtype": "element",
 						"props": {
-							"deactivated": true
+							"deactivated": true,
+							"activateByInfusion": true
 						}
 					},
 					"x": -2.094,
 					"y": 3.678,
 					"children": [
 						{
-							"type": "polygon",
-							"name": "polygon",
-							"z": 0.84,
-							"scaleX": 0.2,
-							"scaleY": 0.2,
-							"scaleZ": 0.2,
-							"color": -16760065,
-							"kind": 3,
-							"args": [
-								24,
-								24
+							"type": "box",
+							"name": "box",
+							"z": 0.28,
+							"children": [
+								{
+									"type": "material",
+									"name": "material",
+									"props": {
+										"PBR": {
+											"mode": "PBR",
+											"blend": "None",
+											"shadows": true,
+											"culling": "Back",
+											"depthTest": "Less",
+											"colorMask": 15,
+											"enableStencil": false
+										}
+									},
+									"color": [
+										0.43529411764705883,
+										0.4156862745098039,
+										0.4156862745098039,
+										1
+									]
+								}
 							]
 						}
 					]
@@ -134,7 +149,6 @@
 					"type": "reference",
 					"name": "door",
 					"source": "gameplay/door.prefab",
-					"enabled": false,
 					"x": 0.8,
 					"y": -7.61
 				},

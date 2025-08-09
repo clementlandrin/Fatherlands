@@ -10,7 +10,7 @@
 					"scope": null
 				},
 				{
-					"typeStr": "5:Room,Door,Navmesh,Ladder,Element,Teleport",
+					"typeStr": "5:Room,Door,Navmesh,Ladder,Element,Teleport,Seed,SeedPot,FinalTeleport",
 					"name": "type",
 					"opt": false
 				},
@@ -380,6 +380,16 @@
 				{
 					"typeStr": "2",
 					"name": "pickableItem",
+					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "activateByInfusion",
+					"opt": true
+				},
+				{
+					"typeStr": "13",
+					"name": "activatedModel",
 					"opt": true
 				}
 			]
